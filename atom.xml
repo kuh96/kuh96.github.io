@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
-  <updated>2015-06-06T04:47:49.841Z</updated>
+  <updated>2015-06-06T07:26:12.469Z</updated>
   <id>http://yoursite.com//</id>
   
   <author>
@@ -16,11 +16,62 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[査読レポート： divは完全情報か？(クロメル著)]]></title>
+    <link href="http://yoursite.com/2015/06/06/chromel-div/"/>
+    <id>http://yoursite.com/2015/06/06/chromel-div/</id>
+    <published>2015-06-06T04:55:52.000Z</published>
+    <updated>2015-06-06T07:26:12.469Z</updated>
+    <content type="html"><![CDATA[<p>以下の査読レポートというか、感想・たわごとです。<br><a href="http://hooktail.org/wiki/index.php?%BA%BA%C6%C9%2Fdiv%A4%CF%B4%B0%C1%B4%BE%F0%CA%F3%A4%AB%A1%A9%28%A5%AF%A5%ED%A5%E1%A5%EB%C3%F8%29" target="_blank" rel="external">divは完全情報か？(クロメル著)</a></p>
+<h3 id="最初に思ったこと">最初に思ったこと</h3><blockquote>
+<p>ナブラを使ったダイバージェンス（発散）は，内積みたいだけど，情報は失われるのか？と言うのが今回のテーマです．</p>
+</blockquote>
+<p>という始まりだったので、可逆計算・不可逆計算の話かと思った。</p>
+<ul>
+<li>a + b を計算して、他の情報を忘れると a,b は再現できない（不可逆計算）</li>
+<li>でも、 a - b も同時に計算して覚えるなら再現できる（可逆計算）</li>
+<li>a が実数、b が純虚数なら a + b からa,b が再現できる（可逆計算）</li>
+</ul>
+<p>でもなにか違うみたい？</p>
+<blockquote>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%80%E3%82%A6%E3%82%A2%E3%83%BC%E3%81%AE%E5%8E%9F%E7%90%86" target="_blank" rel="external">ja.wikipedia ランダウアーの原理</a></p>
+<p>定量的には、情報処理過程において1ビット（＝1シャノン）の情報を失うとき、環境での熱力学的エントロピーの上昇も最低でも1ビットとなる。通常の物理的単位で表すならこれは k ln 2 であり、よって環境に放出される熱は最低でも k T ln 2 となる（ただし、 k はボルツマン定数、T は絶対温度）。この限界値は、ランダウアーの限界 (Landauer’s limit) もしくはフォン・ノイマン＝ランダウアーの限界と呼ばれる。</p>
+</blockquote>
+<h3 id="次に思ったこと">次に思ったこと</h3><p>微分でも当然情報は失われる　</p>
+<ul>
+<li>$df/dx = dg/dx$ なら $d(f-g)/dx = 0$ 、よって $f(x) - g(x) = 定数$</li>
+<li>定数分の情報がなくなる</li>
+</ul>
+<p>$div$ でも同様</p>
+<ul>
+<li>$div E = div F$ なら $div (E - F) = 0$</li>
+<li>$E - F = \nabla \times {\mathbf {A}}$ (無発散成分) だけの違いが分からなくなる<ul>
+<li>あってる？ これって ゲージ変換　でしたっけ？</li>
+</ul>
+</li>
+</ul>
+<h3 id="バグ？">バグ？</h3><blockquote>
+<p>ずばり式(2)です．ここで， $\phi$ をデルタ関数とした時を考えると，電場は等方的に広がります．</p>
+</blockquote>
+<p>式(2)でなくて式(1)、$\phi$ でなくて、電荷分布 $\rho$ のほうでは？</p>
+<h3 id="以降、正直言って論旨が分からない…">以降、正直言って論旨が分からない…</h3><blockquote>
+<p>式(9)</p>
+<p>この式は y,z 方向には何も言及していません．簡単のため， y,z の電場成分をゼロとします．すると，これは一次元の問題となり，</p>
+</blockquote>
+<p>でもこれでは $G({\bf r} -{\bf r}^\prime)$ は 式(9) の解にならないでしょ？<br>以下は右辺が<br>$- \delta(x-x^\prime) / \varepsilon_0$ の場合を議論しているように思えます。</p>
+<p>でもこれだと(6)式と右辺が異なるので、同じ $\rm{div}$ を持つ関数ではないと思いますが。。。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>以下の査読レポートというか、感想・たわごとです。<br><a href="http://hooktail.org/wiki/index.php?%BA%BA%C6%C9%2Fdiv%A4%CF%B4%B0%C1%B4%BE%F0%CA%F3%A4%AB%A1%A9%28%A]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[POIPOI]]></title>
     <link href="http://yoursite.com/2015/06/06/POIPOI/"/>
     <id>http://yoursite.com/2015/06/06/POIPOI/</id>
-    <published>2015-06-06T04:45:58.000Z</published>
-    <updated>2015-06-06T04:47:49.841Z</updated>
+    <published>2015-06-06T03:45:58.000Z</published>
+    <updated>2015-06-06T05:12:33.197Z</updated>
     <content type="html"><![CDATA[<h1 id="hexo_練習中です">hexo 練習中です</h1><p>まだまだ練習中ですが。。。</p>
 <ul>
 <li>shynx などに比べるとシンプル？</li>
