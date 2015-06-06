@@ -1,0 +1,424 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Kuh Crow</title>
+  <meta name="author" content="Kuh Crow">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Kuh Crow"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Kuh Crow</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 <div class="page-header">
+  <h1>Kuh Crow</h1>
+</div>
+
+<div class="row page">
+
+	
+	<div class="col-md-9">
+	
+
+		<!--
+<div class="slogan">
+      <i class="fa fa-heart"></i>
+      undefined
+</div> 
+-->
+
+
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-06-06 </div>
+			<div class="article-title"><a href="/2015/06/06/chromel-div/" >査読レポート： divは完全情報か？(クロメル著)</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>以下の査読レポートというか、感想・たわごとです。<br><a href="http://hooktail.org/wiki/index.php?%BA%BA%C6%C9%2Fdiv%A4%CF%B4%B0%C1%B4%BE%F0%CA%F3%A4%AB%A1%A9%28%A5%AF%A5%ED%A5%E1%A5%EB%C3%F8%29" target="_blank" rel="external">divは完全情報か？(クロメル著)</a></p>
+<h3 id="最初に思ったこと">最初に思ったこと</h3><blockquote>
+<p>ナブラを使ったダイバージェンス（発散）は，内積みたいだけど，情報は失われるのか？と言うのが今回のテーマです．</p>
+</blockquote>
+<p>という始まりだったので、可逆計算・不可逆計算の話かと思った。</p>
+<ul>
+<li>a + b を計算して、他の情報を忘れると a,b は再現できない（不可逆計算）</li>
+<li>でも、 a - b も同時に計算して覚えるなら再現できる（可逆計算）</li>
+<li>a が実数、b が純虚数なら a + b からa,b が再現できる（可逆計算）</li>
+</ul>
+<p>でもなにか違うみたい？</p>
+<blockquote>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%80%E3%82%A6%E3%82%A2%E3%83%BC%E3%81%AE%E5%8E%9F%E7%90%86" target="_blank" rel="external">ja.wikipedia ランダウアーの原理</a></p>
+<p>定量的には、情報処理過程において1ビット（＝1シャノン）の情報を失うとき、環境での熱力学的エントロピーの上昇も最低でも1ビットとなる。通常の物理的単位で表すならこれは k ln 2 であり、よって環境に放出される熱は最低でも k T ln 2 となる（ただし、 k はボルツマン定数、T は絶対温度）。この限界値は、ランダウアーの限界 (Landauer’s limit) もしくはフォン・ノイマン＝ランダウアーの限界と呼ばれる。</p>
+</blockquote>
+<h3 id="次に思ったこと">次に思ったこと</h3><p>微分でも当然情報は失われる　</p>
+<ul>
+<li>$df/dx = dg/dx$ なら $d(f-g)/dx = 0$ 、よって $f(x) - g(x) = 定数$</li>
+<li>定数分の情報がなくなる</li>
+</ul>
+<p>$div$ でも同様</p>
+<ul>
+<li>$div E = div F$ なら $div (E - F) = 0$</li>
+<li>$E - F = \nabla \times {\mathbf {A}}$ (無発散成分) だけの違いが分からなくなる<ul>
+<li>あってる？ これって ゲージ変換　でしたっけ？</li>
+</ul>
+</li>
+</ul>
+<h3 id="バグ？">バグ？</h3><blockquote>
+<p>ずばり式(2)です．ここで， $\phi$ をデルタ関数とした時を考えると，電場は等方的に広がります．</p>
+</blockquote>
+<p>式(2)でなくて式(1)、$\phi$ でなくて、電荷分布 $\rho$ のほうでは？</p>
+<h3 id="以降、正直言って論旨が分からない…">以降、正直言って論旨が分からない…</h3><blockquote>
+<p>式(9)</p>
+<p>この式は y,z 方向には何も言及していません．簡単のため， y,z の電場成分をゼロとします．すると，これは一次元の問題となり，</p>
+</blockquote>
+<p>でもこれでは $G({\bf r} -{\bf r}^\prime)$ は 式(9) の解にならないでしょ？<br>以下は右辺が $- \delta(x-x^\prime) / \varepsilon_0$ の場合を議論しているように思えます。</p>
+<p>でもこれだと(6)式と右辺が異なるので、同じ $\rm{div}$ を持つ関数ではないと思いますが。。。</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/06/06/chromel-div/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-06-06 </div>
+			<div class="article-title"><a href="/2015/06/06/POIPOI/" >hexo 練習...</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h1 id="hexo_練習中です">hexo 練習中です</h1><p>まだまだ練習中ですが。。。</p>
+<ul>
+<li>shynx などに比べるとシンプル？</li>
+<li>Markdowon はやっぱり楽</li>
+<li>github に直接 deploy できるのがうれしい</li>
+</ul>
+<h1 id="Image">Image</h1><p>source/images フォルダーを作り、そこに入れるのが簡単</p>
+<p><img src="/images/shirouma-ooike.jpg"></p>
+<h1 id="数式">数式</h1><p>$a + b$ のように mathjax が使えます。</p>
+<p>$$<br>\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)<br>$$</p>
+<ul>
+<li><a href="http://yukiyamashina.github.io/blog/2014/09/19/blog-at-github-using-hexo/" target="_blank" rel="external">http://yukiyamashina.github.io/blog/2014/09/19/blog-at-github-using-hexo/</a> にのっていたプラグイン４つともインストール。</li>
+</ul>
+<p>deploy すると mathjax が表示されない？</p>
+<ul>
+<li><a href="http://cdn.mathjax" target="_blank" rel="external">http://cdn.mathjax</a> … と生成されてしまうため</li>
+<li>とりあえず <a href="http://xxx.github.io" target="_blank" rel="external">http://xxx.github.io</a> で見る</li>
+</ul>
+<h1 id="シンタックス">シンタックス</h1><p><a href="http://qiita.com" target="_blank" rel="external">Qiita</a>のようにシンタックスハイライトされます。</p>
+<ul>
+<li><a href="http://tech.admax.ninja/2014/09/11/how-to-write-article-in-hexo/" target="_blank" rel="external">http://tech.admax.ninja/2014/09/11/how-to-write-article-in-hexo/</a> </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</span><br><span class="line">  res.end(<span class="string">'Hello World\n'</span>);</span><br><span class="line">&#125;).listen(<span class="number">1337</span>, <span class="string">'127.0.0.1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:1337/'</span>);</span><br></pre></td></tr></table></figure>
+<p>``` の次に言語名を書けばOKだったが、file.js のような書き方ではハイライトされない？</p>
+<h1 id="（ローカルの）_hexo_server">（ローカルの）　hexo server</h1><p>なぜかすぐ落ちます。なにかおかしい？？</p>
+<p>ほとんど hexo generate してブラウザで見るたびに毎回！<br>これなら hexo generate &amp;&amp; hexo server したほうがましかも。</p>
+<p>いっそ毎回 hexo d -g すればよい？</p>
+<h1 id="Other_Reference">Other Reference</h1><ul>
+<li><a href="http://liginc.co.jp/web/html-css/html/96453" target="_blank" rel="external">Git初心者でも大丈夫！完全無料でGithub PagesにWebページを公開する方法</a></li>
+<li><a href="http://liginc.co.jp/web/programming/server/104594" target="_blank" rel="external">所要時間3分!? Github PagesとHEXOで爆速ブログ構築してみよう！</a></li>
+</ul>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/06/06/POIPOI/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2014-06-30 </div>
+			<div class="article-title"><a href="/2014/06/30/IceThickness/" >氷の厚さ？</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>以前 hooktail の google group に投稿した記事ですが、<br>あとで使うかもしれないので、再掲しておきます。</p>
+<p><a href="https://groups.google.com/d/topic/bulletin_hooktail_of_phys/UK_pME77Nx4/discussion" target="_blank" rel="external">https://groups.google.com/d/topic/bulletin_hooktail_of_phys/UK_pME77Nx4/discussion</a></p>
+<blockquote>
+<p>気温が下がって、池の水が凍り始めた。<br>凍り初めてからの時間を t とすると、<br>氷の厚さは t の平方根に比例することを示せ。</p>
+</blockquote>
+<p><a href="https://docs.google.com/document/d/1pVxf3fqqXaMkKunA_XwJJIfNgzqTzLep5mJ-4QSCg1Y/pub" target="_blank" rel="external">わたしの回答</a></p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2014/06/30/IceThickness/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2014-06-01 </div>
+			<div class="article-title"><a href="/2014/06/01/hello-world/" >Hello World</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2014/06/01/hello-world/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+<ul class="pagination">
+	 
+</ul>
+</div>
+
+  		</center>
+		</div>
+
+		
+		
+	</div> <!-- col-md-9 -->
+
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			<div class="form-group has-success has-feedback">
+  <form action="//google.com/search" method="get" accept-charset="utf-8" >
+    <input type="search" name="q" results="0" placeholder="Search" class="form-control">
+    <input type="hidden" name="q" value="site:yoursite.com">	
+  </form>
+</div>
+
+		
+			
+		
+			
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2015/06/06/chromel-div/" ><i class="fa fa-file-o"></i>査読レポート： divは完全情報か？(クロメル著)...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/06/POIPOI/" ><i class="fa fa-file-o"></i>hexo 練習......</a>
+      </li>
+    
+      <li>
+        <a href="/2014/06/30/IceThickness/" ><i class="fa fa-file-o"></i>氷の厚さ？...</a>
+      </li>
+    
+      <li>
+        <a href="/2014/06/01/hello-world/" ><i class="fa fa-file-o"></i>Hello World...</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="http://hooktail.sub.jp/" title="Let's study math and pysics with us!" target="_blank"]);">Hooktal (物理のかぎしっぽ)</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/kuh96" title="Kuh Crow Github" target="_blank"]);">My Github</a></li>
+	
+		<li><i class="fa fa-facebook"></i><a href="https://www.facebook.com/KuhCrow" title="My Facebook" target="_blank"]);">My Facebook</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+	
+	
+</div> <!-- row-fluid -->
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 Kuh Crow
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+   </html>

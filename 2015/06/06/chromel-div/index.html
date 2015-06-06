@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>査読レポート： divは完全情報か？(クロメル著) | Kuh Crow</title>
+  <meta name="author" content="Kuh Crow">
+  
+  <meta name="description" content="以下の査読レポートというか、感想・たわごとです。divは完全情報か？(クロメル著)
+最初に思ったこと
+ナブラを使ったダイバージェンス（発散）は，内積みたいだけど，情報は失われるのか？と言うのが今回のテーマです．
+
+という始まりだったので、可逆計算・不可逆計算の話かと思った。
+
+a + b を計算して">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="査読レポート： divは完全情報か？(クロメル著)"/>
+  <meta property="og:site_name" content="Kuh Crow"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Kuh Crow</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 査読レポート： divは完全情報か？(クロメル著)</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>以下の査読レポートというか、感想・たわごとです。<br><a href="http://hooktail.org/wiki/index.php?%BA%BA%C6%C9%2Fdiv%A4%CF%B4%B0%C1%B4%BE%F0%CA%F3%A4%AB%A1%A9%28%A5%AF%A5%ED%A5%E1%A5%EB%C3%F8%29" target="_blank" rel="external">divは完全情報か？(クロメル著)</a></p>
+<h3 id="最初に思ったこと">最初に思ったこと</h3><blockquote>
+<p>ナブラを使ったダイバージェンス（発散）は，内積みたいだけど，情報は失われるのか？と言うのが今回のテーマです．</p>
+</blockquote>
+<p>という始まりだったので、可逆計算・不可逆計算の話かと思った。</p>
+<ul>
+<li>a + b を計算して、他の情報を忘れると a,b は再現できない（不可逆計算）</li>
+<li>でも、 a - b も同時に計算して覚えるなら再現できる（可逆計算）</li>
+<li>a が実数、b が純虚数なら a + b からa,b が再現できる（可逆計算）</li>
+</ul>
+<p>でもなにか違うみたい？</p>
+<blockquote>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%80%E3%82%A6%E3%82%A2%E3%83%BC%E3%81%AE%E5%8E%9F%E7%90%86" target="_blank" rel="external">ja.wikipedia ランダウアーの原理</a></p>
+<p>定量的には、情報処理過程において1ビット（＝1シャノン）の情報を失うとき、環境での熱力学的エントロピーの上昇も最低でも1ビットとなる。通常の物理的単位で表すならこれは k ln 2 であり、よって環境に放出される熱は最低でも k T ln 2 となる（ただし、 k はボルツマン定数、T は絶対温度）。この限界値は、ランダウアーの限界 (Landauer’s limit) もしくはフォン・ノイマン＝ランダウアーの限界と呼ばれる。</p>
+</blockquote>
+<h3 id="次に思ったこと">次に思ったこと</h3><p>微分でも当然情報は失われる　</p>
+<ul>
+<li>$df/dx = dg/dx$ なら $d(f-g)/dx = 0$ 、よって $f(x) - g(x) = 定数$</li>
+<li>定数分の情報がなくなる</li>
+</ul>
+<p>$div$ でも同様</p>
+<ul>
+<li>$div E = div F$ なら $div (E - F) = 0$</li>
+<li>$E - F = \nabla \times {\mathbf {A}}$ (無発散成分) だけの違いが分からなくなる<ul>
+<li>あってる？ これって ゲージ変換　でしたっけ？</li>
+</ul>
+</li>
+</ul>
+<h3 id="バグ？">バグ？</h3><blockquote>
+<p>ずばり式(2)です．ここで， $\phi$ をデルタ関数とした時を考えると，電場は等方的に広がります．</p>
+</blockquote>
+<p>式(2)でなくて式(1)、$\phi$ でなくて、電荷分布 $\rho$ のほうでは？</p>
+<h3 id="以降、正直言って論旨が分からない…">以降、正直言って論旨が分からない…</h3><blockquote>
+<p>式(9)</p>
+<p>この式は y,z 方向には何も言及していません．簡単のため， y,z の電場成分をゼロとします．すると，これは一次元の問題となり，</p>
+</blockquote>
+<p>でもこれでは $G({\bf r} -{\bf r}^\prime)$ は 式(9) の解にならないでしょ？<br>以下は右辺が $- \delta(x-x^\prime) / \varepsilon_0$ の場合を議論しているように思えます。</p>
+<p>でもこれだと(6)式と右辺が異なるので、同じ $\rm{div}$ を持つ関数ではないと思いますが。。。</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/06/06/POIPOI/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comment</h2>
+
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-06-06 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 Kuh Crow
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+   </html>
