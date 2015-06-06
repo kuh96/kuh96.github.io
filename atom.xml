@@ -67,11 +67,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[POIPOI]]></title>
+    <title><![CDATA[hexo 練習...]]></title>
     <link href="http://yoursite.com/2015/06/06/POIPOI/"/>
     <id>http://yoursite.com/2015/06/06/POIPOI/</id>
     <published>2015-06-06T03:45:58.000Z</published>
-    <updated>2015-06-06T05:12:33.197Z</updated>
+    <updated>2015-06-06T08:43:21.848Z</updated>
     <content type="html"><![CDATA[<h1 id="hexo_練習中です">hexo 練習中です</h1><p>まだまだ練習中ですが。。。</p>
 <ul>
 <li>shynx などに比べるとシンプル？</li>
@@ -84,6 +84,11 @@
 <p>$$<br>\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)<br>$$</p>
 <ul>
 <li><a href="http://yukiyamashina.github.io/blog/2014/09/19/blog-at-github-using-hexo/" target="_blank" rel="external">http://yukiyamashina.github.io/blog/2014/09/19/blog-at-github-using-hexo/</a> にのっていたプラグイン４つともインストール。</li>
+</ul>
+<p>deploy すると mathjax が表示されない？</p>
+<ul>
+<li><a href="http://cdn.mathjax" target="_blank" rel="external">http://cdn.mathjax</a> … と生成されてしまうため</li>
+<li>とりあえず <a href="http://xxx.github.io" target="_blank" rel="external">http://xxx.github.io</a> で見る</li>
 </ul>
 <h1 id="シンタックス">シンタックス</h1><p><a href="http://qiita.com" target="_blank" rel="external">Qiita</a>のようにシンタックスハイライトされます。<br>されません？</p>
 <ul>
@@ -125,13 +130,14 @@
     <link href="http://yoursite.com/2014/06/30/IceThickness/"/>
     <id>http://yoursite.com/2014/06/30/IceThickness/</id>
     <published>2014-06-30T08:29:44.000Z</published>
-    <updated>2015-06-06T08:35:49.736Z</updated>
+    <updated>2015-06-06T08:43:24.112Z</updated>
     <content type="html"><![CDATA[<p>以前 hooktail の google group に投稿した記事ですが、<br>あとで使うかもしれないので、再掲しておきます。</p>
 <p><a href="https://groups.google.com/d/topic/bulletin_hooktail_of_phys/UK_pME77Nx4/discussion" target="_blank" rel="external">https://groups.google.com/d/topic/bulletin_hooktail_of_phys/UK_pME77Nx4/discussion</a></p>
 <p>s&gt; 気温が下がって、池の水が凍り始めた。</p>
 <blockquote>
 <p>凍り初めてからの時間を t とすると、<br>氷の厚さは t の平方根に比例することを示せ。</p>
 </blockquote>
+<p><a href="https://docs.google.com/document/d/1pVxf3fqqXaMkKunA_XwJJIfNgzqTzLep5mJ-4QSCg1Y/pub" target="_blank" rel="external">わたしの回答</a></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>以前 hooktail の google group に投稿した記事ですが、<br>あとで使うかもしれないので、再掲しておきます。</p>
