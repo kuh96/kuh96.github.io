@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
-  <updated>2015-06-06T07:26:12.469Z</updated>
+  <updated>2015-06-06T07:34:57.960Z</updated>
   <id>http://yoursite.com//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2015/06/06/chromel-div/"/>
     <id>http://yoursite.com/2015/06/06/chromel-div/</id>
     <published>2015-06-06T04:55:52.000Z</published>
-    <updated>2015-06-06T07:26:12.469Z</updated>
+    <updated>2015-06-06T07:34:57.960Z</updated>
     <content type="html"><![CDATA[<p>以下の査読レポートというか、感想・たわごとです。<br><a href="http://hooktail.org/wiki/index.php?%BA%BA%C6%C9%2Fdiv%A4%CF%B4%B0%C1%B4%BE%F0%CA%F3%A4%AB%A1%A9%28%A5%AF%A5%ED%A5%E1%A5%EB%C3%F8%29" target="_blank" rel="external">divは完全情報か？(クロメル著)</a></p>
 <h3 id="最初に思ったこと">最初に思ったこと</h3><blockquote>
 <p>ナブラを使ったダイバージェンス（発散）は，内積みたいだけど，情報は失われるのか？と言うのが今回のテーマです．</p>
@@ -57,7 +57,7 @@
 <p>式(9)</p>
 <p>この式は y,z 方向には何も言及していません．簡単のため， y,z の電場成分をゼロとします．すると，これは一次元の問題となり，</p>
 </blockquote>
-<p>でもこれでは $G({\bf r} -{\bf r}^\prime)$ は 式(9) の解にならないでしょ？<br>以下は右辺が<br>$- \delta(x-x^\prime) / \varepsilon_0$ の場合を議論しているように思えます。</p>
+<p>でもこれでは $G({\bf r} -{\bf r}^\prime)$ は 式(9) の解にならないでしょ？<br>以下は右辺が $- \delta(x-x^\prime) / \varepsilon_0$ の場合を議論しているように思えます。</p>
 <p>でもこれだと(6)式と右辺が異なるので、同じ $\rm{div}$ を持つ関数ではないと思いますが。。。</p>
 ]]></content>
     <summary type="html">
