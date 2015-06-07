@@ -6,12 +6,10 @@
   <title>査読レポート： divは完全情報か？(クロメル著) | Kuh Crow</title>
   <meta name="author" content="Kuh Crow">
   
-  <meta name="description" content="2015-06-07 2回目
-クロメル＞
-ちょっと書き直してみました。
-一番の主張は、同じdivEをもつ場からEの分布を復元できるか？という質問にいや、それは出来ない（数学）。はい、それは出来ます（物理）。と言う、ずれがあるよ。と言うことです。
+  <meta name="description" content="2015-06-07 22:45 追記、一応の結論？レポートの訂正と、一応の結論です。
 
-http://hooktail.maxwell.jp">
+kuhcrow ＞
+ところで、式 (15)と(16) の E は明らかに異なるベクトル場ですが、どちらも ${\rm rot} {\mathbf E} = 0$ ですよね。異なる $\bf E$ が同じ ${\">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -110,7 +108,22 @@ http://hooktail.maxwell.jp">
 
 	<!-- content -->
 	<div class="mypage">		
-	    <h2 id="2015-06-07_2回目">2015-06-07 2回目</h2><blockquote>
+	    <h2 id="2015-06-07_22:45_追記、一応の結論？">2015-06-07 22:45 追記、一応の結論？</h2><p>レポートの訂正と、一応の結論です。</p>
+<blockquote>
+<p>kuhcrow ＞</p>
+<p>ところで、式 (15)と(16) の E は明らかに異なるベクトル場ですが、<br>どちらも ${\rm rot} {\mathbf E} = 0$ ですよね。<br>異なる $\bf E$ が同じ ${\rm div} {\bf E}$ になるのは、<br>上の 「v(r) が十分遠く (r → ∞) で消えている」が成り立たないせいでしょうか？</p>
+</blockquote>
+<p>本質的でないので、電荷分布 $f(x)$ はX軸上に一様無限に線密度 $\sigma$ で分布しているとします。すなわち<br>$$\rho(x,y,z) = \sigma \delta(y) \delta(z)$$</p>
+<p>また面倒なので以下では $\varepsilon_0 = 1$ とします。</p>
+<p>すると<strong>通常の解</strong>は簡単に求まって（といいながら、間違ってるかも）、<br>$${\bf E}(x,y,x) = \frac{\sigma}  {2 \pi \sqrt{y^2 + z^2}}<br>(0, y, z)<br>$$</p>
+<p>一方 $F_y = F_z = 0$ となるような解は ${F_x}(x,y,x) =  \sigma \delta(y) \delta(z)$ より</p>
+<p>$${\bf F}(x,y,x) = (\sigma x \delta(y) \delta(z), 0, 0)$$</p>
+<p><strong>しかし $\bf{F}$ の rotation は 0 ではなさそうです。</strong><br>$${\rm rot} {\bf F} = (0, -x \delta(y) \Delta(z), x \Delta(y) \delta(z))$$</p>
+<p>ここで $\Delta(w) = d \delta(w)/dw $ (デルタ関数の微分に意味があるかは知らないけど‥）</p>
+<p>というわけで、やっはり 渦だけ成分が通常の（＝渦なしの） $\bf {E}$ と異なってるようです。</p>
+<p>なぜ物理（静電気学）ではこの違いを無視するのか不思議ですが、<br>wikipedia にありました。<br><a href="https://ja.wikipedia.org/wiki/%E9%9D%99%E9%9B%BB%E6%B0%97%E5%AD%A6#.E9.9D.99.E9.9B.BB.E8.BF.91.E4.BC.BC" target="_blank" rel="external">静電近似</a> というらしいです。</p>
+<hr>
+<h2 id="2015-06-07_2回目">2015-06-07 2回目</h2><blockquote>
 <p><a href="https://groups.google.com/d/msg/bulletin_hooktail_of_phys/fglPUHNziJk/cxpjYGwPZnUJ" target="_blank" rel="external">クロメル＞</a></p>
 <p>ちょっと書き直してみました。</p>
 <p>一番の主張は、同じdivEをもつ場からEの分布を復元できるか？という質問に<br>いや、それは出来ない（数学）。<br>はい、それは出来ます（物理）。<br>と言う、ずれがあるよ。と言うことです。</p>
