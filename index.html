@@ -108,8 +108,8 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2015-06-06 </div>
-			<div class="article-title"><a href="/2015/06/06/chromel-div/" >査読レポート： divは完全情報か？(クロメル著)</a></div>						
+			<div class="date"> 2015-06-07 </div>
+			<div class="article-title"><a href="/2015/06/07/chromel-div/" >査読レポート： divは完全情報か？(クロメル著)</a></div>						
 		</h3>
 	
 
@@ -120,7 +120,38 @@
 	<div class="col-md-12">
 	  
 	
-	  <p>以下の査読レポートというか、感想・たわごとです。<br><a href="http://hooktail.org/wiki/index.php?%BA%BA%C6%C9%2Fdiv%A4%CF%B4%B0%C1%B4%BE%F0%CA%F3%A4%AB%A1%A9%28%A5%AF%A5%ED%A5%E1%A5%EB%C3%F8%29" target="_blank" rel="external">divは完全情報か？(クロメル著)</a></p>
+	  <h2 id="2015-06-07_2回目">2015-06-07 2回目</h2><blockquote>
+<p><a href="https://groups.google.com/d/msg/bulletin_hooktail_of_phys/fglPUHNziJk/cxpjYGwPZnUJ" target="_blank" rel="external">クロメル＞</a></p>
+<p>ちょっと書き直してみました。</p>
+<p>一番の主張は、同じdivEをもつ場からEの分布を復元できるか？という質問に<br>いや、それは出来ない（数学）。<br>はい、それは出来ます（物理）。<br>と言う、ずれがあるよ。と言うことです。</p>
+</blockquote>
+<p><a href="http://hooktail.maxwell.jp/kagi/237af3796ea3e44befcc7efa3a27944e.html" target="_blank" rel="external">http://hooktail.maxwell.jp/kagi/237af3796ea3e44befcc7efa3a27944e.html</a></p>
+<p>少し言いたいことが分かってきました。もう少し整理？</p>
+<h3 id="数学">数学</h3><blockquote>
+<p><a href="https://ja.wikipedia.org/wiki/%E7%99%BA%E6%95%A3_(%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E8%A7%A3%E6%9E%90" target="_blank" rel="external">ja.wikipedia 発散_(ベクトル解析)</a></p>
+<p>R3 内の少なくとも二回連続的微分可能な定常流束 v(r) が十分遠く (r → ∞) で消えているならば、v(r) は無回転成分 (irrotational part) E(r) と無発散成分 (source-free part) B(r) に分解される。</p>
+</blockquote>
+<p>さらに、スカラーポテンシャル、ベクトルポテンシャルが存在して以下のように表せる。</p>
+<p>${\mathbf {E}}=-\nabla \Phi ({\mathbf {r}}),\quad rot(\mathbf {E}) = 0$<br>${\mathbf {B}}=\nabla \times {\mathbf {A}}({\mathbf {r}}),\quad div(\mathbf {B})=0$</p>
+<p>なお個人的には、上の E は渦なし成分、B は渦だけ成分、と覚えています。</p>
+<h3 id="物理">物理</h3><blockquote>
+<p>クロメル＞<br>つまり，電荷からでる電場は等方的であると言う前提があって初めて電場は決定されるのです．</p>
+</blockquote>
+<p><strong>点電荷</strong> からでる電場は等方的なのでは。でもこれは（当然の）結果であって、前提ではない？</p>
+<blockquote>
+<p>クロメル＞<br>同じ div を持つ関数でも，数学的には異なるベクトル場を表すことがある．一方，物理（電磁気学）的には異なるベクトル場は排除され，ただ一通りに決まる．</p>
+</blockquote>
+<p>というより、物理では式(2) のように、静電場を考えるときには上の ${\mathbf {B}}$<br>（渦だけ成分）の違いは無視する、ということが前提なのでは。</p>
+<p>(13:40 以下ちょっと修正）</p>
+<p>なお式 (15)と(16) の E, φ　は異なるものなので、記号を替えたほうがよいかと。</p>
+<ul>
+<li>(9)などの G も同様</li>
+<li>(17)の右辺も $f(x) \delta(y) \delta(z) / \varepsilon_0$ にしないと</li>
+</ul>
+<p>ところで、式 (15)と(16) の E は明らかに異なるベクトル場ですが、<br>どちらも $rot(\mathbf E) = 0$ ですよね。</p>
+<p>異なる E が同じ div E になるのは、<br>上の 「v(r) が十分遠く (r → ∞) で消えている」が成り立たないせいでしょうか？</p>
+<hr>
+<h2 id="2015-06-06_1回目">2015-06-06 1回目</h2><p>以下の査読レポートというか、感想・たわごとです。<br><a href="http://hooktail.org/wiki/index.php?%BA%BA%C6%C9%2Fdiv%A4%CF%B4%B0%C1%B4%BE%F0%CA%F3%A4%AB%A1%A9%28%A5%AF%A5%ED%A5%E1%A5%EB%C3%F8%29" target="_blank" rel="external">divは完全情報か？(クロメル著)</a></p>
 <h3 id="最初に思ったこと">最初に思ったこと</h3><blockquote>
 <p>ナブラを使ったダイバージェンス（発散）は，内積みたいだけど，情報は失われるのか？と言うのが今回のテーマです．</p>
 </blockquote>
@@ -164,7 +195,7 @@
 	
   
 </div>
-	<a type="button" href="/2015/06/06/chromel-div/#more" class="btn btn-default more">Read More</a>
+	<a type="button" href="/2015/06/07/chromel-div/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -334,7 +365,7 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2015/06/06/chromel-div/" ><i class="fa fa-file-o"></i>査読レポート： divは完全情報か？(クロメル著)...</a>
+        <a href="/2015/06/07/chromel-div/" ><i class="fa fa-file-o"></i>査読レポート： divは完全情報か？(クロメル著)...</a>
       </li>
     
       <li>
