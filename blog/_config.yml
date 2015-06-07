@@ -75,3 +75,12 @@ deploy:
   repo: git@github.com:kuh96/kuh96.github.io.git
   branch: master
   message: hexo deploy...
+
+
+# Miscellaneous
+# google_analytics: UA-XXXXXXXXXXXXXXX
+favicon:
+twitter: f_prg
+google_plus: f.prg.ex
+# fb_admins: YYYYYYYYYYYYYYY
+# fb_app_id: ZZZZZZZZZZZZZZZ
