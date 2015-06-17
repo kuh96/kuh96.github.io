@@ -113,10 +113,11 @@
 <li>通常の開発は Eclipse ビルドだけ</li>
 <li>正式のテストや deploy は maven ビルド</li>
 </ul>
+<p>要は、Eclipseビルドと maven ビルドをへんに連携するより、はっきり分けてしまえ、という発想です。</p>
 <p>（なおこの記事は <a href="https://kuh96.github.io/2015/06/13/eclimaven/">github pages</a> にも入れています)</p>
-<h3 id="開発環境(概要)">開発環境(概要)</h3><ul>
+<h3 id="主な開発環境">主な開発環境</h3><ul>
 <li>Java 7</li>
-<li>Tomcat 7</li>
+<li>Tomcat 7 ～　ここではデバッグ用のローカルの Tomcat を前提</li>
 <li>Maven 3 </li>
 <li>Eclipse Luna<ul>
 <li>m2e plugin</li>
@@ -124,9 +125,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="フォルダー構成">フォルダー構成</h3><p>maven 標準に合わせます。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project/&#10; |- src/    # &#12477;&#12540;&#12473;&#10; |   |- main/&#10; |   |   |- java/ &#10; |   |   |- resources/ &#10; |   |   |- webapp/ &#10; |   |&#10; |   |- test/&#10; |   |   |- java/ &#10; |   |   |- resources/ &#10; |&#10; |- target/ # &#29983;&#25104;&#29289;&#10; |   |- classes/&#10; |   |- test-classes/&#10; |   |- &#12381;&#12398;&#20182; maven &#12364;&#12356;&#12429;&#12356;&#12429;&#29983;&#25104;</span><br></pre></td></tr></table></figure>
-<h3 id="ちょこちょこ設定">ちょこちょこ設定</h3><p>やりたいことは　src/main/webapp にある　HTML、javascript などの<br>ちょっとした修正をすぐ Tomcat に反映させたい、ということです。<br>そのため、<strong>Tomcat さんにはこのフォルダを直接見てもらう</strong> ようにします。</p>
+<h3 id="フォルダー構成">フォルダー構成</h3><p>とりあえず maven 標準に合わせます。<br>★が Tomcat さんに見てほしいフォルダーです。<br>[app] は Webアプリの名前(Tomcatのコンテキスト名）です。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project/&#10; |- src/    # &#12477;&#12540;&#12473;&#10; |   |- main/&#10; |   |   |- java/ &#10; |   |   |- resources/ &#10; |   |   |- webapp/   &#9733; HTML,css, javascript&#12289;WEB-INF/web.xml &#12394;&#12393;&#12394;&#12393;&#10; |   |&#10; |   |- test/&#10; |   |   |- java/ &#10; |   |   |- resources/ &#10; |&#10; |- (Maven Dependencies)/ &#9733;&#12288;Maven &#12398; dependencies &#12391;&#35373;&#23450;&#12375;&#12383;&#21442;&#29031;&#12521;&#12452;&#12502;&#12521;&#12522;&#10; |&#10; |- target/ # &#29983;&#25104;&#29289;&#10; |   |- classes/   &#9733; Java &#12477;&#12540;&#12473;&#12363;&#12425;&#12398;&#29983;&#25104;&#12463;&#12521;&#12473;&#10; |   |- test-classes/&#10; |   |- [app]/  &#65374;&#12288;mvn package &#12391;&#29983;&#25104;&#12373;&#12428;&#12427;&#10; |   |- [app].war &#65374;&#12288;mvn package &#12391;&#29983;&#25104;&#12373;&#12428;&#12427;. &#19978;&#12398; [app]/ &#12434;&#12450;&#12540;&#12459;&#12452;&#12502;&#12375;&#12383;&#12418;&#12398;&#10; |   |- &#12381;&#12398;&#20182; maven &#12364;&#12356;&#12429;&#12356;&#12429;&#29983;&#25104;</span><br></pre></td></tr></table></figure>
+<h3 id="ちょこちょこ設定">ちょこちょこ設定</h3><p>やりたいことは　src/main/webapp にある　HTML、javascript などの<br>ちょっとした修正をすぐローカルの Tomcat に反映させたい、ということです。<br>そのため <strong>Tomcat さんにはこのフォルダを直接見てもらう</strong> ようにします。</p>
 <p><strong>Eclipse のビルドパス設定</strong></p>
 <ul>
 <li>src/main/webapp/ をソースフォルダーから外す</li>
@@ -134,11 +135,13 @@
 </ul>
 <p><strong>Tomcat プラグインの設定</strong></p>
 <ul>
-<li>開発用クラスローダーを有効可。target/classes/ と Maven の参照ライブラリを選択[^1]<br>so<br>[^1]: よくわすれるのだが、servlet-api.jar など Tomcat にあるライブラリは外すこと。クラスローダー関連でわけのわからないエラーがでてしまう。</li>
+<li>開発用クラスローダーを有効に</li>
+<li>target/classes/ と Maven の参照ライブラリを選択[^1]</li>
 </ul>
+<p>[^1]: よくわすれるのだが、servlet-api.jar など Tomcat にあるライブラリは外すこと。クラスローダー関連でわけのわからないエラーがでてしまう。</p>
 <p><strong>Tomcat の コンテキスト.xml の設定</strong></p>
 <ul>
-<li>antiResourceLocking を false に</li>
+<li>antiResourceLocking,antiJarLocking を false に</li>
 <li>docbase を上の　src/main/webapp/ に</li>
 </ul>
 <h3 id="結果">結果</h3><p>これで HTML、javascript の修正はブラウザの再読み込みだけですみます。<br>(ブラウザのキャッシュには注意必要）</p>
@@ -146,8 +149,11 @@
 <ul>
 <li>Javaソースの修正が頻繁な場合には何度も Tomcatの再ロードが起こってわずらわしいので、<br>自動ビルドを停止 or Tomcat 自体を停止します</li>
 </ul>
-<p>というわけで、開発はとっても非常に快適になったのですが、<br>とっても不精な方法で多少問題もあるので[^2]、もっとよいやり方があれば教えてください。</p>
+<p>というわけで、開発はとっても快適になったのですが、<br>不精な方法で多少問題もあるので[^2]、もっとよいやり方があれば教えてください。</p>
 <p>[^2]: Eclipse内でのテスト(testNG)とか、main()をRUNする場合に、何かへん？　たぶん m2e さんが余計なことをやってしまっているような気がする‥</p>
+<h3 id="その他">その他</h3><p>ほんとは、webapp/WEB-INF/classes に Javaソースの出力先を指定できれば上の「開発用クラスローダーの設定」はいらないのだけど、<br>maven との競合、eclipse ビルドの出力先をネストできない、などの問題から上のようにしています。</p>
+<p>なお上の設定では、target/classes が eclipse ビルドと maven で共用してますが、分けてもよいです。</p>
+<p>また  maven 用には、別に Tomcat のコンテキスト (ex. [app]-mvn)を作成し、<br>その docbase で target/[app]/ を参照すれば (mvn package は必要だけど)、<br>maven ビルドのチェックもできます。</p>
 <h3 id="参考">参考</h3><ul>
 <li><a href="http://qiita.com/syumai/items/e2adf299a052e7859d1e" target="_blank" rel="external">EclipseでMavenプロジェクトを作ってTomcatで動かせるようにする by syumaiさん</a></li>
 </ul>
