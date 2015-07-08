@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<script type="text/javascript">
+var gFile = "bluesky-off.jpg";
+var gWidth = 300;
+var gHeight = 156;
+
+onload = function() {
+    drawImage();
+};
+
+function drawImage() {
+    var ctx = elCanvas.getContext('2d');
+    var img = new Image();
+    img.src = gFile + "?" + new Date().getTime();
+    img.onload = function() {
+	ctx.drawImage(img, 0, 0, gWidth, gHeight);
+	// ctx.getImageData(0, 0, gWidth, gHeight);
+    }
+}
+
+function doConv() {
+    var delta = [parseInt(elRed.value),parseInt(elGreen.value),
+		 parseInt(elBlue.value)];
+    var keepbright = elKeep.checked;
+    console.log("keep=" + keepbright + ", drgb=" + delta);
+    var ctx = elCanvas.getContext('2d');
+    var idata = ctx.getImageData(0, 0, gWidth, gHeight);
+    var num = idata.data.length / 4;
+    for(var i=0; i < num; i++) {
+        var rgb = [idata.data[4*i], idata.data[4*i+1], idata.data[4*i+2]];
+        var newrgb = [rgb[0]+delta[0], rgb[1]+delta[1], rgb[2]+delta[2]];
+        if(keepbright) {
+	    var bright = rgb[0]+rgb[1]+rgb[2];
+	    var newbright = newrgb[0]+newrgb[1]+newrgb[2];
+	    var ratio = bright/newbright;
+	    idata.data[4*i]= ratio*newrgb[0];
+	    idata.data[4*i+1]= ratio*newrgb[1];
+	    idata.data[4*i+2]= ratio*newrgb[2];
+	} else {
+	    idata.data[4*i]= newrgb[0];
+	    idata.data[4*i+1]= newrgb[1];
+	    idata.data[4*i+2]= newrgb[2];
+	}
+    }
+    ctx.putImageData(idata, 0, 0);
+}
+</script>
+</head>
+
+<body>
+<h2>カシミール３Ｄ: 遠くを青く霞ませる</h2>
+
+<ul>
+<li>上段はカシミールでの撮影と、実際の写真
+<li>下段は上の 霞ませる=OFF の画像をもとに、以下の変換を行ったもの
+  <ul>
+  <li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ
+  <li>オンの場合： 同様だが、明るさを変えないように RGB値を元の明るさ
+／変換後の明るさ
+（ここでは単に RGB値の和）
+  </ul>
+</ul>
+
+<table>
+<tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr>
+<tr>
+<td>
+<img src="bluesky-off.jpg" width="300">
+</td>
+<td>
+<img src="bluesky-on.jpg" width="300">
+</td>
+<td>
+<img src="../bluesky-photo.jpg" width="300">
+</td>
+</tr>
+<tr>
+<th>Conversion</th>
+</tr>
+<tr>
+<td>
+<canvas id="elCanvas" width="300" height="156"></canvas>
+</td>
+<td>
+R <input type="text" id="elRed" value="0" style="width:32px">
+G <input type="text" id="elGreen" value="10" style="width:32px">
+B <input type="text" id="elBlue" value="40" style="width:32px">
+<input type="checkbox" id="elKeep" value="on">keep brightness
+<br/>
+<input type="button" onclick="doConv();" value="Add Offset">
+<input type="button" onclick="drawImage();" value="Reset Image">
+</td>
+</tr>
+</table>
+
+なお写真は
+3月初めの11時頃、竜ヶ岳（富士山の西北約15km）山頂付近よりのもので、
+カシミールの撮影もそれに合わせて行いました。
+
+<hr/>
+</body>
+</html>
+
+
