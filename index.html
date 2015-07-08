@@ -108,8 +108,8 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2015-06-13 </div>
-			<div class="article-title"><a href="/2015/06/13/eclimaven/" >Eclipse + Maven + Tomcat の開発環境を快速に!?</a></div>						
+			<div class="date"> 2015-07-09 </div>
+			<div class="article-title"><a href="/2015/07/09/bluesky/" >遠くの山は青く霞むか？</a></div>						
 		</h3>
 	
 
@@ -120,64 +120,403 @@
 	<div class="col-md-12">
 	  
 	
-	  <h2 id="Eclipse_+_Maven_+_Tomcat_の開発環境を快速に!?">Eclipse + Maven + Tomcat の開発環境を快速に!?</h2><p>Mavenビルドは強力ですが、Eclipse のインクリメンタルビルドに比べると遅いのが難点です。</p>
-<p>特にWebアプリ開発で頻繁に HTML や javascript を修正する場合、<br>いちいち Tomcat に deploy するのでは、そのたびに時間がかかってとてもやってられません。</p>
-<p>というわけで、ビルドを Eclipse と maven で使いわける方法にたどりつきました。</p>
+	  <h2 id="カシミール３Ｄ">カシミール３Ｄ</h2><p>お使いの方も多いと思いますが、<a href="http://www.kashmir3d.com/index.html" target="_blank" rel="external">カシミール３Ｄ</a>というフリーの３Ｄ地図ナビゲータがあります。</p>
+<p>ＤＡＮ杉本さんによる大変な労作で、わたしも以前から愛用しています。</p>
+<p>このツールには単に３Ｄ地図を見るだけでなく、<br>地図データに基づいて「写真」を撮影するという素晴らしい機能があるのですが、<br>１つだけ計算がおかしいのでは、と思ったのでちょっと書いてみます。</p>
+<h2 id="遠くを青く霞ませる">遠くを青く霞ませる</h2><p>遠くを青く霞ませるという、リアルな撮影を可能にする機能なのですが、どうもこれがおかしい。<br><strong>わたしの使い方が悪いだけなのかもしれませんが。。。</strong></p>
+<p>サンプル画像です。</p>
 <ul>
-<li>通常の開発は Eclipse ビルドだけ</li>
-<li>正式のテストや deploy は maven ビルド</li>
+<li>写真は3月初めの11時頃、竜ヶ岳山頂付近（富士山の北西約15km）よりのもの</li>
+<li>カシミールの撮影もそれに合わせてある</li>
 </ul>
-<p>要は、Eclipseビルドと maven ビルドをへんに連携するより、はっきり分けてしまえ、という発想です。</p>
-<p>（なおこの記事は <a href="https://kuh96.github.io/2015/06/13/eclimaven/">github pages</a> にも入れています)</p>
-<h3 id="主な開発環境">主な開発環境</h3><ul>
-<li>Java 7</li>
-<li>Tomcat 7 ～　ここではデバッグ用のローカルの Tomcat を前提</li>
-<li>Maven 3 </li>
-<li>Eclipse Luna<ul>
-<li>m2e plugin</li>
-<li>sysdeo Tomcat plugin （古い！ WPT でも同様にできると思う）</li>
+<table><br><tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr><br><tr><br><td><br><img src="/images/bluesky-off.jpg" width="300"><br></td><br><td><br><img src="/images/bluesky-on.jpg" width="300"><br></td><br><td><br><img src="/images/bluesky-photo.jpg" width="300"><br></td><br></tr><br></table>
+
+<p><strong>青い山脈</strong> というくらいで、たしかに遠くの山は青く霞んだように見えますね。</p>
+<p>でもカシミールのこの機能を使うと、どうも遠くが青く霞むだけでなく、<br>全体的に暗くなり、特に <strong>雪の白も青くなってしまう</strong> 気がします。</p>
+<p>でも右端の写真のように、雪はやっぱり白く写るし、実際目で見てもそう感じます。</p>
+<ul>
+<li>なおカシミールのこの機能には、「視程」と「」というパラメータがあり、それで「青く霞む度合い」を変更できる</li>
+<li>でもパラメータを変えても、やっぱりおかしい。。。</li>
 </ul>
+<h2 id="遠くの山が青く霞む理由">遠くの山が青く霞む理由</h2><p>遠くの山が青く霞む理由について考えてみます。</p>
+<p>青くなる原因は、空の青と同じく、大気による <strong>レイリー散乱</strong> によって、<br>光の青成分が赤成分より強く散乱されるため、と思われます。</p>
+<p>まず直接光、すなわち雪山で反射された光が目に届く過程を考えてみます。</p>
+<p><img src="/images/blue-exp01.png" width="500"></p>
+<p>でもこの場合は逆に <strong>目に届く光は赤みがかるはず </strong> という結論になります。</p>
+<p>そこで次に、日光が途中で大気によって散乱されて目に届く影響を考えてみます。</p>
+<p><img src="/images/blue-exp02.png" width="500"></p>
+<p>目に届く大気による散乱光は、たしかに青みがかっているようです。<br>おおよそ以下と考えられます。</p>
+<ul>
+<li><p>青みがかかる程度は、山から目までの距離（大気の厚さ）に比例する。<br>すなわち遠いほど青みがかる。</p>
+</li>
+<li><p>直接光＋日光の散乱による青成分のバイアス、が目に届く</p>
+</li>
+<li><p>しかし直接光が強い＝明るい物体の場合（例えば雪の白）、この青成分バイアスは直接光に比べて小さく、あまり目立たない</p>
+</li>
+<li><p>逆に直接光が弱い＝暗い物体（例えば低層の樹林帯）、この青成分のバイアスは無視できず、青みがかって見える</p>
 </li>
 </ul>
-<h3 id="フォルダー構成">フォルダー構成</h3><p>とりあえず maven 標準に合わせます。<br>★が Tomcat さんに見てほしいフォルダーです。<br>[app] は Webアプリの名前(Tomcatのコンテキスト名）です。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project/&#10; |- src/    # &#12477;&#12540;&#12473;&#10; |   |- main/&#10; |   |   |- java/ &#10; |   |   |- resources/ &#10; |   |   |- webapp/   &#9733; HTML,css, javascript&#12289;WEB-INF/web.xml &#12394;&#12393;&#12394;&#12393;&#10; |   |&#10; |   |- test/&#10; |   |   |- java/ &#10; |   |   |- resources/ &#10; |&#10; |- (Maven Dependencies)/ &#9733;&#12288;Maven &#12398; dependencies &#12391;&#35373;&#23450;&#12375;&#12383;&#21442;&#29031;&#12521;&#12452;&#12502;&#12521;&#12522;&#10; |&#10; |- target/ # &#29983;&#25104;&#29289;&#10; |   |- classes/   &#9733; Java &#12477;&#12540;&#12473;&#12363;&#12425;&#12398;&#29983;&#25104;&#12463;&#12521;&#12473;&#10; |   |- test-classes/&#10; |   |- [app]/  &#65374;&#12288;mvn package &#12391;&#29983;&#25104;&#12373;&#12428;&#12427;&#10; |   |- [app].war &#65374;&#12288;mvn package &#12391;&#29983;&#25104;&#12373;&#12428;&#12427;. &#19978;&#12398; [app]/ &#12434;&#12450;&#12540;&#12459;&#12452;&#12502;&#12375;&#12383;&#12418;&#12398;&#10; |   |- &#12381;&#12398;&#20182; maven &#12364;&#12356;&#12429;&#12356;&#12429;&#29983;&#25104;</span><br></pre></td></tr></table></figure>
-<h3 id="ちょこちょこ設定">ちょこちょこ設定</h3><p>やりたいことは　src/main/webapp にある　HTML、javascript などの<br>ちょっとした修正をすぐローカルの Tomcat に反映させたい、ということです。<br>そのため <strong>Tomcat さんにはこのフォルダを直接見てもらう</strong> ようにします。</p>
-<p><strong>Eclipse のビルドパス設定</strong></p>
-<ul>
-<li>src/main/webapp/ をソースフォルダーから外す</li>
-<li>java/, resources/ の出力先は通常通り target/classes/ (test-classes/) に</li>
-</ul>
-<p><strong>Tomcat プラグインの設定</strong></p>
-<ul>
-<li>開発用クラスローダーを有効に</li>
-<li>target/classes/ と Maven の参照ライブラリを選択[^1]</li>
-</ul>
-<p>[^1]: よくわすれるのだが、servlet-api.jar など Tomcat にあるライブラリは外すこと。クラスローダー関連でわけのわからないエラーがでてしまう。</p>
-<p><strong>Tomcat の コンテキスト.xml の設定</strong></p>
-<ul>
-<li>antiResourceLocking,antiJarLocking を false に</li>
-<li>docbase を上の　src/main/webapp/ に</li>
-</ul>
-<h3 id="結果">結果</h3><p>これで HTML、javascript の修正はブラウザの再読み込みだけですみます。<br>(ブラウザのキャッシュには注意必要）</p>
-<p>Java ソースを修正した場合は、自動or手動で eclipseビルドすれば<br>target/classes/ が更新されるので、Tomcat が勝手にアプリを再ロードしてくれます。</p>
-<ul>
-<li>Javaソースの修正が頻繁な場合には何度も Tomcatの再ロードが起こってわずらわしいので、<br>自動ビルドを停止 or Tomcat 自体を停止します</li>
-</ul>
-<p>というわけで、開発はとっても快適になったのですが、<br>不精な方法で多少問題もあるので[^2]、もっとよいやり方があれば教えてください。</p>
-<p>[^2]: Eclipse内でのテスト(testNG)とか、main()をRUNする場合に、何かへん？　たぶん m2e さんが余計なことをやってしまっているような気がする‥</p>
-<h3 id="その他">その他</h3><p>ほんとは、webapp/WEB-INF/classes に Javaソースの出力先を指定できれば上の「開発用クラスローダーの設定」はいらないのだけど、<br>maven との競合、eclipse ビルドの出力先をネストできない、などの問題から上のようにしています。</p>
-<p>なお上の設定では、target/classes が eclipse ビルドと maven で共用してますが、分けてもよいです。</p>
-<p>また  maven 用には、別に Tomcat のコンテキスト (ex. [app]-mvn)を作成し、<br>その docbase で target/[app]/ を参照すれば (mvn package は必要だけど)、<br>maven ビルドのチェックもできます。</p>
-<h3 id="参考">参考</h3><ul>
-<li><a href="http://qiita.com/syumai/items/e2adf299a052e7859d1e" target="_blank" rel="external">EclipseでMavenプロジェクトを作ってTomcatで動かせるようにする by syumaiさん</a></li>
-</ul>
+<h2 id="シミュレーション">シミュレーション</h2><p>というわけで、ごくごく簡単なシミュレーションを作ってみまし。</p>
+<p><a href="bluesky-sim.html">sim</a></p>
 
 	
 	</div>
 	
   
 </div>
-	<a type="button" href="/2015/06/13/eclimaven/#more" class="btn btn-default more">Read More</a>
+	<a type="button" href="/2015/07/09/bluesky/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-07-08 </div>
+			<div class="article-title"><a href="/2015/07/08/bluesky/bluesky-sim/" ></a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+var gFile = "bluesky-off.jpg";
+var gWidth = 300;
+var gHeight = 156;
+
+onload = function() {
+    drawImage();
+};
+
+function drawImage() {
+    var ctx = elCanvas.getContext('2d');
+    var img = new Image();
+    img.src = gFile + "?" + new Date().getTime();
+    img.onload = function() {
+	ctx.drawImage(img, 0, 0, gWidth, gHeight);
+	// ctx.getImageData(0, 0, gWidth, gHeight);
+    }
+}
+
+function doConv() {
+    var delta = [parseInt(elRed.value),parseInt(elGreen.value),
+		 parseInt(elBlue.value)];
+    var keepbright = elKeep.checked;
+    console.log("keep=" + keepbright + ", drgb=" + delta);
+    var ctx = elCanvas.getContext('2d');
+    var idata = ctx.getImageData(0, 0, gWidth, gHeight);
+    var num = idata.data.length / 4;
+    for(var i=0; i < num; i++) {
+        var rgb = [idata.data[4*i], idata.data[4*i+1], idata.data[4*i+2]];
+        var newrgb = [rgb[0]+delta[0], rgb[1]+delta[1], rgb[2]+delta[2]];
+        if(keepbright) {
+	    var bright = rgb[0]+rgb[1]+rgb[2];
+	    var newbright = newrgb[0]+newrgb[1]+newrgb[2];
+	    var ratio = bright/newbright;
+	    idata.data[4*i]= ratio*newrgb[0];
+	    idata.data[4*i+1]= ratio*newrgb[1];
+	    idata.data[4*i+2]= ratio*newrgb[2];
+	} else {
+	    idata.data[4*i]= newrgb[0];
+	    idata.data[4*i+1]= newrgb[1];
+	    idata.data[4*i+2]= newrgb[2];
+	}
+    }
+    ctx.putImageData(idata, 0, 0);
+}
+</script>
+</head>
+
+<body>
+<h2>カシミール３Ｄ: 遠くを青く霞ませる</h2>
+
+<ul>
+<li>上段はカシミールでの撮影と、実際の写真
+</li><li>下段は上の 霞ませる=OFF の画像をもとに、以下の変換を行ったもの
+  <ul>
+  <li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ
+  </li><li>オンの場合： 同様だが、明るさを変えないように RGB値を元の明るさ
+／変換後の明るさ
+（ここでは単に RGB値の和）
+  </li></ul>
+</li></ul>
+
+<table>
+<tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr>
+<tr>
+<td>
+<img src="bluesky-off.jpg" width="300">
+</td>
+<td>
+<img src="bluesky-on.jpg" width="300">
+</td>
+<td>
+<img src="../bluesky-photo.jpg" width="300">
+</td>
+</tr>
+<tr>
+<th>Conversion</th>
+</tr>
+<tr>
+<td>
+<canvas id="elCanvas" width="300" height="156"></canvas>
+</td>
+<td>
+R <input type="text" id="elRed" value="0" style="width:32px">
+G <input type="text" id="elGreen" value="10" style="width:32px">
+B <input type="text" id="elBlue" value="40" style="width:32px">
+<input type="checkbox" id="elKeep" value="on">keep brightness
+<br>
+<input type="button" onclick="doConv();" value="Add Offset">
+<input type="button" onclick="drawImage();" value="Reset Image">
+</td>
+</tr>
+</table>
+
+なお写真は
+3月初めの11時頃、竜ヶ岳（富士山の西北約15km）山頂付近よりのもので、
+カシミールの撮影もそれに合わせて行いました。
+
+<hr>
+</body>
+</html>
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/07/08/bluesky/bluesky-sim/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-06-24 </div>
+			<div class="article-title"><a href="/2015/06/24/js01/" ></a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <html>
+<head>
+<script src="js01.js">
+</script>
+</head>
+<body>
+<h1>Nothing</h1>
+
+回転座標系 (u, v)
+静止座標系 (x, y)
+
+u =  x*cos(wt) + y*sin(wt)
+v = -x*sin(wt) + y*cos(wt)
+
+T = m/2 * (x'^2 + y'^2)
+  = m/2 * {u'^2 + v'-2 - 2*w*(u'*v - v'*u) + w^2*(u^2 + v^2) }
+
+m*u'' = 2m*w*v' + m*u*w^2
+m*v'' = -2m*w*u' + m*v*w^2
+
+静止座標 x （ベクトル）
+回転座標 X （ベクトル）
+直交行列 T(t) 時間に依存する
+
+`T*T = I  `T は転置行列
+
+`dT T + `T dT = 0
+`dT = - `T dT `T
+
+x = T(t) X (`T がよいが）
+dx = dT X + T dX
+
+<dx,dx> = `(dT X + T dX)(dT X + T dX)
+  = (`X `dT + `dX `T)(dT X + T dX)
+  = `X `dT dT X + `X `dT T dX
+    + `dX `T dT X + `dX `T T dX
+  = `X `dT dT X + `X `dT T dX
+   + `dX `T dT X + <dx,dx>
+
+K = m/2 <dx,dx>
+
+dX を dX で微分すると I
+d(dX)/dX = I
+d('dX)/dX = I
+
+d (`dX dX) / dX
+= 2 * d(`dX)/dX * dX
+= dX
+
+dK/dX =  `dT dT X +  `X `dT dT 
+   + `dT `dT T dX  + `X `dT T
+   + `T dT X + `dX `T dT
+   + 
+
+
+
+</dx,dx></dx,dx></dx,dx></body>
+</html>
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/06/24/js01/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-06-24 </div>
+			<div class="article-title"><a href="/2015/06/24/js01/" ></a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  var map = {name: 'whoami'};
+console.log("map=" + map);
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/06/24/js01/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-06-23 </div>
+			<div class="article-title"><a href="/2015/06/23/right-js/" >JavaScript の正しい覚え方</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="万物は_Map_である">万物は Map である</h2><p>JavaScript の基本構造は　Map （連想配列）です。<br>もちろん他に、数値、配列、いくつかの組み込みクラス・モジュール（Mathなど）、<br>いくつかの組み込みオブジェクト (Stringなど）があります。<br>関数オブジェクトについては後述。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = &#123;name: <span class="string">'whoami'</span>&#125;; <span class="comment">// Mapのリテラル表現</span></span><br><span class="line"><span class="built_in">console</span>.log(map);</span><br></pre></td></tr></table></figure>
+<h2 id="グローバル_Map">グローバル Map</h2>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/06/23/right-js/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-06-20 </div>
+			<div class="article-title"><a href="/2015/06/20/prog-q/" >ほんとうにつまらないプログラミング問題などなど</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p><strong>プログラミングセンスを問う問題</strong>、といいたいのですが、<br>ほんとうにつまらないプログラミング問題を少し。</p>
+<p>ついでに独断と偏見にみちたコーディングルールみたいなものも。</p>
+<p>なおわたし自身のプログラミングセンスはきわめて疑わしいので、<br>あんまり参考にしないでください！</p>
+<h4 id="問題１">問題１</h4><p>整数 a, b が a &gt; b のとき真を返す関数 greaterThan を書け。<br>以下は C言語と Javaでの関数宣言を示すが、他の言語でもかまわない。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define FALSE 0&#10;#define TRUE 1&#10;&#10;int greaterThan(int a, int b) &#123;&#10;    ....&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boolean greaterThan(int a, int b) &#123;&#10;   ....&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="問題２">問題２</h4><p>正の整数 a を 1000未満の桁を切り上げて 1000 の桁に丸める関数 roundUp を書け。<br>例: a=999 なら 1000, a=1000 なら 1000 a=1001 なら 2000</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int roundUp(int a) &#123;&#10;   ....&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>同様に、正の整数 a を 1000 未満の桁を四捨五入して、1000 の桁に丸める関数を書け。<br>例: a=499 なら 0, a=1500 なら 2000 a=2499 なら 2000</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int round(int a) &#123;&#10;   ....&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="問題_3">問題 3</h4><p>以下の級数の値を求めよ。</p>
+<p>公式忘れた？<br>でもコンピュータ屋・ソフト屋なら <strong>一瞬で</strong> わからないと、もぐりと言われる！</p>
+<p>$$<br>\begin{eqnarray}<br>S &amp;=&amp; \sum^{\infty}_{k=1} 1 / 2^k \\<br>  &amp;=&amp; 1/2 + 1/4 + 1/8 + 1/16 + …<br>\end{eqnarray}<br>$$</p>
+<h3 id="へんなルール:_真偽値の比較">へんなルール:　真偽値の比較</h3><p>たぶん皆さんの C言語のコーディングルールにも、<br><strong>真偽値を TRUE(=1) と比較してはならない</strong> というのがあると思う。<br>C言語では、0 以外はすべて真であるから当然である。</p>
+<p>でもこのルールはおかしい！<br>真偽値は TRUE とも FALSE とも比較する必要はない！<br>どうすればよいか？</p>
+<h3 id="へんなルール:_else_なし_if文">へんなルール: else なし if文</h3><p>判定漏れを防止するため <strong>if 文には必ず else 節をつけること</strong>。<br>if節　あるいは　else節は空文 (コメントで // nop とか）でもよい。</p>
+<p>このルールもおかしい！<br>たくさんの異常値/想定外の場合をはねるのには、<br>積極的に <strong>大量の elseなし if文を羅列</strong> すべきである。</p>
+<h3 id="へんなルール３:_脱出点は１つにすべきである">へんなルール３: 脱出点は１つにすべきである</h3><p><strong>ループの continue, break, また複数箇所の return は避けるべきである</strong>。</p>
+<p>これも上と同様、まったくおかしい！<br>むしろ、脱出すべきであると分かった時点で、即脱出すべきである。</p>
+<p>なぜなら、余計なことを見なくてよい、心配しなくてよい、コードが短くなる！<br>バグ探しや改良など、短いコード、どこを見ればよいかがすぐ分かるコードが一番よいのである。</p>
+<h3 id="へんなルール３">へんなルール３</h3><h3 id="へんなルール">へんなルール</h3><p>（オブジェクト指向） 必ず this をつける！</p>
+<p>static メソッド</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/06/20/prog-q/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-06-09 </div>
+			<div class="article-title"><a href="/2015/06/09/http-referer/" >HTTP Refefer ヘッダー問題</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>知る人ぞ知る、知らない人は知らない（あたりまえだけど）、<br>セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。</p>
+<h2 id="HTTP_Refefer_ヘッダー問題">HTTP Refefer ヘッダー問題</h2><h2 id="あなたの知らないうちに">あなたの知らないうちに</h2><h2 id="対策">対策</h2><h2 id="google_visualization">google visualization</h2>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/06/09/http-referer/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -384,41 +723,6 @@
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 1970-07-07 </div>
-			<div class="article-title"><a href="/1970/07/07/hello-world/" >Hello World</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/1970/07/07/hello-world/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -428,6 +732,16 @@
 		<div class="pagination">
 <ul class="pagination">
 	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+
+		
+		   <li class="next"> <a href="/page/2/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
+        
+	
 </ul>
 </div>
 
@@ -461,23 +775,23 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2015/06/13/eclimaven/" ><i class="fa fa-file-o"></i>Eclipse + Maven + Tomcat の開...</a>
+        <a href="/2015/07/09/bluesky/" ><i class="fa fa-file-o"></i>遠くの山は青く霞むか？...</a>
       </li>
     
       <li>
-        <a href="/2015/06/09/chromel-div/" ><i class="fa fa-file-o"></i>査読レポート： divは完全情報か？(クロメル著)...</a>
+        <a href="/2015/07/08/bluesky/bluesky-sim/" ><i class="fa fa-file-o"></i>...</a>
       </li>
     
       <li>
-        <a href="/2015/06/06/POIPOI/" ><i class="fa fa-file-o"></i>hexo 練習......</a>
+        <a href="/2015/06/24/js01/" ><i class="fa fa-file-o"></i>...</a>
       </li>
     
       <li>
-        <a href="/2014/06/30/IceThickness/" ><i class="fa fa-file-o"></i>氷の厚さ？...</a>
+        <a href="/2015/06/24/js01/" ><i class="fa fa-file-o"></i>...</a>
       </li>
     
       <li>
-        <a href="/1970/07/07/hello-world/" ><i class="fa fa-file-o"></i>Hello World...</a>
+        <a href="/2015/06/23/right-js/" ><i class="fa fa-file-o"></i>JavaScript の正しい覚え方...</a>
       </li>
     
   </ul>
