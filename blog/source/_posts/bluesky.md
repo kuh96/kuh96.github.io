@@ -83,7 +83,7 @@ tags:
 
 というわけで、ごくごく簡単なシミュレーションを作ってみまし。
 
-[sim](bluesky-sim.html)
+[sim](https://kuh96.github.io/2015/07/08/bluesky/bluesky-sim/index.html)
 
 
 
