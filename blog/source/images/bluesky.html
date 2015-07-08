@@ -51,36 +51,25 @@ function doConv() {
 </head>
 
 <body>
-<h2>カシミール３Ｄ: 遠くを青く霞ませる</h2>
-
-<ul>
-<li>上段はカシミールでの撮影と、実際の写真
-<li>下段は上の 霞ませる=OFF の画像をもとに、以下の変換を行ったもの
-  <ul>
-  <li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ
-  <li>オンの場合： 同様だが、明るさを変えないように RGB値を元の明るさ
-／変換後の明るさ
-（ここでは単に RGB値の和）
-  </ul>
-</ul>
+<h2>自家製改良版: 遠くを青く霞ませる</h2>
 
 <table>
-<tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr>
 <tr>
 <td>
+<b>カシミール:青く霞ませない</b>
 <img src="bluesky-off.jpg" width="300">
 </td>
 <td>
+<b>カシミール:青く霞ませなる</b>
 <img src="bluesky-on.jpg" width="300">
 </td>
 <td>
-<img src="../bluesky-photo.jpg" width="300">
+<b>写真</th>
+<img src="bluesky-photo.jpg" width="300">
 </td>
 </tr>
 <tr>
-<th>Conversion</th>
-</tr>
-<tr>
+<b>自家製改良版: 遠くを青く霞ませる</b>
 <td>
 <canvas id="elCanvas" width="300" height="156"></canvas>
 </td>
@@ -95,10 +84,6 @@ B <input type="text" id="elBlue" value="40" style="width:32px">
 </td>
 </tr>
 </table>
-
-なお写真は
-3月初めの11時頃、竜ヶ岳（富士山の西北約15km）山頂付近よりのもので、
-カシミールの撮影もそれに合わせて行いました。
 
 <hr/>
 </body>
