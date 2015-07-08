@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Eclipse + Maven + Tomcat の開発環境を快速に!? | Kuh Crow</title>
+  <meta name="author" content="Kuh Crow">
+  
+  <meta name="description" content="Eclipse + Maven + Tomcat の開発環境を快速に!?Mavenビルドは強力ですが、Eclipse のインクリメンタルビルドに比べると遅いのが難点です。
+特にWebアプリ開発で頻繁に HTML や javascript を修正する場合、いちいち Tomcat に deploy する">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Eclipse + Maven + Tomcat の開発環境を快速に!?"/>
+  <meta property="og:site_name" content="Kuh Crow"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Kuh Crow</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Eclipse + Maven + Tomcat の開発環境を快速に!?</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="Eclipse_+_Maven_+_Tomcat_の開発環境を快速に!?">Eclipse + Maven + Tomcat の開発環境を快速に!?</h2><p>Mavenビルドは強力ですが、Eclipse のインクリメンタルビルドに比べると遅いのが難点です。</p>
+<p>特にWebアプリ開発で頻繁に HTML や javascript を修正する場合、<br>いちいち Tomcat に deploy するのでは、そのたびに時間がかかってとてもやってられません。</p>
+<p>というわけで、ビルドを Eclipse と maven で使いわける方法にたどりつきました。</p>
+<ul>
+<li>通常の開発は Eclipse ビルドだけ</li>
+<li>正式のテストや deploy は maven ビルド</li>
+</ul>
+<p>要は、Eclipseビルドと maven ビルドをへんに連携するより、はっきり分けてしまえ、という発想です。</p>
+<p>（なおこの記事は <a href="https://kuh96.github.io/2015/06/13/eclimaven/">github pages</a> にも入れています)</p>
+<h3 id="主な開発環境">主な開発環境</h3><ul>
+<li>Java 7</li>
+<li>Tomcat 7 ～　ここではデバッグ用のローカルの Tomcat を前提</li>
+<li>Maven 3 </li>
+<li>Eclipse Luna<ul>
+<li>m2e plugin</li>
+<li>sysdeo Tomcat plugin （古い！ WPT でも同様にできると思う）</li>
+</ul>
+</li>
+</ul>
+<h3 id="フォルダー構成">フォルダー構成</h3><p>とりあえず maven 標準に合わせます。<br>★が Tomcat さんに見てほしいフォルダーです。<br>[app] は Webアプリの名前(Tomcatのコンテキスト名）です。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project/&#10; |- src/    # &#12477;&#12540;&#12473;&#10; |   |- main/&#10; |   |   |- java/ &#10; |   |   |- resources/ &#10; |   |   |- webapp/   &#9733; HTML,css, javascript&#12289;WEB-INF/web.xml &#12394;&#12393;&#12394;&#12393;&#10; |   |&#10; |   |- test/&#10; |   |   |- java/ &#10; |   |   |- resources/ &#10; |&#10; |- (Maven Dependencies)/ &#9733;&#12288;Maven &#12398; dependencies &#12391;&#35373;&#23450;&#12375;&#12383;&#21442;&#29031;&#12521;&#12452;&#12502;&#12521;&#12522;&#10; |&#10; |- target/ # &#29983;&#25104;&#29289;&#10; |   |- classes/   &#9733; Java &#12477;&#12540;&#12473;&#12363;&#12425;&#12398;&#29983;&#25104;&#12463;&#12521;&#12473;&#10; |   |- test-classes/&#10; |   |- [app]/  &#65374;&#12288;mvn package &#12391;&#29983;&#25104;&#12373;&#12428;&#12427;&#10; |   |- [app].war &#65374;&#12288;mvn package &#12391;&#29983;&#25104;&#12373;&#12428;&#12427;. &#19978;&#12398; [app]/ &#12434;&#12450;&#12540;&#12459;&#12452;&#12502;&#12375;&#12383;&#12418;&#12398;&#10; |   |- &#12381;&#12398;&#20182; maven &#12364;&#12356;&#12429;&#12356;&#12429;&#29983;&#25104;</span><br></pre></td></tr></table></figure>
+<h3 id="ちょこちょこ設定">ちょこちょこ設定</h3><p>やりたいことは　src/main/webapp にある　HTML、javascript などの<br>ちょっとした修正をすぐローカルの Tomcat に反映させたい、ということです。<br>そのため <strong>Tomcat さんにはこのフォルダを直接見てもらう</strong> ようにします。</p>
+<p><strong>Eclipse のビルドパス設定</strong></p>
+<ul>
+<li>src/main/webapp/ をソースフォルダーから外す</li>
+<li>java/, resources/ の出力先は通常通り target/classes/ (test-classes/) に</li>
+</ul>
+<p><strong>Tomcat プラグインの設定</strong></p>
+<ul>
+<li>開発用クラスローダーを有効に</li>
+<li>target/classes/ と Maven の参照ライブラリを選択[^1]</li>
+</ul>
+<p>[^1]: よくわすれるのだが、servlet-api.jar など Tomcat にあるライブラリは外すこと。クラスローダー関連でわけのわからないエラーがでてしまう。</p>
+<p><strong>Tomcat の コンテキスト.xml の設定</strong></p>
+<ul>
+<li>antiResourceLocking,antiJarLocking を false に</li>
+<li>docbase を上の　src/main/webapp/ に</li>
+</ul>
+<h3 id="結果">結果</h3><p>これで HTML、javascript の修正はブラウザの再読み込みだけですみます。<br>(ブラウザのキャッシュには注意必要）</p>
+<p>Java ソースを修正した場合は、自動or手動で eclipseビルドすれば<br>target/classes/ が更新されるので、Tomcat が勝手にアプリを再ロードしてくれます。</p>
+<ul>
+<li>Javaソースの修正が頻繁な場合には何度も Tomcatの再ロードが起こってわずらわしいので、<br>自動ビルドを停止 or Tomcat 自体を停止します</li>
+</ul>
+<p>というわけで、開発はとっても快適になったのですが、<br>不精な方法で多少問題もあるので[^2]、もっとよいやり方があれば教えてください。</p>
+<p>[^2]: Eclipse内でのテスト(testNG)とか、main()をRUNする場合に、何かへん？　たぶん m2e さんが余計なことをやってしまっているような気がする‥</p>
+<h3 id="その他">その他</h3><p>ほんとは、webapp/WEB-INF/classes に Javaソースの出力先を指定できれば上の「開発用クラスローダーの設定」はいらないのだけど、<br>maven との競合、eclipse ビルドの出力先をネストできない、などの問題から上のようにしています。</p>
+<p>なお上の設定では、target/classes が eclipse ビルドと maven で共用してますが、分けてもよいです。</p>
+<p>また  maven 用には、別に Tomcat のコンテキスト (ex. [app]-mvn)を作成し、<br>その docbase で target/[app]/ を参照すれば (mvn package は必要だけど)、<br>maven ビルドのチェックもできます。</p>
+<h3 id="参考">参考</h3><ul>
+<li><a href="http://qiita.com/syumai/items/e2adf299a052e7859d1e" target="_blank" rel="external">EclipseでMavenプロジェクトを作ってTomcatで動かせるようにする by syumaiさん</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/06/09/chromel-div/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comment</h2>
+
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-06-13 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 Kuh Crow
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+   </html>
