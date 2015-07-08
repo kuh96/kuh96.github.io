@@ -120,31 +120,32 @@
 	<div class="col-md-12">
 	  
 	
-	  <h2 id="カシミール３Ｄ">カシミール３Ｄ</h2><p>お使いの方も多いと思いますが、<a href="http://www.kashmir3d.com/index.html" target="_blank" rel="external">カシミール３Ｄ</a>というフリーの３Ｄ地図ナビゲータがあります。</p>
+	  <h2 id="カシミール３Ｄ">カシミール３Ｄ</h2><p>お使いの方も多いと思いますが、<a href="http://www.kashmir3d.com/index.html" target="_blank" rel="external">カシミール３Ｄ</a>というフリーかつ超優秀な３Ｄ地図ナビゲータがあります。</p>
 <p>ＤＡＮ杉本さんによる大変な労作で、わたしも以前から愛用しています。</p>
-<p>このツールには単に３Ｄ地図を見るだけでなく、<br>地図データに基づいて「写真」を撮影するという素晴らしい機能があるのですが、<br>１つだけ計算がおかしいのでは、と思ったのでちょっと書いてみます。</p>
-<h2 id="遠くを青く霞ませる">遠くを青く霞ませる</h2><p>遠くを青く霞ませるという、リアルな撮影を可能にする機能なのですが、どうもこれがおかしい。<br><strong>わたしの使い方が悪いだけなのかもしれませんが。。。</strong></p>
-<p>サンプル画像です。</p>
+<p>このツールには単に３Ｄデータ地図を見るだけでなく、<br>地図データに基づいて <strong>写真を撮影する</strong> という素晴らしい機能があるのですが、<br>１つだけ計算がおかしいのでは、と思ったのでちょっと書いてみます。</p>
+<p>なお、<strong>わたしの使い方が悪いだけなのかもしれませんが。。。</strong></p>
+<h2 id="遠くを青く霞ませる">遠くを青く霞ませる</h2><p><strong>青い山脈</strong> というくらいで、たしかに遠くの山は青く霞んだように見えますね。</p>
+<p>カシミールの撮影にも、この遠くを青く霞ませるという機能があるのですが、どうもこれがおかしい。</p>
+<p>カシミールのこの機能を使うと、どうも遠くが青く霞むだけでなく、全体的に暗くなり、特に <strong>雪の白も青くなってしまう</strong> 気がします。</p>
+<p>以下の上段がサンプル画像ですが、右端の写真のように、雪はやっぱり白く写るし、実際目で見てもそう感じます。</p>
 <ul>
 <li>写真は3月初めの11時頃、竜ヶ岳山頂付近（富士山の北西約15km）よりのもの</li>
 <li>カシミールの撮影もそれに合わせてある</li>
 </ul>
-<table><br><tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr><br><tr><br><td><br><img src="/images/bluesky-off.jpg" width="300"><br></td><br><td><br><img src="/images/bluesky-on.jpg" width="300"><br></td><br><td><br><img src="/images/bluesky-photo.jpg" width="300"><br></td><br></tr><br></table>
+<p>なお下段は後述の <strong>自家製改良版:青く霞ませる</strong> です。</p>
+<table><br><tr><br><td style="vertical-align:top;"><br><b>カシミール:青く霞ませない</b><br><img src="https://kuh96.github.io/images/bluesky-off.jpg" width="300"><br><b>自家製改良版:青く霞ませる</b><br><img src="https://kuh96.github.io/images/bluesky-conv01.jpg" width="300"><br></td><br><br><td style="vertical-align:top;"><br><b>カシミール:青く霞ませる</b><br><img src="https://kuh96.github.io/images/bluesky-on.jpg" width="300"><br></td><br><br><td style="vertical-align:top;"><br><b>写真</b><br><img src="https://kuh96.github.io/images/bluesky-photo.jpg" width="300"><br></td><br></tr><br></table>
 
-<p><strong>青い山脈</strong> というくらいで、たしかに遠くの山は青く霞んだように見えますね。</p>
-<p>でもカシミールのこの機能を使うと、どうも遠くが青く霞むだけでなく、<br>全体的に暗くなり、特に <strong>雪の白も青くなってしまう</strong> 気がします。</p>
-<p>でも右端の写真のように、雪はやっぱり白く写るし、実際目で見てもそう感じます。</p>
 <ul>
-<li>なおカシミールのこの機能には、「視程」と「」というパラメータがあり、それで「青く霞む度合い」を変更できる</li>
+<li>なおカシミールのこの機能には、「視程」と「変化率」というパラメータがあり、<br>それで「青く霞む度合い」を変更できる</li>
 <li>でもパラメータを変えても、やっぱりおかしい。。。</li>
 </ul>
 <h2 id="遠くの山が青く霞む理由">遠くの山が青く霞む理由</h2><p>遠くの山が青く霞む理由について考えてみます。</p>
 <p>青くなる原因は、空の青と同じく、大気による <strong>レイリー散乱</strong> によって、<br>光の青成分が赤成分より強く散乱されるため、と思われます。</p>
 <p>まず直接光、すなわち雪山で反射された光が目に届く過程を考えてみます。</p>
-<p><img src="/images/blue-exp01.png" width="500"></p>
+<p><img src="https://kuh96.github.io/images/blue-exp01.png" width="500"></p>
 <p>でもこの場合は逆に <strong>目に届く光は赤みがかるはず </strong> という結論になります。</p>
 <p>そこで次に、日光が途中で大気によって散乱されて目に届く影響を考えてみます。</p>
-<p><img src="/images/blue-exp02.png" width="500"></p>
+<p><img src="https://kuh96.github.io/images/blue-exp02.png" width="500"></p>
 <p>目に届く大気による散乱光は、たしかに青みがかっているようです。<br>おおよそ以下と考えられます。</p>
 <ul>
 <li><p>青みがかかる程度は、山から目までの距離（大気の厚さ）に比例する。<br>すなわち遠いほど青みがかる。</p>
@@ -156,8 +157,16 @@
 <li><p>逆に直接光が弱い＝暗い物体（例えば低層の樹林帯）、この青成分のバイアスは無視できず、青みがかって見える</p>
 </li>
 </ul>
-<h2 id="シミュレーション">シミュレーション</h2><p>というわけで、ごくごく簡単なシミュレーションを作ってみまし。</p>
-<p><a href="https://kuh96.github.io/blog/source/_posts/bluesky/bluesky-sim.html">sim</a></p>
+<h2 id="自家製改良版:青く霞ませる">自家製改良版:青く霞ませる</h2><p>というわけで、<a href="https://kuh96.github.io/images/bluesky.html">ごくごく簡単な画像処理</a>を作ってみました。</p>
+<ul>
+<li>初体験の HTML5 Canvas を使用</li>
+<li>上のカシミール：青く霞ませない、を原画像として以下の変換</li>
+<li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ</li>
+<li>オンの場合： 同様だが明るさを変えないように、変換後の RGB値に<br>元の明るさ／変換後の明るさ を乗じる<br>（なお「明るさ」は単純に RGB値の和とした）</li>
+</ul>
+<p>R=0, G=10, B=40, keep brightness=オン　で変換したのが上の画像（以下に再掲）です。</p>
+<p><img src="https://kuh96.github.io/images/bluesky-conv01.jpg" width="300"></p>
+<p>多少もっともらしくなったような気が</p>
 
 	
 	</div>
