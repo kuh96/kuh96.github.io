@@ -181,10 +181,10 @@
 <li>画像処理などもよく知らない</li>
 </ul>
 <p>このため単純ですが、上のカシミール：青く霞ませない、<br>を原画像として以下の変換を行います。<br>15km と 60km のサンプルがありますが、60km ではほぼ真っ青になってしまいます。</p>
-<dl><br><dt>decay(%s)<dt><br><dd>散乱による直接光の青成分の減衰率。<br>減衰後のB値＝ 元の B 値*(1- decay/100) で計算。<br>R:G:B = 1:2:4 として R,G 成分の減衰も同様に計算。<br><br><dt>R, G, B<br><dd>間接光の散乱の影響で加わる光量。<br>入力値を上の減衰後のRGB値に単に加えます。<br>これもおおよそ 1:2:4 で指定すればよさそうです。<br></dd><br></dt></dd></dt></dt></dl>
+<dl><br><dt>decay(%s)<dt><br><dd>散乱による直接光の青成分の減衰率。<br>減衰後のB値＝ 元の B 値*(1- decay/100) で計算。<br>R:G:B = 1:2:4 として R,G 成分の減衰も同様に計算。<br><br><dt>R, G, B<br><dd>間接光の散乱の影響で加わる光量。<br>入力値を上の減衰後のRGB値に単に加えます。<br>これもおおよそ 1:2:4 で指定すればよさそうです。<br></dd><br><br><br></dt></dd></dt></dt></dl>
 
 <p>上のデフォルトで変換したのが以下の画像です。</p>
-<p><img src="kuh96.git/images/bluesky-conv.pngg" width="300"><br><img src="/images/b8-conv.png" width="300"></p>
+<p><img src="http://kuh96.github.io/images/bluesky-conv.png" width="300"><br><img src="http://kuh96.github.io/images/b8-conv.png" width="300"></p>
 <p>多少もっともらしくなったような気がしますが、どうでしょうか？</p>
 <ul>
 <li>空もふくくめて全体に青っぽくなるが、雪の白はそれほど変わらない</li>
