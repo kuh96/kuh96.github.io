@@ -11,7 +11,7 @@
 
 
 
-var gFile = &quot;/images/bluesky-off.jpg&quot;;
+var gFile = &quot;bluesky-off.jpg&quot;;
 var gWidth = 300;
 var gHeight = 156;
 
@@ -19,7 +19,7 @@ onload = function() {
     drawImage();
 };
 
-function d">
+function drawImage">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -123,7 +123,7 @@ function d">
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript">
-var gFile = "/images/bluesky-off.jpg";
+var gFile = "bluesky-off.jpg";
 var gWidth = 300;
 var gHeight = 156;
 
@@ -173,17 +173,28 @@ function doConv() {
 <body>
 <h2>カシミール３Ｄ: 遠くを青く霞ませる</h2>
 
+<ul>
+<li>上段はカシミールでの撮影と、実際の写真
+</li><li>下段は上の 霞ませる=OFF の画像をもとに、以下の変換を行ったもの
+  <ul>
+  <li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ
+  </li><li>オンの場合： 同様だが、明るさを変えないように RGB値を元の明るさ
+／変換後の明るさ
+（ここでは単に RGB値の和）
+  </li></ul>
+</li></ul>
+
 <table>
 <tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr>
 <tr>
 <td>
-<img src="/images/bluesky-off.jpg" width="300px">
+<img src="bluesky-off.jpg" width="300">
 </td>
 <td>
-<img src="/images/bluesky-on.jpg" width="300px">
+<img src="bluesky-on.jpg" width="300">
 </td>
 <td>
-<img src="/images/bluesky-photo.jpg" width="300px">
+<img src="../bluesky-photo.jpg" width="300">
 </td>
 </tr>
 <tr>
@@ -205,19 +216,9 @@ B <input type="text" id="elBlue" value="40" style="width:32px">
 </tr>
 </table>
 
-
-<ul>
-<li>上段はカシミールでの撮影と、実際の写真
-</li><li>下段は上の 霞ませる=OFF の画像をもとに、以下の変換を行ったもの
-  <ul>
-  <li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ
-  </li><li>オンの場合： 同様だが、明るさを変えないように RGB値を元の明るさ
-／変換後の明るさ
-（ここでは単に RGB値の和）
-  </li></ul>
-</li></ul>
-
-
+なお写真は
+3月初めの11時頃、竜ヶ岳（富士山の西北約15km）山頂付近よりのもので、
+カシミールの撮影もそれに合わせて行いました。
 
 <hr>
 </body>
@@ -233,13 +234,13 @@ B <input type="text" id="elBlue" value="40" style="width:32px">
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/2015/07/09/bluesky/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+    	<li class="prev"><a href="/2015/07/08/bluesky/bluesky-sim/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2015/07/08/bluesky-sim/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2015/06/24/js01/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>

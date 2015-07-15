@@ -6,20 +6,20 @@
   <title>Kuh Crow</title>
   <meta name="author" content="Kuh Crow">
   
-  <meta name="description" content="&lt;!DOCTYPE html&gt;
+  <meta name="description" content="canvas {border:3px; border-style:solid;}
 
 
 
+        
+        
+        
+        
+          
 
-var gFile = &quot;/images/bluesky-off.jpg&quot;;
-var gWidth = 300;
-var gHeight = 156;
 
-onload = function() {
-    drawImage();
-};
-
-function d">
+function onClick(e) {
+    var cv = e.target;
+    var rect">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -98,8 +98,6 @@ function d">
   <div class="container">
   	<div class="content">
     	 
-
-
 	
 		<div class="page-header">		
 			<h1> </h1>
@@ -108,122 +106,87 @@ function d">
 
 
 
-<div class="row post">
+<div class="row page">
 	<!-- cols -->
 	
-	<div class="col-md-9">
+	<div class="col-md-12">
 	
 
 			
 
 	<!-- content -->
 	<div class="mypage">		
-	    <!DOCTYPE html>
-<html lang="ja">
+	    <html>
 <head>
-<meta charset="UTF-8">
+
+<style type="text/css">
+canvas {border:3px; border-style:solid;}
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="filtrr2/filtrr2.js"></script>
+        <script type="text/javascript" src="filtrr2/layers.js"></script>
+        <script type="text/javascript" src="filtrr2/effects.js"></script>
+        <script type="text/javascript" src="filtrr2/events.js"></script>
+        <script type="text/javascript" src="filtrr2/util.js"></script>  
+
 <script type="text/javascript">
-var gFile = "/images/bluesky-off.jpg";
-var gWidth = 300;
-var gHeight = 156;
-
-onload = function() {
-    drawImage();
-};
-
-function drawImage() {
-    var ctx = elCanvas.getContext('2d');
-    var img = new Image();
-    img.src = gFile + "?" + new Date().getTime();
-    img.onload = function() {
-	ctx.drawImage(img, 0, 0, gWidth, gHeight);
-	// ctx.getImageData(0, 0, gWidth, gHeight);
-    }
+function onClick(e) {
+    var cv = e.target;
+    var rect = cv.getBoundingClientRect();
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+    var context = cv.getContext('2d');
+    var data = context.getImageData(x,y,1,1).data;
+    console.log("x=" + x + ",y=" + y + ",data=" + data.length);
+    var s = "(" + x + "," + y + ") rgb="
+	+ data[0] + "," + data[1] + "," + data[2];
+    // cv.title = s;
+    alert(s);
 }
-
-function doConv() {
-    var delta = [parseInt(elRed.value),parseInt(elGreen.value),
-		 parseInt(elBlue.value)];
-    var keepbright = elKeep.checked;
-    console.log("keep=" + keepbright + ", drgb=" + delta);
-    var ctx = elCanvas.getContext('2d');
-    var idata = ctx.getImageData(0, 0, gWidth, gHeight);
-    var num = idata.data.length / 4;
-    for(var i=0; i < num; i++) {
-        var rgb = [idata.data[4*i], idata.data[4*i+1], idata.data[4*i+2]];
-        var newrgb = [rgb[0]+delta[0], rgb[1]+delta[1], rgb[2]+delta[2]];
-        if(keepbright) {
-	    var bright = rgb[0]+rgb[1]+rgb[2];
-	    var newbright = newrgb[0]+newrgb[1]+newrgb[2];
-	    var ratio = bright/newbright;
-	    idata.data[4*i]= ratio*newrgb[0];
-	    idata.data[4*i+1]= ratio*newrgb[1];
-	    idata.data[4*i+2]= ratio*newrgb[2];
-	} else {
-	    idata.data[4*i]= newrgb[0];
-	    idata.data[4*i+1]= newrgb[1];
-	    idata.data[4*i+2]= newrgb[2];
-	}
-    }
-    ctx.putImageData(idata, 0, 0);
+// 106,157,212
+// this: ip
+function onReady(f) {
+    this.render();
+    console.log("canvas=" + f.canvas[0] + ",el=" + f.el);
+    f.canvas[0].onclick = onClick;
+    console.log("addEventListener");
 }
 </script>
+
 </head>
 
 <body>
-<h2>カシミール３Ｄ: 遠くを青く霞ませる</h2>
-
-<table>
-<tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr>
-<tr>
-<td>
-<img src="/images/bluesky-off.jpg" width="300px">
-</td>
-<td>
-<img src="/images/bluesky-on.jpg" width="300px">
-</td>
-<td>
-<img src="/images/bluesky-photo.jpg" width="300px">
-</td>
-</tr>
-<tr>
-<th>Conversion</th>
-</tr>
-<tr>
-<td>
-<canvas id="elCanvas" width="300" height="156"></canvas>
-</td>
-<td>
-R <input type="text" id="elRed" value="0" style="width:32px">
-G <input type="text" id="elGreen" value="10" style="width:32px">
-B <input type="text" id="elBlue" value="40" style="width:32px">
-<input type="checkbox" id="elKeep" value="on">keep brightness
+<canvas id="elcv" width="100"></canvas>
 <br>
-<input type="button" onclick="doConv();" value="Add Offset">
-<input type="button" onclick="drawImage();" value="Reset Image">
-</td>
-</tr>
-</table>
 
+<img id="off" src="b8-off.jpg">
+<img id="on" src="b8-on.jpg">
+<img id="photo" src="b8-photo.jpg">
 
-<ul>
-<li>上段はカシミールでの撮影と、実際の写真
-</li><li>下段は上の 霞ませる=OFF の画像をもとに、以下の変換を行ったもの
-  <ul>
-  <li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ
-  </li><li>オンの場合： 同様だが、明るさを変えないように RGB値を元の明るさ
-／変換後の明るさ
-（ここでは単に RGB値の和）
-  </li></ul>
-</li></ul>
+<script type="text/javascript">
+var ctx = elcv.getContext("2d");
+var imageData = ctx.createImageData(256,128);
+var data = imageData.data;
+for(var y = 0; y < 128; y++) {
+    for(var x = 0; x < 256; x++) {
+	var i = imageData.width * y + x;
+        data[i*4] = x + 2*y;
+        data[i*4 + 1] = x + 2*y;
+        data[i*4 + 2] = x + 2*y;
+        data[i*4 + 3] = 255;//a
+    }    
+}
+ctx.putImageData(imageData, 0, 0);
+elcv.addEventListener("click", onClick, false);
 
+var foff = Filtrr2("#off", onReady); 
+var fon = Filtrr2("#on", onReady);
+var fphoto = Filtrr2("#photo", onReady);
+</script>
 
-
-<hr>
 </body>
 </html>
-
-
 	  
 	</div>
 
@@ -232,16 +195,6 @@ B <input type="text" id="elBlue" value="40" style="width:32px">
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2015/07/09/bluesky/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
-
-        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
-
-		
-		   <li class="next"><a href="/2015/07/08/bluesky-sim/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
-        
-	
 </ul>
 </div>
 
@@ -250,41 +203,9 @@ B <input type="text" id="elBlue" value="40" style="width:32px">
 	
 	<!-- comment -->
 	
-<section id="comment">
-  <h2 class="title">Comment</h2>
-
-  
-</section>
-
 	
 	</div> <!-- col-md-9/col-md-12 -->
 	
-	
-		<div class="col-md-3"> 
-
-	<!-- date -->
-	
-	<div class="meta-widget">
-	<i class="fa fa-clock-o"></i>
-	2015-07-08 
-	</div>
-	
-
-	<!-- categories -->
-    
-
-	<!-- tags -->
-		
-
-	<!-- toc -->
-	<div class="meta-widget">
-	
-	</div>
-	
-    <hr>
-	
-</div><!-- col-md-3 -->
-
 	
 
 </div><!-- row -->
