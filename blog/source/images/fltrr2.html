@@ -1,0 +1,72 @@
+<html>
+<head>
+
+<style type="text/css">
+canvas {border:3px; border-style:solid;}
+</style>
+
+<script type="text/javascript" 
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"/></script>
+        <script type="text/javascript" src="filtrr2/filtrr2.js"></script>
+        <script type="text/javascript" src="filtrr2/layers.js"></script>
+        <script type="text/javascript" src="filtrr2/effects.js"></script>
+        <script type="text/javascript" src="filtrr2/events.js"></script>
+        <script type="text/javascript" src="filtrr2/util.js"></script>  
+
+<script type="text/javascript">
+function onClick(e) {
+    var cv = e.target;
+    var rect = cv.getBoundingClientRect();
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+    var context = cv.getContext('2d');
+    var data = context.getImageData(x,y,1,1).data;
+    console.log("x=" + x + ",y=" + y + ",data=" + data.length);
+    var s = "(" + x + "," + y + ") rgb="
+	+ data[0] + "," + data[1] + "," + data[2];
+    // cv.title = s;
+    alert(s);
+}
+// 106,157,212
+// this: ip
+function onReady(f) {
+    this.render();
+    console.log("canvas=" + f.canvas[0] + ",el=" + f.el);
+    f.canvas[0].onclick = onClick;
+    console.log("addEventListener");
+}
+</script>
+
+</head>
+
+<body>
+<canvas id="elcv" width="100"></canvas>
+<br />
+
+<img id="off" src="b8-off.jpg" />
+<img id="on" src="b8-on.jpg"/ />
+<img id="photo" src="b8-photo.jpg" />
+
+<script type="text/javascript">
+var ctx = elcv.getContext("2d");
+var imageData = ctx.createImageData(256,128);
+var data = imageData.data;
+for(var y = 0; y < 128; y++) {
+    for(var x = 0; x < 256; x++) {
+	var i = imageData.width * y + x;
+        data[i*4] = x + 2*y;
+        data[i*4 + 1] = x + 2*y;
+        data[i*4 + 2] = x + 2*y;
+        data[i*4 + 3] = 255;//a
+    }    
+}
+ctx.putImageData(imageData, 0, 0);
+elcv.addEventListener("click", onClick, false);
+
+var foff = Filtrr2("#off", onReady); 
+var fon = Filtrr2("#on", onReady);
+var fphoto = Filtrr2("#photo", onReady);
+</script>
+
+</body>
+</html>

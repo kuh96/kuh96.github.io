@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<script type="text/javascript">
+var gFile = "b8-off.jpg";
+var gWidth = 300;
+var gHeight = 156;
+
+onload = onChange;
+
+function onChange() {
+    var file = elSelect.options[elSelect.selectedIndex].value;
+    console.log("file=" + file);
+    gFile = file + "-off.jpg";
+    imgOff.src = gFile;
+    imgOn.src = file + "-on.jpg";
+    imgPhoto.src = file + "-photo.jpg";
+    if(file == "b8") {
+	elDecay.value = 50;
+	elRed.value = 50;
+	elGreen.value = 110;
+	elBlue.value = 240;
+    } else {
+	elDecay.value = 10;
+	elRed.value = 10;
+	elGreen.value = 22;
+	elBlue.value = 48;
+    }
+    drawImage();
+}
+
+function drawImage() {
+    var ctx = elCanvas.getContext('2d');
+    var img = new Image();
+    img.src = gFile + "?" + new Date().getTime();
+    img.onload = function() {
+	ctx.drawImage(img, 0, 0, gWidth, gHeight);
+	// ctx.getImageData(0, 0, gWidth, gHeight);
+    }
+}
+
+function showValue(event) {
+  var el = event.target;
+  var rect = el.getBoundingClientRect();
+  var x = event.clientX - rect.left;
+  var y = event.clientY - rect.top;
+}
+
+function convPixel(rgb, decay, delta) {
+    var newr =rgb[0]*(1-0.25*decay)  + delta[0];
+    var newg =rgb[1]*(1-0.5*decay)  + delta[1];
+    var newb =rgb[2]*(1-decay)  + delta[2];
+    return [newr, newg, newb];
+}
+
+function doConv() {
+    var decay = parseInt(elDecay.value)/100;
+    var delta = [parseInt(elRed.value),parseInt(elGreen.value),
+		 parseInt(elBlue.value)];
+    console.log("decay=" + decay + ", drgb=" + delta);
+    var ctx = elCanvas.getContext('2d');
+    var idata = ctx.getImageData(0, 0, gWidth, gHeight);
+    var num = idata.data.length / 4;
+    var maxnewblue = -1;
+    var maxblue = -1;
+    for(var i=0; i < num; i++) {
+        var rgb = [idata.data[4*i], idata.data[4*i+1], idata.data[4*i+2]];
+	var newrgb = convPixel(rgb, decay, delta);
+	if(newrgb[2] > maxnewblue) {
+	    maxnewblue = newrgb[2];
+	    maxblue = rgb[2];
+	}
+    }
+    var ratio = 255/maxnewblue; 
+    console.log("ratio=" + ratio + ",maxbrnew=" + maxnewblue + "," + maxblue);
+    for(var i=0; i < num; i++) {
+        var rgb = [idata.data[4*i], idata.data[4*i+1], idata.data[4*i+2]];
+        var newrgb = convPixel(rgb, decay, delta);
+	idata.data[4*i]= ratio*newrgb[0];
+	idata.data[4*i+1]= ratio*newrgb[1];
+	idata.data[4*i+2]= ratio*newrgb[2];
+    }
+    ctx.putImageData(idata, 0, 0);
+}
+</script>
+</head>
+
+<body>
+<h2>自家製改良版: 遠くを青くかすませる</h2>
+
+<a href="http://qiita.com/drafts/1a6cda9375894654e0d4">遠くの山は青く霞むか？</a> の自家製プログラムです。
+<p>
+サンプル画像: <select id="elSelect" onchange="onChange();">
+<option value="bluesky">竜ヶ岳より富士山（南東約15km)
+<option value="b8">竜ヶ岳より八ヶ岳（北東約60km)
+</select>
+
+<table>
+<tr>
+<td>
+<b>カシミール:青くかすませない</b><br>
+<img id="imgOff" src="b8-off.jpg" width="300">
+</td>
+<td>
+<b>カシミール:青くかすませる</b><br>
+<img id="imgOn" src="b8-on.jpg" width="300">
+</td>
+<td>
+<b>写真</th><br>
+<img id="imgPhoto" src="b8-photo.jpg" width="300">
+</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<b>自家製改良版: 遠くを青くかすませる</b><br>
+<canvas id="elCanvas" width="300" height="156"></canvas>
+</td>
+<td colspan="3">
+decay(%) <input type="text" id="elDecay" value="0" style="width:32px">
+R <input type="text" id="elRed" value="0" style="width:32px">
+G <input type="text" id="elGreen" value="10" style="width:32px">
+B <input type="text" id="elBlue" value="50" style="width:32px">
+<br/>
+<input type="button" onclick="doConv();" value="Add Offset">
+<input type="button" onclick="drawImage();" value="Reset Image">
+</td>
+</tr>
+</table>
+
+<hr/>
+</body>
+</html>
+
+
