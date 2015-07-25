@@ -109,6 +109,50 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2015-07-25 </div>
+			<div class="article-title"><a href="/2015/07/25/euler-lagrange/" >間違い報告： オイラー・ラグランジュ方程式の座標非依存性（クロメル著）</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p><a href="http://hooktail.sub.jp/analytic/coodindep/" target="_blank" rel="external">http://hooktail.sub.jp/analytic/coodindep/</a></p>
+<p><strong>式の書き方だけの問題</strong> と思いますが、いくつかへんです。</p>
+<blockquote>
+<p>$$<br>q_i = f_i(\eta_j) \ \ \ (i,j = 1,2, \cdots n) \tag{2}<br>$$</p>
+</blockquote>
+<p>これでは $f_i$ は $\eta_j$ の１変数関数になってしまい、意味不明です。<br>以下の意味では？</p>
+<p>$$<br>q_i = f_i(\eta_1, …, \eta_n) \ \ \ (i = 1,2, \cdots n) \tag{2’}<br>$$</p>
+<p>以下も同様です。</p>
+<blockquote>
+<p>$$<br>S = \sum_{i=1}^n \int_A^B L(q_i , \dot{q}_i) dt \tag{3}<br>$$</p>
+</blockquote>
+<p>これでは以下のように、異なる座標間で何の相互作用もない、つまらないラグランジアンしか作れません。</p>
+<p>$$<br>\int_A^B dt \{ L(q_1 , \dot{q}_1) + … + L(q_n , \dot{q}_n) \}<br>$$</p>
+<p>以下の意味では？</p>
+<p>$$<br>\int_A^B dt L(q_1, \dot{q}_1, …,  q_n , \dot{q}_n)<br>$$</p>
+<p>従って (4) 式は以下のような感じになると思います。<br>要は $\delta q_i, \delta \dot{q}_i$ を外に出してからでないと、$\sum$ の形にはなりません。</p>
+<p>$$<br>\begin{eqnarray}<br>\delta S &amp;=&amp; \delta \int_A^B L(q_1 , \dot{q}_1, …) dt \\<br> &amp;=&amp; \int_A^B \left\{ L(q_1 + \delta q_1, \dot{q}_1+\delta \dot{q}_1, …) - L(q_1 , \dot{q}_1, …) \right\} dt \\<br> &amp;=&amp; \sum_{i=1}^n \int_A^B \left( \dfrac{\partial L(q_1, \dot{q}_1, …)}{\partial q_i}  \delta q_i + \dfrac{\partial L(q_1, \dot{q}_1, …)}{\partial \dot{q}_i} \delta \dot{q}_i \right) dt \tag{4’} \\<br> &amp;=&amp; …<br>\end{eqnarray}<br>$$</p>
+<p>とりあえず以上です。</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/07/25/euler-lagrange/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-07-25 </div>
 			<div class="article-title"><a href="/2015/07/25/irreducible/" >間違い報告： 既約と可約（Joh著）などなど</a></div>						
 		</h3>
 	
@@ -396,33 +440,6 @@ console.log("map=" + map);
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2015-06-09 </div>
-			<div class="article-title"><a href="/2015/06/09/http-referer/" >HTTP Refefer ヘッダー問題</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>知る人ぞ知る、知らない人は知らない（あたりまえだけど）、<br>セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。</p>
-<h2 id="HTTP_Refefer_ヘッダー問題">HTTP Refefer ヘッダー問題</h2><h2 id="あなたの知らないうちに">あなたの知らないうちに</h2><h2 id="対策">対策</h2><h2 id="google_visualization">google visualization</h2>
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/06/09/http-referer/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-06-09 </div>
 			<div class="article-title"><a href="/2015/06/09/chromel-div/" >査読レポート： divは完全情報か？(クロメル著)</a></div>						
 		</h3>
 	
@@ -536,6 +553,33 @@ console.log("map=" + map);
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2015-06-09 </div>
+			<div class="article-title"><a href="/2015/06/09/http-referer/" >HTTP Refefer ヘッダー問題</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>知る人ぞ知る、知らない人は知らない（あたりまえだけど）、<br>セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。</p>
+<h2 id="HTTP_Refefer_ヘッダー問題">HTTP Refefer ヘッダー問題</h2><h2 id="あなたの知らないうちに">あなたの知らないうちに</h2><h2 id="対策">対策</h2><h2 id="google_visualization">google visualization</h2>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/06/09/http-referer/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2015-06-06 </div>
 			<div class="article-title"><a href="/2015/06/06/POIPOI/" >hexo 練習...</a></div>						
 		</h3>
@@ -621,41 +665,6 @@ console.log("map=" + map);
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 1970-07-07 </div>
-			<div class="article-title"><a href="/1970/07/07/hello-world/" >Hello World</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/1970/07/07/hello-world/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -665,6 +674,16 @@ console.log("map=" + map);
 		<div class="pagination">
 <ul class="pagination">
 	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+
+		
+		   <li class="next"> <a href="/page/2/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
+        
+	
 </ul>
 </div>
 
@@ -698,6 +717,10 @@ console.log("map=" + map);
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2015/07/25/euler-lagrange/" ><i class="fa fa-file-o"></i>間違い報告： オイラー・ラグランジュ方程式の座標非依存...</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/25/irreducible/" ><i class="fa fa-file-o"></i>間違い報告： 既約と可約（Joh著）などなど...</a>
       </li>
     
@@ -711,10 +734,6 @@ console.log("map=" + map);
     
       <li>
         <a href="/2015/06/23/right-js/" ><i class="fa fa-file-o"></i>JavaScript の正しい覚え方...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/06/20/prog-q/" ><i class="fa fa-file-o"></i>ほんとうにつまらないプログラミング問題などなど...</a>
       </li>
     
   </ul>
