@@ -203,254 +203,6 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2015-07-09 </div>
-			<div class="article-title"><a href="/2015/07/09/bluesky/" >遠くの山は青く霞むか？</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h2 id="カシミール３Ｄ">カシミール３Ｄ</h2><p>お使いの方も多いと思いますが、<a href="http://www.kashmir3d.com/index.html" target="_blank" rel="external">カシミール３Ｄ</a>というフリーかつ超優秀な３Ｄ地図ナビゲータがあります。ＤＡＮ杉本さんによる大変な労作で、わたしも以前から愛用しています。</p>
-<p>このツールには単に３Ｄデータ地図を見るだけでなく、<br>地図データに基づいて <strong>写真を撮影する</strong> という素晴らしい機能があるのですが、<br>ちょっと計算がおかしいのでは、と思った部分があるのでちょっと書いてみます。</p>
-<p>なお、<strong>わたしの使い方が悪いだけなのかもしれませんが。。。</strong></p>
-<h2 id="遠くを青くかすませる">遠くを青くかすませる</h2><p><strong>青い山脈</strong> <strong>ブルーマウンテン</strong> というくらいで、たしかに遠くの山は青くかすんだように見えますね。</p>
-<p>カシミールの撮影にも、この遠くを青くかすませるという機能があるのですが、どうもこれがおかしいというか、思いどおりになってくれない。</p>
-<p>カシミールのこの機能を使うと、どうも遠くが青くかすむだけでなく、全体的に暗くなり、特に <strong>雪の白も青くなってしまう</strong> 気がします。</p>
-<p>以下の上段がサンプル画像ですが、右端の写真のように、雪はやっぱり白く写るし、実際目で見てもそう感じます。</p>
-<ul>
-<li>写真は3月初めの11時頃、竜ヶ岳山頂付近（富士山の北西約15km）よりのもの</li>
-<li>カシミールの撮影もそれに合わせてある</li>
-</ul>
-<p>なお下段は後述の <strong>自家製改良版:青くかすませる</strong> です。</p>
-<table><br><tr><br><td style="vertical-align:top;"><br><b>カシミール:青くかすませない</b><br><img src="https://kuh96.github.io/images/bluesky-off.jpg" width="300"><br><b>自家製改良版:青くかすませる</b><br><img src="https://kuh96.github.io/images/bluesky-conv01.jpg" width="300"><br></td><br><br><td style="vertical-align:top;"><br><b>カシミール:青くかすませる</b><br><img src="https://kuh96.github.io/images/bluesky-on.jpg" width="300"><br></td><br><br><td style="vertical-align:top;"><br><b>写真</b><br><img src="https://kuh96.github.io/images/bluesky-photo.jpg" width="300"><br></td><br></tr><br></table>
-
-<ul>
-<li>なおカシミールのこの機能には、「視程」と「変化率」というパラメータがあり、<br>それで「青くかすむ度合い」を変更できる</li>
-<li>でもパラメータを変えても、やっぱりおかしい。。。</li>
-</ul>
-<h2 id="遠くの山が青くかすむ理由">遠くの山が青くかすむ理由</h2><p>遠くの山が青くかすむ理由について考えてみます。</p>
-<p>青くなる原因は、空の青と同じく、空気による <strong>レイリー散乱</strong> によって、<br>光の青成分が赤成分より強く散乱されるため、と思われます。</p>
-<p>まず直接光、すなわち雪山で反射された光が目に届く過程を考えてみます。</p>
-<p><img src="https://kuh96.github.io/images/blue-exp01.png" width="500"></p>
-<p>でもこの場合は逆に <strong>目に届く光は赤みがかるはず </strong> という結論になります。<br>（夕焼けが赤くなるのと同じ理由）</p>
-<p>次に、日光が途中で空気によって散乱されて目に届く影響を考えてみます。</p>
-<p><img src="https://kuh96.github.io/images/blue-exp02.png" width="500"></p>
-<p>空気による散乱光は、たしかに青みがかって目に届くようです。<br>おおよそ以下と考えられます。</p>
-<ul>
-<li><p>青みがかかる程度は、山から目までの距離（空気の厚さ）に比例する。<br>すなわち遠いほど青みがかる。</p>
-</li>
-<li><p>直接光＋日光の散乱による青成分のバイアス、が目に届く</p>
-</li>
-<li><p>しかし直接光が強い＝明るい物体の場合（例えば雪の白）、この青成分バイアスは直接光に比べて小さく、あまり目立たない</p>
-</li>
-<li><p>逆に直接光が弱い＝暗い物体（例えば低層の樹林帯）、この青成分のバイアスは無視できず、青みがかって見える</p>
-</li>
-</ul>
-<h2 id="レイリー散乱の性質">レイリー散乱の性質</h2><p>簡単にレイリー散乱の性質をまとめておきます。</p>
-<ul>
-<li><p>入射光の波長にくらべて十分小さな粒子による散乱。<br>空気分子による散乱はこれに相当。</p>
-</li>
-<li><p>散乱率は入射光の波長依存性が非常に強い。波長の4乗に反比例する。<br>RGB でいえばおおむね R:G:B = 1:2:4</p>
-</li>
-<li><p>散乱率の角度依存性は比較的小さい (1 + cos(Θ)^2)<br>特に前方散乱 (Θ = 0..π/2) と後方散乱(Θ = π/2..π)の散乱率は同じ</p>
-</li>
-</ul>
-<p>なお別に <strong>ミー散乱</strong> といわれる要因があり、こちらは</p>
-<ul>
-<li><p>入射光の波長と同程度 or 大きな粒子による散乱。<br>空気中の水滴（霧）や塵による散乱はこれに相当</p>
-</li>
-<li><p>散乱率の入射光の波長依存性は弱い。すなわち散乱光は白い</p>
-</li>
-<li><p>散乱率の角度依存性は大きく、特に前方散乱が強い</p>
-</li>
-</ul>
-<p>こちらのほうは、遠くほど全体に白っぽく（彩度が低く）なる原因です。</p>
-<h2 id="自家製改良版:青くかすませる">自家製改良版:青くかすませる</h2><p>というわけで、<a href="https://kuh96.github.io/images/b8.html">ごくごく簡単な改良版</a>を作ってみました。<br>（改良になっているかはわかりませんが）</p>
-<ul>
-<li>初体験の HTML5 Canvas を使用</li>
-<li>画像処理などもよく知らない</li>
-</ul>
-<p>このため単純ですが、上のカシミール：青く霞ませない、<br>を原画像として以下の変換を行います。</p>
-<p>15km と 60km のサンプルがありますが、60km ではほぼ真っ青になってしまいます。<br>適当にデフォルト値をセットするので、Reset Image してから Add Offset してみてください。</p>
-<dl><br><dt>decay(%s)<dt><br><dd>散乱による直接光の青成分の減衰率。<br>減衰後のB値＝ 元の B 値*(1- decay/100) で計算。<br>R:G:B = 1:2:4 として R,G 成分の減衰も同様に計算。<br><br><dt>R, G, B<br><dd>間接光の散乱の影響で加わる光量。<br>入力値を上の減衰後のRGB値に単に加えます。<br>これもおおよそ 1:2:4 で指定すればよさそうです。<br><br>ミー散乱の効果を入れるには、RGBそれそれに +20 するなど<br>白色成分を加えてください。<br></dd><br></dt></dd></dt></dt></dl>
-
-<p>えいや、で決めたデフォルト値で変換したのが以下の画像です。</p>
-<ul>
-<li>15kme - Decay=10%, R=+10, G=+22, B=+48 </li>
-</ul>
-<p><img src="http://kuh96.github.io/images/bluesky-conv.png" width="300"></p>
-<ul>
-<li>60km - Decay=50%, R=+50, G=+110, B=+240　b</li>
-</ul>
-<p><img src="http://kuh96.github.io/images/b8-conv.png" width="300"></p>
-<p>多少もっともらしくなったような気がしますが、どうでしょうか？</p>
-<ul>
-<li>空もふくめて全体に青っぽくなるが、雪の白はそれほど変わらない</li>
-<li>原画像と比べると樹林の緑の部分は それなりに青くなって、いい感じ？</li>
-</ul>
-<p>カシミールの処理はなんだかへんで、各画素に青成分を付加すれだけでよいのに、<br>付加する青成分が物体の明るさに依存した処理(convolution)になっているのでは、と推定しています。</p>
-<h2 id="空気の青！">空気の青！</h2><p>結局、遠くの山が青く霞むのは、山から目までの空気が散乱した青い光を含むから、<br>と考えられます。すなわち <strong>空気自体が青い</strong> のです。</p>
-<ul>
-<li>もちろん青さはごくわずかだけど、空気の厚さに比例して青くなる</li>
-<li>空の青の場合、この厚さは 10km くらい</li>
-<li>でも「遠くの山」は視程がよければ 100km 以上でも見えるから、<br>この青さは非常に強くなる</li>
-</ul>
-<p>地球は青かった　→　（正しくは）空気は青かった、<br>ということになりますね。</p>
-<h2 id="参考">参考</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Rayleigh_scattering" target="_blank" rel="external">https://en.wikipedia.org/wiki/Rayleigh_scattering</a></li>
-<li><a href="http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/blusky.html" target="_blank" rel="external">http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/blusky.html</a><br>-</li>
-</ul>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/07/09/bluesky/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-07-08 </div>
-			<div class="article-title"><a href="/2015/07/08/bluesky/bluesky-sim/" ></a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<script type="text/javascript">
-var gFile = "/images/bluesky-off.jpg";
-var gWidth = 300;
-var gHeight = 156;
-
-onload = function() {
-    drawImage();
-};
-
-function drawImage() {
-    var ctx = elCanvas.getContext('2d');
-    var img = new Image();
-    img.src = gFile + "?" + new Date().getTime();
-    img.onload = function() {
-	ctx.drawImage(img, 0, 0, gWidth, gHeight);
-	// ctx.getImageData(0, 0, gWidth, gHeight);
-    }
-}
-
-function doConv() {
-    var delta = [parseInt(elRed.value),parseInt(elGreen.value),
-		 parseInt(elBlue.value)];
-    var keepbright = elKeep.checked;
-    console.log("keep=" + keepbright + ", drgb=" + delta);
-    var ctx = elCanvas.getContext('2d');
-    var idata = ctx.getImageData(0, 0, gWidth, gHeight);
-    var num = idata.data.length / 4;
-    for(var i=0; i < num; i++) {
-        var rgb = [idata.data[4*i], idata.data[4*i+1], idata.data[4*i+2]];
-        var newrgb = [rgb[0]+delta[0], rgb[1]+delta[1], rgb[2]+delta[2]];
-        if(keepbright) {
-	    var bright = rgb[0]+rgb[1]+rgb[2];
-	    var newbright = newrgb[0]+newrgb[1]+newrgb[2];
-	    var ratio = bright/newbright;
-	    idata.data[4*i]= ratio*newrgb[0];
-	    idata.data[4*i+1]= ratio*newrgb[1];
-	    idata.data[4*i+2]= ratio*newrgb[2];
-	} else {
-	    idata.data[4*i]= newrgb[0];
-	    idata.data[4*i+1]= newrgb[1];
-	    idata.data[4*i+2]= newrgb[2];
-	}
-    }
-    ctx.putImageData(idata, 0, 0);
-}
-</script>
-</head>
-
-<body>
-<h2>カシミール３Ｄ: 遠くを青く霞ませる</h2>
-
-<table>
-<tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr>
-<tr>
-<td>
-<img src="/images/bluesky-off.jpg" width="300px">
-</td>
-<td>
-<img src="/images/bluesky-on.jpg" width="300px">
-</td>
-<td>
-<img src="/images/bluesky-photo.jpg" width="300px">
-</td>
-</tr>
-<tr>
-<th>Conversion</th>
-</tr>
-<tr>
-<td>
-<canvas id="elCanvas" width="300" height="156"></canvas>
-</td>
-<td>
-R <input type="text" id="elRed" value="0" style="width:32px">
-G <input type="text" id="elGreen" value="10" style="width:32px">
-B <input type="text" id="elBlue" value="40" style="width:32px">
-<input type="checkbox" id="elKeep" value="on">keep brightness
-<br>
-<input type="button" onclick="doConv();" value="Add Offset">
-<input type="button" onclick="drawImage();" value="Reset Image">
-</td>
-</tr>
-</table>
-
-
-<ul>
-<li>上段はカシミールでの撮影と、実際の写真
-</li><li>下段は上の 霞ませる=OFF の画像をもとに、以下の変換を行ったもの
-  <ul>
-  <li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ
-  </li><li>オンの場合： 同様だが、明るさを変えないように RGB値を元の明るさ
-／変換後の明るさ
-（ここでは単に RGB値の和）
-  </li></ul>
-</li></ul>
-
-
-
-<hr>
-</body>
-</html>
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/07/08/bluesky/bluesky-sim/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
 			<div class="date"> 2015-06-24 </div>
 			<div class="article-title"><a href="/2015/06/24/js01/" ></a></div>						
 		</h3>
@@ -837,6 +589,73 @@ console.log("map=" + map);
 </div>
 
 		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2014-06-30 </div>
+			<div class="article-title"><a href="/2014/06/30/IceThickness/" >氷の厚さ？</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>以前 hooktail の google group に投稿した記事ですが、<br>あとで使うかもしれないので、再掲しておきます。</p>
+<p><a href="https://groups.google.com/d/topic/bulletin_hooktail_of_phys/UK_pME77Nx4/discussion" target="_blank" rel="external">https://groups.google.com/d/topic/bulletin_hooktail_of_phys/UK_pME77Nx4/discussion</a></p>
+<blockquote>
+<p>気温が下がって、池の水が凍り始めた。<br>凍り初めてからの時間を t とすると、<br>氷の厚さは t の平方根に比例することを示せ。</p>
+</blockquote>
+<p><a href="https://docs.google.com/document/d/1pVxf3fqqXaMkKunA_XwJJIfNgzqTzLep5mJ-4QSCg1Y/pub" target="_blank" rel="external">わたしの回答</a></p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2014/06/30/IceThickness/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 1970-07-07 </div>
+			<div class="article-title"><a href="/1970/07/07/hello-world/" >Hello World</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/1970/07/07/hello-world/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
 
 		</div>
 
@@ -846,16 +665,6 @@ console.log("map=" + map);
 		<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
-
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-
-		
-		   <li class="next"> <a href="/page/2/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
-        
-	
 </ul>
 </div>
 
@@ -893,19 +702,19 @@ console.log("map=" + map);
       </li>
     
       <li>
-        <a href="/2015/07/09/bluesky/" ><i class="fa fa-file-o"></i>遠くの山は青く霞むか？...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/07/08/bluesky/bluesky-sim/" ><i class="fa fa-file-o"></i>...</a>
-      </li>
-    
-      <li>
         <a href="/2015/06/24/js01/" ><i class="fa fa-file-o"></i>...</a>
       </li>
     
       <li>
         <a href="/2015/06/24/js01/" ><i class="fa fa-file-o"></i>...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/23/right-js/" ><i class="fa fa-file-o"></i>JavaScript の正しい覚え方...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/20/prog-q/" ><i class="fa fa-file-o"></i>ほんとうにつまらないプログラミング問題などなど...</a>
       </li>
     
   </ul>
