@@ -3,16 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>HTTP Refefer ヘッダー問題 | Kuh Crow</title>
+  <title>Kuh Crow</title>
   <meta name="author" content="Kuh Crow">
   
-  <meta name="description" content="知る人ぞ知る、知らない人は知らない（あたりまえだけど）、セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。
-HTTP Refefer ヘッダー問題あなたの知らないうちに対策google visualization">
+  <meta name="description" content="canvas {border:3px; border-style:solid;}
+
+
+
+        
+        
+        
+        
+          
+
+
+function onClick(e) {
+    var cv = e.target;
+    var rect">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="HTTP Refefer ヘッダー問題"/>
+  
   <meta property="og:site_name" content="Kuh Crow"/>
 
   
@@ -86,28 +98,96 @@ HTTP Refefer ヘッダー問題あなたの知らないうちに対策google vis
   <div class="container">
   	<div class="content">
     	 
-
-
 	
 		<div class="page-header">		
-			<h1> HTTP Refefer ヘッダー問題</h1>
+			<h1> </h1>
 		</div>		
 	
 
 
 
-<div class="row post">
+<div class="row page">
 	<!-- cols -->
 	
-	<div class="col-md-9">
+	<div class="col-md-12">
 	
 
 			
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>知る人ぞ知る、知らない人は知らない（あたりまえだけど）、<br>セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。</p>
-<h2 id="HTTP_Refefer_ヘッダー問題">HTTP Refefer ヘッダー問題</h2><h2 id="あなたの知らないうちに">あなたの知らないうちに</h2><h2 id="対策">対策</h2><h2 id="google_visualization">google visualization</h2>	  
+	    <html>
+<head>
+
+<style type="text/css">
+canvas {border:3px; border-style:solid;}
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="filtrr2/filtrr2.js"></script>
+        <script type="text/javascript" src="filtrr2/layers.js"></script>
+        <script type="text/javascript" src="filtrr2/effects.js"></script>
+        <script type="text/javascript" src="filtrr2/events.js"></script>
+        <script type="text/javascript" src="filtrr2/util.js"></script>  
+
+<script type="text/javascript">
+function onClick(e) {
+    var cv = e.target;
+    var rect = cv.getBoundingClientRect();
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+    var context = cv.getContext('2d');
+    var data = context.getImageData(x,y,1,1).data;
+    console.log("x=" + x + ",y=" + y + ",data=" + data.length);
+    var s = "(" + x + "," + y + ") rgb="
+	+ data[0] + "," + data[1] + "," + data[2];
+    // cv.title = s;
+    alert(s);
+}
+// 106,157,212
+// this: ip
+function onReady(f) {
+    this.render();
+    console.log("canvas=" + f.canvas[0] + ",el=" + f.el);
+    f.canvas[0].onclick = onClick;
+    console.log("addEventListener");
+}
+</script>
+
+</head>
+
+<body>
+<canvas id="elcv" width="100"></canvas>
+<br>
+
+<img id="off" src="b8-off.jpg">
+<img id="on" src="b8-on.jpg">
+<img id="photo" src="b8-photo.jpg">
+
+<script type="text/javascript">
+var ctx = elcv.getContext("2d");
+var imageData = ctx.createImageData(256,128);
+var data = imageData.data;
+for(var y = 0; y < 128; y++) {
+    for(var x = 0; x < 256; x++) {
+	var i = imageData.width * y + x;
+        data[i*4] = x + 2*y;
+        data[i*4 + 1] = x + 2*y;
+        data[i*4 + 2] = x + 2*y;
+        data[i*4 + 3] = 255;//a
+    }    
+}
+ctx.putImageData(imageData, 0, 0);
+elcv.addEventListener("click", onClick, false);
+
+var foff = Filtrr2("#off", onReady); 
+var fon = Filtrr2("#on", onReady);
+var fphoto = Filtrr2("#photo", onReady);
+</script>
+
+</body>
+</html>
+	  
 	</div>
 
 	<div>
@@ -115,16 +195,6 @@ HTTP Refefer ヘッダー問題あなたの知らないうちに対策google vis
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2015/06/09/chromel-div/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
-
-        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
-
-		
-		   <li class="next"><a href="/2015/06/06/POIPOI/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
-        
-	
 </ul>
 </div>
 
@@ -133,41 +203,9 @@ HTTP Refefer ヘッダー問題あなたの知らないうちに対策google vis
 	
 	<!-- comment -->
 	
-<section id="comment">
-  <h2 class="title">Comment</h2>
-
-  
-</section>
-
 	
 	</div> <!-- col-md-9/col-md-12 -->
 	
-	
-		<div class="col-md-3"> 
-
-	<!-- date -->
-	
-	<div class="meta-widget">
-	<i class="fa fa-clock-o"></i>
-	2015-06-09 
-	</div>
-	
-
-	<!-- categories -->
-    
-
-	<!-- tags -->
-		
-
-	<!-- toc -->
-	<div class="meta-widget">
-	
-	</div>
-	
-    <hr>
-	
-</div><!-- col-md-3 -->
-
 	
 
 </div><!-- row -->

@@ -3,16 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>HTTP Refefer ヘッダー問題 | Kuh Crow</title>
+  <title>間違い報告： オイラー・ラグランジュ方程式の座標非依存性（クロメル著） | Kuh Crow</title>
   <meta name="author" content="Kuh Crow">
   
-  <meta name="description" content="知る人ぞ知る、知らない人は知らない（あたりまえだけど）、セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。
-HTTP Refefer ヘッダー問題あなたの知らないうちに対策google visualization">
+  <meta name="description" content="http://hooktail.sub.jp/analytic/coodindep/
+式の書き方だけの問題 と思いますが、いくつかへんです。
+
+$$q_i = f_i(\eta_j) \ \ \ (i,j = 1,2, \cdots n) \tag{2}$$
+
+これでは $f_i$ は $\eta_">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="HTTP Refefer ヘッダー問題"/>
+  <meta property="og:title" content="間違い報告： オイラー・ラグランジュ方程式の座標非依存性（クロメル著）"/>
   <meta property="og:site_name" content="Kuh Crow"/>
 
   
@@ -90,7 +94,7 @@ HTTP Refefer ヘッダー問題あなたの知らないうちに対策google vis
 
 	
 		<div class="page-header">		
-			<h1> HTTP Refefer ヘッダー問題</h1>
+			<h1> 間違い報告： オイラー・ラグランジュ方程式の座標非依存性（クロメル著）</h1>
 		</div>		
 	
 
@@ -106,8 +110,25 @@ HTTP Refefer ヘッダー問題あなたの知らないうちに対策google vis
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>知る人ぞ知る、知らない人は知らない（あたりまえだけど）、<br>セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。</p>
-<h2 id="HTTP_Refefer_ヘッダー問題">HTTP Refefer ヘッダー問題</h2><h2 id="あなたの知らないうちに">あなたの知らないうちに</h2><h2 id="対策">対策</h2><h2 id="google_visualization">google visualization</h2>	  
+	    <p><a href="http://hooktail.sub.jp/analytic/coodindep/" target="_blank" rel="external">http://hooktail.sub.jp/analytic/coodindep/</a></p>
+<p><strong>式の書き方だけの問題</strong> と思いますが、いくつかへんです。</p>
+<blockquote>
+<p>$$<br>q_i = f_i(\eta_j) \ \ \ (i,j = 1,2, \cdots n) \tag{2}<br>$$</p>
+</blockquote>
+<p>これでは $f_i$ は $\eta_j$ の１変数関数になってしまい、意味不明です。<br>以下の意味では？</p>
+<p>$$<br>q_i = f_i(\eta_1, …, \eta_n) \ \ \ (i = 1,2, \cdots n) \tag{2’}<br>$$</p>
+<p>以下も同様です。</p>
+<blockquote>
+<p>$$<br>S = \sum_{i=1}^n \int_A^B L(q_i , \dot{q}_i) dt \tag{3}<br>$$</p>
+</blockquote>
+<p>これでは以下のように、異なる座標間で何の相互作用もない、つまらないラグランジアンしか作れません。</p>
+<p>$$<br>\int_A^B dt \{ L(q_1 , \dot{q}_1) + … + L(q_n , \dot{q}_n) \}<br>$$</p>
+<p>以下の意味では？</p>
+<p>$$<br>\int_A^B dt L(q_1, \dot{q}_1, …,  q_n , \dot{q}_n)<br>$$</p>
+<p>従って (4) 式は以下のような感じになると思います。<br>要は $\delta q_i, \delta \dot{q}_i$ を外に出してからでないと、$\sum$ の形にはなりません。</p>
+<p>$$<br>\begin{eqnarray}<br>\delta S &amp;=&amp; \delta \int_A^B L(q_1 , \dot{q}_1, …) dt \\<br> &amp;=&amp; \int_A^B \left\{ L(q_1 + \delta q_1, \dot{q}_1+\delta \dot{q}_1, …) - L(q_1 , \dot{q}_1, …) \right\} dt \\<br> &amp;=&amp; \sum_{i=1}^n \int_A^B \left( \dfrac{\partial L(q_1, \dot{q}_1, …)}{\partial q_i}  \delta q_i + \dfrac{\partial L(q_1, \dot{q}_1, …)}{\partial \dot{q}_i} \delta \dot{q}_i \right) dt \tag{4’} \\<br> &amp;=&amp; …<br>\end{eqnarray}<br>$$</p>
+<p>とりあえず以上です。</p>
+	  
 	</div>
 
 	<div>
@@ -115,14 +136,14 @@ HTTP Refefer ヘッダー問題あなたの知らないうちに対策google vis
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2015/06/09/chromel-div/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2015/06/06/POIPOI/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2015/07/25/irreducible/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -149,7 +170,7 @@ HTTP Refefer ヘッダー問題あなたの知らないうちに対策google vis
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2015-06-09 
+	2015-07-25 
 	</div>
 	
 
