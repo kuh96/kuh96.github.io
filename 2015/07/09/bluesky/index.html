@@ -161,27 +161,35 @@
 </li>
 </ul>
 <p>こちらのほうは、遠くほど全体に白っぽく（彩度が低く）なる原因です。</p>
-<h2 id="自家製改良版:青くかすませる">自家製改良版:青くかすませる</h2><p>というわけで、<a href="https://kuh96.github.io/images/b8.html">ごくごく簡単な改良版</a>を作ってみました。</p>
+<h2 id="自家製改良版:青くかすませる">自家製改良版:青くかすませる</h2><p>というわけで、<a href="https://kuh96.github.io/images/b8.html">ごくごく簡単な改良版</a>を作ってみました。<br>（改良になっているかはわかりませんが）</p>
 <ul>
 <li>初体験の HTML5 Canvas を使用</li>
 <li>画像処理などもよく知らない</li>
 </ul>
-<p>このため単純ですが、上のカシミール：青く霞ませない、<br>を原画像として以下の変換を行います。<br>15km と 60km のサンプルがありますが、60km ではほぼ真っ青になってしまいます。</p>
-<dl><br><dt>decay(%s)<dt><br><dd>散乱による直接光の青成分の減衰率。<br>減衰後のB値＝ 元の B 値*(1- decay/100) で計算。<br>R:G:B = 1:2:4 として R,G 成分の減衰も同様に計算。<br><br><dt>R, G, B<br><dd>間接光の散乱の影響で加わる光量。<br>入力値を上の減衰後のRGB値に単に加えます。<br>これもおおよそ 1:2:4 で指定すればよさそうです。<br></dd><br><br><br></dt></dd></dt></dt></dl>
+<p>このため単純ですが、上のカシミール：青く霞ませない、<br>を原画像として以下の変換を行います。</p>
+<p>15km と 60km のサンプルがありますが、60km ではほぼ真っ青になってしまいます。<br>適当にデフォルト値をセットするので、Reset Image してから Add Offset してみてください。</p>
+<dl><br><dt>decay(%s)<dt><br><dd>散乱による直接光の青成分の減衰率。<br>減衰後のB値＝ 元の B 値*(1- decay/100) で計算。<br>R:G:B = 1:2:4 として R,G 成分の減衰も同様に計算。<br><br><dt>R, G, B<br><dd>間接光の散乱の影響で加わる光量。<br>入力値を上の減衰後のRGB値に単に加えます。<br>これもおおよそ 1:2:4 で指定すればよさそうです。<br><br>ミー散乱の効果を入れるには、RGBそれそれに +20 するなど<br>白色成分を加えてください。<br></dd><br></dt></dd></dt></dt></dl>
 
-<p>上のデフォルトで変換したのが以下の画像です。</p>
-<p><img src="http://kuh96.github.io/images/bluesky-conv.png" width="300"><br><img src="http://kuh96.github.io/images/b8-conv.png" width="300"></p>
+<p>えいや、で決めたデフォルト値で変換したのが以下の画像です。</p>
+<ul>
+<li>15kme - Decay=10%, R=+10, G=+22, B=+48 </li>
+</ul>
+<p><img src="http://kuh96.github.io/images/bluesky-conv.png" width="300"></p>
+<ul>
+<li>60km - Decay=50%, R=+50, G=+110, B=+240　b</li>
+</ul>
+<p><img src="http://kuh96.github.io/images/b8-conv.png" width="300"></p>
 <p>多少もっともらしくなったような気がしますが、どうでしょうか？</p>
 <ul>
-<li>空もふくくめて全体に青っぽくなるが、雪の白はそれほど変わらない</li>
-<li>原画像と比べると樹林の緑の部分は多少青くなって、いい感じ？</li>
+<li>空もふくめて全体に青っぽくなるが、雪の白はそれほど変わらない</li>
+<li>原画像と比べると樹林の緑の部分は それなりに青くなって、いい感じ？</li>
 </ul>
-<p>カシミールの処理はなんだかへんで、各画素に少し青成分を付加すれだけでよいのに、<br>付加する青成分が物体の明るさに依存した処理になっているのでは、と推定しています。</p>
-<h2 id="空気は青い！">空気は青い！</h2><p>結局、遠くの山が青く霞むのは、山から目までの空気が散乱した青い光を含むから、<br>と考えられます。すなわち空気自体が青いのです。</p>
+<p>カシミールの処理はなんだかへんで、各画素に青成分を付加すれだけでよいのに、<br>付加する青成分が物体の明るさに依存した処理(convolution)になっているのでは、と推定しています。</p>
+<h2 id="空気の青！">空気の青！</h2><p>結局、遠くの山が青く霞むのは、山から目までの空気が散乱した青い光を含むから、<br>と考えられます。すなわち <strong>空気自体が青い</strong> のです。</p>
 <ul>
 <li>もちろん青さはごくわずかだけど、空気の厚さに比例して青くなる</li>
 <li>空の青の場合、この厚さは 10km くらい</li>
-<li>でも「遠くの山」は視程がよければ 100km 以上でも見えるから、<br>この青さはかなりのものになる</li>
+<li>でも「遠くの山」は視程がよければ 100km 以上でも見えるから、<br>この青さは非常に強くなる</li>
 </ul>
 <p>地球は青かった　→　（正しくは）空気は青かった、<br>ということになりますね。</p>
 <h2 id="参考">参考</h2><ul>
@@ -196,9 +204,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/2015/07/25/irreducible/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
@@ -297,7 +305,6 @@
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
    </html>

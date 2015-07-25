@@ -108,6 +108,101 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2015-07-25 </div>
+			<div class="article-title"><a href="/2015/07/25/irreducible/" >間違い報告： 既約と可約（Joh著）などなど</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h1 id="間違い報告：既約と可約（Joh著）などなど">間違い報告：既約と可約（Joh著）などなど</h1><p>Johさんは一杯書いてくれていてうれしいのですが、<br>ときどきへんな・間違った思い込みで突っ走ってしまうときがあるようです :-)</p>
+<p>ざっと見ただけで、また全然詳しくはないのですが、<br>明らかな間違いがいくつかあるので報告しておきます。</p>
+<h2 id="既約と可約（Joh著）">既約と可約（Joh著）</h2><p><a href="http://hooktail.sub.jp/algebra/Reducible/" target="_blank" rel="external">http://hooktail.sub.jp/algebra/Reducible/</a> の最後</p>
+<h4 id="定理">定理</h4><blockquote>
+<p>（標数 0 の係数体上の）既約な代数方程式は、重解を持ちません。　</p>
+</blockquote>
+<h3 id="証明（完全にまちがい！）_※1">証明（完全にまちがい！）　※1</h3><blockquote>
+<p>体 $F$ 上既約な多項式 $f(x)=c_{0}+c_{1}x+…+c_{n}x^{n}$ を考えます。<br>もしも $f(x)$ が $m$ 重解 $\alpha$ を持つとすると、<br>$f(x)=c(x-\alpha )^{m}(x-{\alpha}_{1})\cdot \cdot \cdot (x-{\alpha}_{n-m})$ と書けるはずです。<br>これは、 $f(x)$ が $(x-\alpha )$ で可約だということを意味しますから、既約な多項式だという仮定に反します。</p>
+</blockquote>
+<h4 id="間違い箇所_※2">間違い箇所 ※2</h4><p>$f(x)$ は $F$ 上既約なので、上の $\alpha$ はもちろん $F$ の元ではなく、<br>$f(x)$ が $(x-\alpha )$ で可約だということを <strong>意味しません</strong>。</p>
+<p>たとえば 有理数体上の多項式 $f(x)$ が拡大体上で<br>$f(x)=(x - \sqrt{2})^{2}g(x)$ と分解できたとしても、<br>$(x - \sqrt{2})^2 = (x^2- 2\sqrt{2}x + 2)$ は有理数体上の多項式ではありません。</p>
+<p>実は $g(x)$ のほうが必ず $(x + \sqrt{2})^2$ を因子にもつため、<br>これと合わさって $f(x) = (x^2 - 2)^{2}h(x)$ となるため、有理数体上で可約になるのです。</p>
+<p>以降、これと類似した間違いがいくつかあります。訂正は ※3 に後述。</p>
+<h2 id="代数的拡大体と最小多項式（Joh著）">代数的拡大体と最小多項式（Joh著）</h2><p><a href="http://hooktail.sub.jp/algebra/AlgebraicExtension/#id4" target="_blank" rel="external">http://hooktail.sub.jp/algebra/AlgebraicExtension/#id4</a></p>
+<h3 id="注および説明（へん！）">注および説明（へん！）</h3><p><strong>注</strong></p>
+<blockquote>
+<p>例えば 2 は x−2=0 の解ですが， (x−4)(x−3)(x−2)=0 の解でもあります．本質的に， 2 は (x−2) の部分だけから出てくるわけですが，このように関係ない因数を加えて次数を上げていけば， 2 を解とする代数方程式自体は無限にあることが分かります．</p>
+</blockquote>
+<p><strong>説明</strong></p>
+<blockquote>
+<p>最小多項式には次の重要な性質があります．</p>
+<p>最小多項式は F 上既約です．<br>最小多項式は α を解とする， F 上の全ての多項式を割ることが出来ます．<br>これらの性質は，上の注に補足したイメージを持っていれば明らかでしょう．</p>
+</blockquote>
+<h4 id="へんな箇所">へんな箇所</h4><p>上の注の例は無意味で、そのイメージでは全然明らかでないです。</p>
+<p>ポイントは　F 上の多項式が F 上にない α を根に持つなら、<br>必ず F 上にない他の根(α に<strong>共役な根</strong>）も持たなければいけない、ということです。</p>
+<ul>
+<li>共役な根は１つ以上のときもあります</li>
+<li>根と係数の関係、を満たすためには F 上にない他の根が必要ということ</li>
+<li>Joh さん自身が書いているではないですか<br><a href="http://hooktail.sub.jp/algebra/NormalExtension/" target="_blank" rel="external">http://hooktail.sub.jp/algebra/NormalExtension/</a></li>
+</ul>
+<p>証明は簡単です。</p>
+<ul>
+<li>α は代数的数、よってそれを根とする F 上の多項式が存在</li>
+<li>そのうち次数が最小のものの１つを h(x) とする（定数倍を除いてい１つに決まる）</li>
+<li>F 上で h(x)=g(x)k(x) なら g(α)=0 or h(α)=0</li>
+<li>α を根とする F 上の多項式を h(x) で割った余りを r(x) とすれば r(α)=0</li>
+</ul>
+<p>h(x) は最小次数だったので、h(x)は F 上既約で、α を根とする F上のすべての多項式を割り切ることがわかります。</p>
+<h3 id="段落最後の例_（まちがい!）">段落最後の例 （まちがい!）</h3><blockquote>
+<p> $Q(\omega)$ ($\omega$ は 1 の三乗根)の元が $a+\omega b+\omega^{2} c$ の形に書ける</p>
+</blockquote>
+<h4 id="訂正">訂正</h4><p>$\omega$ は $\omega^{2} + \omega + 1=0$ の根なので、$\omega^{2}=-(\omega+1)$です。<br>すなわち $Q(\omega)$ は2次の拡大で、その元は $a’+\omega b’$ と書けます。</p>
+<p>なお $\alpha=\sqrt[3]{2}$ なら最小多項式は $(x^3 - 2)$ で、<br>$Q(\sqrt[3]{2})$ は3次の拡大で、$a + b \sqrt[3]{2} + c \sqrt[3]{2}^2$ と書けます。<br>しかし $(x^3 - 2)$ の他の2根 $\sqrt[3]{2} \omega$ $\sqrt[3]{2} \omega$ は $Q(\sqrt[3]{2})$ にはありません。<br>すべての根を含むには　6次の拡大 $Q(\sqrt[3]{2}, \omega)$ が必要です。</p>
+<h2 id="標数（Joh著）">標数（Joh著）</h2><p><a href="http://hooktail.sub.jp/algebra/Characteristic/#id6" target="_blank" rel="external">http://hooktail.sub.jp/algebra/Characteristic/#id6</a></p>
+<h3 id="定理-1">定理</h3><blockquote>
+<p>有限体 F の位数を |F|=q ，標数を p ， 素体を F0 とします． [F:F0]=n のとき，<br>$q=p^n$ がなりたちます．</p>
+</blockquote>
+<h4 id="その証明（不完全）">その証明（不完全）</h4><p>これでは 位数 $q=p^n$ の体が存在すること、が示されていません.</p>
+<h2 id="分離拡大体（Joh著）">分離拡大体（Joh著）</h2><h3 id="標数0の場合（※１と同じ。完全にまちがい！）">標数0の場合（※１と同じ。完全にまちがい！）</h3><p><a href="http://hooktail.sub.jp/algebra/SeparableExtension/#id2" target="_blank" rel="external">http://hooktail.sub.jp/algebra/SeparableExtension/#id2</a></p>
+<blockquote>
+<p>公約元 $(x−\alpha)$ を持ちますので，既約ではありません．</p>
+</blockquote>
+<h4 id="訂正_※3">訂正 ※3</h4><p>公約元として <strong>α の最小多項式をもつので</strong>、既約ではありません．</p>
+<p>$f(x)$ と $f’(x)$ が共通因子 $(x - \alpha)$ を持つとする。<br>$\alpha$ の最小多項式を $h(x)$ とすると、$h(x)$ は $f(x),f’(x)$ を割り切るが、<br>$f’(x)$ の次数は $f(x)$ より 1 小さいので、$h(x)$ の次数は $f(x)$ より 1 以上小さい。<br>したがって $f(x)$ は $h(x)$ の定数倍ではなく、従って可約である。</p>
+<h3 id="標数≠０の場合、の説明（完全にまちがい！）">標数≠０の場合、の説明（完全にまちがい！）</h3><p><a href="http://hooktail.sub.jp/algebra/SeparableExtension/#id3" target="_blank" rel="external">http://hooktail.sub.jp/algebra/SeparableExtension/#id3</a></p>
+<blockquote>
+<p>… この体 F 上で，方程式 $f(x)=x^p+a$ を考えて見ましょう．<br>これは確かに <strong>既約</strong> ですが…</p>
+<p>$x^n+a^n=(x+a)^n$<br>左辺は <strong>既約</strong> ですが…</p>
+</blockquote>
+<h4 id="間違い理由">間違い理由</h4><p>とんでもないです。上の２つとも既約であるとは限りません。</p>
+<p>例えば 標数 3 の素体 $F_{3} = \{0,1,2\}$ 上では、以下のように因数分解できます。</p>
+<p>$$<br>x^3 + 1^3 = x^3 + 1 = (x + 1)(x^2 - x + 1)  \\<br>x^3 + 2^3 = x^3 + 2 = (x + 2)(x^2 - 2x + 4) \\<br>$$</p>
+<p>実際、$標数 \ p \ の有限体 \ K \ では、\forall \beta \in K$ に対して、$\beta \ の p 乗根 \  \beta^{1/p}$ がただ１つ存在し、<br>有限体 K の任意の代数的拡大は分離拡大である、とのことです。</p>
+<ul>
+<li>松坂和夫　代数系入門 p.272 問題 4, 5</li>
+</ul>
+<p>従って、既約だが重根をもつ例をつくるには、<br>標数 p ≠ 0 の無限体、例えば有限体上の有理関数、などを考える必要があります。</p>
+<hr>
+<p>とりあえず以上です。疲れた～</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/07/25/irreducible/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2015-07-09 </div>
 			<div class="article-title"><a href="/2015/07/09/bluesky/" >遠くの山は青く霞むか？</a></div>						
 		</h3>
@@ -175,27 +270,35 @@
 </li>
 </ul>
 <p>こちらのほうは、遠くほど全体に白っぽく（彩度が低く）なる原因です。</p>
-<h2 id="自家製改良版:青くかすませる">自家製改良版:青くかすませる</h2><p>というわけで、<a href="https://kuh96.github.io/images/b8.html">ごくごく簡単な改良版</a>を作ってみました。</p>
+<h2 id="自家製改良版:青くかすませる">自家製改良版:青くかすませる</h2><p>というわけで、<a href="https://kuh96.github.io/images/b8.html">ごくごく簡単な改良版</a>を作ってみました。<br>（改良になっているかはわかりませんが）</p>
 <ul>
 <li>初体験の HTML5 Canvas を使用</li>
 <li>画像処理などもよく知らない</li>
 </ul>
-<p>このため単純ですが、上のカシミール：青く霞ませない、<br>を原画像として以下の変換を行います。<br>15km と 60km のサンプルがありますが、60km ではほぼ真っ青になってしまいます。</p>
-<dl><br><dt>decay(%s)<dt><br><dd>散乱による直接光の青成分の減衰率。<br>減衰後のB値＝ 元の B 値*(1- decay/100) で計算。<br>R:G:B = 1:2:4 として R,G 成分の減衰も同様に計算。<br><br><dt>R, G, B<br><dd>間接光の散乱の影響で加わる光量。<br>入力値を上の減衰後のRGB値に単に加えます。<br>これもおおよそ 1:2:4 で指定すればよさそうです。<br></dd><br><br><br></dt></dd></dt></dt></dl>
+<p>このため単純ですが、上のカシミール：青く霞ませない、<br>を原画像として以下の変換を行います。</p>
+<p>15km と 60km のサンプルがありますが、60km ではほぼ真っ青になってしまいます。<br>適当にデフォルト値をセットするので、Reset Image してから Add Offset してみてください。</p>
+<dl><br><dt>decay(%s)<dt><br><dd>散乱による直接光の青成分の減衰率。<br>減衰後のB値＝ 元の B 値*(1- decay/100) で計算。<br>R:G:B = 1:2:4 として R,G 成分の減衰も同様に計算。<br><br><dt>R, G, B<br><dd>間接光の散乱の影響で加わる光量。<br>入力値を上の減衰後のRGB値に単に加えます。<br>これもおおよそ 1:2:4 で指定すればよさそうです。<br><br>ミー散乱の効果を入れるには、RGBそれそれに +20 するなど<br>白色成分を加えてください。<br></dd><br></dt></dd></dt></dt></dl>
 
-<p>上のデフォルトで変換したのが以下の画像です。</p>
-<p><img src="http://kuh96.github.io/images/bluesky-conv.png" width="300"><br><img src="http://kuh96.github.io/images/b8-conv.png" width="300"></p>
+<p>えいや、で決めたデフォルト値で変換したのが以下の画像です。</p>
+<ul>
+<li>15kme - Decay=10%, R=+10, G=+22, B=+48 </li>
+</ul>
+<p><img src="http://kuh96.github.io/images/bluesky-conv.png" width="300"></p>
+<ul>
+<li>60km - Decay=50%, R=+50, G=+110, B=+240　b</li>
+</ul>
+<p><img src="http://kuh96.github.io/images/b8-conv.png" width="300"></p>
 <p>多少もっともらしくなったような気がしますが、どうでしょうか？</p>
 <ul>
-<li>空もふくくめて全体に青っぽくなるが、雪の白はそれほど変わらない</li>
-<li>原画像と比べると樹林の緑の部分は多少青くなって、いい感じ？</li>
+<li>空もふくめて全体に青っぽくなるが、雪の白はそれほど変わらない</li>
+<li>原画像と比べると樹林の緑の部分は それなりに青くなって、いい感じ？</li>
 </ul>
-<p>カシミールの処理はなんだかへんで、各画素に少し青成分を付加すれだけでよいのに、<br>付加する青成分が物体の明るさに依存した処理になっているのでは、と推定しています。</p>
-<h2 id="空気は青い！">空気は青い！</h2><p>結局、遠くの山が青く霞むのは、山から目までの空気が散乱した青い光を含むから、<br>と考えられます。すなわち空気自体が青いのです。</p>
+<p>カシミールの処理はなんだかへんで、各画素に青成分を付加すれだけでよいのに、<br>付加する青成分が物体の明るさに依存した処理(convolution)になっているのでは、と推定しています。</p>
+<h2 id="空気の青！">空気の青！</h2><p>結局、遠くの山が青く霞むのは、山から目までの空気が散乱した青い光を含むから、<br>と考えられます。すなわち <strong>空気自体が青い</strong> のです。</p>
 <ul>
 <li>もちろん青さはごくわずかだけど、空気の厚さに比例して青くなる</li>
 <li>空の青の場合、この厚さは 10km くらい</li>
-<li>でも「遠くの山」は視程がよければ 100km 以上でも見えるから、<br>この青さはかなりのものになる</li>
+<li>でも「遠くの山」は視程がよければ 100km 以上でも見えるから、<br>この青さは非常に強くなる</li>
 </ul>
 <p>地球は青かった　→　（正しくは）空気は青かった、<br>ということになりますね。</p>
 <h2 id="参考">参考</h2><ul>
@@ -341,139 +444,6 @@ B <input type="text" id="elBlue" value="40" style="width:32px">
   
 </div>
 	<a type="button" href="/2015/07/08/bluesky/bluesky-sim/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-07-08 </div>
-			<div class="article-title"><a href="/2015/07/08/bluesky-sim/" ></a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<script type="text/javascript">
-var gFile = "bluesky-off.jpg";
-var gWidth = 300;
-var gHeight = 156;
-
-onload = function() {
-    drawImage();
-};
-
-function drawImage() {
-    var ctx = elCanvas.getContext('2d');
-    var img = new Image();
-    img.src = gFile + "?" + new Date().getTime();
-    img.onload = function() {
-	ctx.drawImage(img, 0, 0, gWidth, gHeight);
-	// ctx.getImageData(0, 0, gWidth, gHeight);
-    }
-}
-
-function doConv() {
-    var delta = [parseInt(elRed.value),parseInt(elGreen.value),
-		 parseInt(elBlue.value)];
-    var keepbright = elKeep.checked;
-    console.log("keep=" + keepbright + ", drgb=" + delta);
-    var ctx = elCanvas.getContext('2d');
-    var idata = ctx.getImageData(0, 0, gWidth, gHeight);
-    var num = idata.data.length / 4;
-    for(var i=0; i < num; i++) {
-        var rgb = [idata.data[4*i], idata.data[4*i+1], idata.data[4*i+2]];
-        var newrgb = [rgb[0]+delta[0], rgb[1]+delta[1], rgb[2]+delta[2]];
-        if(keepbright) {
-	    var bright = rgb[0]+rgb[1]+rgb[2];
-	    var newbright = newrgb[0]+newrgb[1]+newrgb[2];
-	    var ratio = bright/newbright;
-	    idata.data[4*i]= ratio*newrgb[0];
-	    idata.data[4*i+1]= ratio*newrgb[1];
-	    idata.data[4*i+2]= ratio*newrgb[2];
-	} else {
-	    idata.data[4*i]= newrgb[0];
-	    idata.data[4*i+1]= newrgb[1];
-	    idata.data[4*i+2]= newrgb[2];
-	}
-    }
-    ctx.putImageData(idata, 0, 0);
-}
-</script>
-</head>
-
-<body>
-<h2>カシミール３Ｄ: 遠くを青く霞ませる</h2>
-
-<ul>
-<li>上段はカシミールでの撮影と、実際の写真
-</li><li>下段は上の 霞ませる=OFF の画像をもとに、以下の変換を行ったもの
-  <ul>
-  <li>keep brightness オフの場合： RGB の入力値を単に各画素の RGB に加えるだけ
-  </li><li>オンの場合： 同様だが、明るさを変えないように RGB値を元の明るさ
-／変換後の明るさ
-（ここでは単に RGB値の和）
-  </li></ul>
-</li></ul>
-
-<table>
-<tr><th>霞ませる=OFF</th><th>霞ませる=ON</th><th>写真</th></tr>
-<tr>
-<td>
-<img src="bluesky-off.jpg" width="300">
-</td>
-<td>
-<img src="bluesky-on.jpg" width="300">
-</td>
-<td>
-<img src="../bluesky-photo.jpg" width="300">
-</td>
-</tr>
-<tr>
-<th>Conversion</th>
-</tr>
-<tr>
-<td>
-<canvas id="elCanvas" width="300" height="156"></canvas>
-</td>
-<td>
-R <input type="text" id="elRed" value="0" style="width:32px">
-G <input type="text" id="elGreen" value="10" style="width:32px">
-B <input type="text" id="elBlue" value="40" style="width:32px">
-<input type="checkbox" id="elKeep" value="on">keep brightness
-<br>
-<input type="button" onclick="doConv();" value="Add Offset">
-<input type="button" onclick="drawImage();" value="Reset Image">
-</td>
-</tr>
-</table>
-
-なお写真は
-3月初めの11時頃、竜ヶ岳（富士山の西北約15km）山頂付近よりのもので、
-カシミールの撮影もそれに合わせて行いました。
-
-<hr>
-</body>
-</html>
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/07/08/bluesky-sim/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -919,15 +889,15 @@ console.log("map=" + map);
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2015/07/25/irreducible/" ><i class="fa fa-file-o"></i>間違い報告： 既約と可約（Joh著）などなど...</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/09/bluesky/" ><i class="fa fa-file-o"></i>遠くの山は青く霞むか？...</a>
       </li>
     
       <li>
         <a href="/2015/07/08/bluesky/bluesky-sim/" ><i class="fa fa-file-o"></i>...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/07/08/bluesky-sim/" ><i class="fa fa-file-o"></i>...</a>
       </li>
     
       <li>
@@ -1008,7 +978,6 @@ console.log("map=" + map);
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
    </html>
