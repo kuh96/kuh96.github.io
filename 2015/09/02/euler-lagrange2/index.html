@@ -119,12 +119,12 @@
 <h3 id="作用積分の変分の変換">作用積分の変分の変換</h3><p>変分の変換は</p>
 <p>$$<br>\begin{eqnarray}<br>\delta q_i(t) &amp;=&amp;<br>  \dfrac{\partial q_i}{\partial r_k} \delta r_k(t)<br>  \tag{時間の偏微分は入らないことに注意} \\<br>\delta \dot{q_i}(t) &amp;=&amp; \dfrac{d}{dt} \delta q_i(t) \\<br> &amp;=&amp; \dfrac{d}{dt}(\dfrac{\partial q_i}{\partial r_k}) \delta r_k(t)+<br>  \dfrac{\partial q_i}{\partial r_k} \delta \dot{r_k}(t)<br>\end{eqnarray}<br>$$</p>
 <p>作用積分とその変分の変換は</p>
-<p>$$<br>\begin{eqnarray}<br>S’ &amp;=&amp; \int_A^B dt L’(r_1,\dot{r_1},\cdots) \\<br>\delta S’ &amp;=&amp; \int_A^B dt (\dfrac{\partial L’}{\partial r_i} \delta r_i<br>  + \dfrac{\partial L’}{\partial \dot{r_i}} \delta \dot{r_i}) \\<br>\end{eqnarray}<br>$$</p>
-<p>$\delta S’$ の２つ目の項は</p>
-<p>$$<br>\begin{eqnarray}<br>\int_A^B dt \dfrac{\partial L’}{\partial \dot{r_i}} \delta \dot{r_i}<br> &amp;=&amp; \int_A^B dt \dfrac{\partial L}{\partial \dot{q_k}}<br>  \dfrac{\partial q_k}{\partial r_i} \delta \dot{r_i} \\<br>\end{eqnarray}<br>$$</p>
-<p>$\delta S’$ の最初の項は</p>
-<p>$$<br>\begin{eqnarray}<br>\int_A^B dt \dfrac{\partial L’}{\partial r_i} \delta r_i &amp;=&amp;<br>  \int_A^B dt (<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i} \delta r_i<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial r_i} \delta r_i)  \\<br>&amp;=&amp; \int_A^B dt (\dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{d}{dt} (\dfrac{\partial q_k}{\partial r_i}) \delta r_i ) \\<br>  &amp; &amp; (２項目を部分積分すると) \\<br>&amp;=&amp; \int_A^B dt \dfrac{\partial L}{\partial q_k} \delta q_k<br>  - \int_A^B dt \dfrac{\partial q_k}{\partial r_i} (<br>   \delta \dot{r_i} \dfrac{\partial L}{\partial \dot{q_k}}<br>   + \delta r_i \dfrac{d}{dt}( \dfrac{\partial L}{\partial \dot{q_k}}) )   \\<br>&amp;=&amp; \int_A^B dt \dfrac{\partial L}{\partial q_k} \delta q_k<br>  - \int_A^B dt \dfrac{\partial L}{\partial \dot{q_k}}<br>     \dfrac{\partial q_k}{\partial r_i} \delta \dot{r_i}<br>  - \int_A^B dt<br>     \delta q_k \dfrac{d}{dt}( \dfrac{\partial L}{\partial \dot{q_k}})    \\<br>\end{eqnarray}<br>$$</p>
-<p>２つを加えると、上の真ん中の項がキャンセルして、元の座標でのオイラー・ラグランジュ方程式から</p>
+<p>$$<br>\begin{eqnarray}<br>S’[r_1(t),\cdots,r_n(t)] = \int_A^B dt L’(r_1(t),\dot{r_1}(t),\cdots) \\<br> （左辺は r_1(t),\cdots,r_n(t) の「汎関数」の意味） \\<br>\delta S’ = \int_A^B dt (\dfrac{\partial L’}{\partial r_i} \delta r_i<br>  + \dfrac{\partial L’}{\partial \dot{r_i}} \delta \dot{r_i}) \\<br>\end{eqnarray}<br>$$</p>
+<p>積分の中の2つ目の項は</p>
+<p>$$<br>\begin{eqnarray}<br> \dfrac{\partial L’}{\partial \dot{r_i}} \delta \dot{r_i}<br> &amp;=&amp;  \dfrac{\partial L}{\partial \dot{q_k}}<br>  \dfrac{\partial q_k}{\partial r_i} \delta \dot{r_i} \\<br>\end{eqnarray}<br>$$</p>
+<p>最初の項は</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial L’}{\partial r_i} \delta r_i &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i} \delta r_i<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial r_i} \delta r_i  \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{d}{dt} (\dfrac{\partial q_k}{\partial r_i}) \delta r_i  \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} (\delta \dot{q_k} -<br>  \dfrac{\partial q_k}{\partial r_j} \delta \dot{r_j}) \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \delta \dot{q_k} -<br>  \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial q_k}{\partial r_j} \delta \dot{r_j}<br>\end{eqnarray}<br>$$</p>
+<p>２つを加えて積分すると、元の座標でのオイラー・ラグランジュ方程式から</p>
 <p>$$<br>\begin{eqnarray}<br>\delta S’<br>&amp;=&amp; \int_A^B dt \delta q_k (\dfrac{\partial L}{\partial q_k} -<br>      \dfrac{d}{dt}(\dfrac{\partial L}{\partial \dot{q_k}}))  \\<br>&amp;=&amp; 0<br>\end{eqnarray}<br>$$</p>
 <p>一方 $\delta S’$ を $\delta r_i$ で表すと</p>
 <p>$$<br>\begin{eqnarray}<br>\delta S’ &amp;=&amp;<br> \int_A^B dt \delta r_i (\dfrac{\partial L’}{\partial r_i}<br>   - \dfrac{d}{dt}(\dfrac{\partial L’}{\partial \dot{r_i}}))<br>\end{eqnarray}<br>$$</p>
@@ -140,13 +140,14 @@
 <p>結局、時間依存の座標変換の場合でも</p>
 <p>$$<br>\dfrac{\partial \dot{q_i}}{\partial r_j}<br>  = \dfrac{d}{dt} (\dfrac{\partial q_i}{\partial r_j}) \tag{速度の座標微分の変換}\\<br>$$</p>
 <p>が成り立ち、オイラー・ラグランジュ方程式は不変（共変的）となることが分かりました。</p>
+<p>なお上の変換はラグランジアンの具体的な形には依存していないので、</p>
 <h3 id="へんなこと？">へんなこと？</h3><p>上で説明した変分の場合、直接座標変換の場合いずれでも、<br>座標変換が１対１（逆変換を持つ）であることは、（表面的には）一切使っていません。</p>
 <p>極端な場合、各座標の変数の数が違ってもよいことになります。</p>
 <p>$$<br>q_i = q_i(r_1, \cdots, r_m, t) \ (i=1,\cdots, n)<br>$$</p>
 <p>これはどういうことなんでしょうか？ それとも、単にわたしの勘違い？？</p>
 <hr>
 <p>ここでは変換後の変分 $\delta r_k$ から元の座標系での変分 $\delta q_i$ を導いていますが、<br>元のクロメルさんの記事では、逆に、元の座標系での変分 $\delta q_i$ から変換後の変分 $\delta \eta_k$ を導いています。</p>
-<p>このためクロメルさんの (7) 式は、逆変換を持つことが前提になっています。</p>
+<p>このためクロメルさんの (7) 式は、逆変換を持つことが前提になっています。<br>また (8) (9) 式は間違ってる気がしますが？</p>
 <p>とりあえず以上です。疲れた～</p>
 	  
 	</div>
