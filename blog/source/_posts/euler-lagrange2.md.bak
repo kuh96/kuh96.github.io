@@ -1,0 +1,210 @@
+title: 改良版： オイラー・ラグランジュ方程式
+date: 2015-08-28 19:15
+tags:
+---
+
+(6)
+$$
+q_i = f_i(\
+$$
+
+(3) の手前
+
+
+## ちょっと復習
+
+なにしろ４０年ぶりのラグランジアンなので、変数・関数名などなるべく厳密に使い分けて、復習してみます。
+
+簡単のため以下では２次元とします。
+
+### 単なるスカラー関数としてのラグランジアン
+
+ラグランジアン自体は単なるスカラー関数です。
+今の場合２次元なので、質点の座標を表す変数 $x_1,x_2$、速度成分を表す変数 $v_1,v_2$、
+外力などラグランジアンの関数形自体の変化を表す時間 t の計５変数です。
+
+$$L(x_1, v_1, x_2, v_2, t)
+$$
+
+### 汎関数としてのラグランジアン
+
+上の座標変数に **任意の運動** を表す関数 $q_1(t), q_2(t)$ を代入すると、
+その運動での時間 t におけるラグランジアンの値が得らることになります。
+
+$$
+x_1 = q_1(t),\ \ v_1 = \dot{q}_1(t) \\\\
+x_2 = q_2(t),\ \ v_2 = \dot{q}_2(t) \\\\
+L(q_1(t), \dot{q}_1(t), q_2(t), \dot{q}_2(t))
+$$
+
+この関数 $q_1(t), q_2(t)$ の形を変化させて実際の運動を求めようというのが、変分の考え方でした。
+
+### ラグランジアンの時間積分
+
+変分するのはラグランジアンの時間積分（作用）です。
+
+$$
+S(q_1, q_2) = \int_A^B dt L(q_1(t), \dot{q}_1(t), q_2(t), \dot{q}_2(t), t) 
+$$
+
+左辺の $q_1, q_2$ は、関数を代入する変数名で、ここに実際の関数を与えて、
+右辺のように時間積分を計算する、という意味です。
+
+### 変分
+
+ある運動を表す関数 $q_1(t),q_2(t)$ と、それから少し異なった運動を表す関数
+$\bar{q}_1(t),\bar{q}_2(t)$ を考えます。 
+
+$g_1(t),g_2(t)$ を $t=A,B$ で 0 となる任意の関数とし、$\epsilon$ を小さくしていきます。
+
+$$
+\bar{q}_1(t) = q_1(t) + \epsilon g_1(t) \\\\
+\bar{\dot{q}}_1(t) = \dot{q}_1(t) + \epsilon \dot{g}_1(t) \\\\
+\bar{q}_2(t) = q_2(t) + \epsilon g_2(t) \\\\
+\bar{\dot{q}}_2(t) = \dot{q}_2(t) + \epsilon \dot{g}_2(t) \\\\
+$$
+
+そのときの $S$ の変化は
+
+$$
+\begin{eqnarray}
+\delta S &=& \int_A^B dt L(\bar{q}_1(t), \dot{\bar{q}}_1(t), \bar{q}_2(t), \dot{\bar{q}}_2(t), t) -
+   \int_A^B dt L(q_1(t), \dot{q}_1(t), q_2(t), \dot{q}_2(t), t) \\\\
+ &=& \epsilon \int_A^B dt \\{ 
+   \dfrac{\partial{L}}{\partial x_1} g_1(t) + 
+   \dfrac{\partial{L}}{\partial v_1} \dot{g}_1(t) +
+   \dfrac{\partial{L}}{\partial x_2} g_2(t) + 
+   \dfrac{\partial{L}}{\partial v_2} \dot{g}_2(t) \\} \\\\
+ &=& \epsilon \int_A^B dt \left\\{ 
+   \dfrac{\partial{L}}{\partial x_1} g_1(t) -
+   \dfrac{d}{dt} \left( \dfrac{\partial{L}}{\partial v_1} \right) g_1(t) +
+   \dfrac{\partial{L}}{\partial x_2} g_2(t) - 
+   \dfrac{d}{dt} \left( \dfrac{\partial{L}}{\partial v_2} \right) g_2(t) \right\\} 
+\end{eqnarray}
+$$
+
+$\epsilon$ を小さくしていっても 
+
+$$
+   \dfrac{\partial{L}}{\partial x_1} (q_1(t), \dot{q}_1(t), q_2(t), \dot{q}_2(t), t) -
+   \dfrac{d}{dt} \left( \dfrac{\partial{L}}{\partial p_1}  (q_1(t), \dot{q}_1(t), q_2(t), \dot{q}_2(t), t) \right) = 0 \\\\
+   \dfrac{\partial{L}}{\partial x_2} (q_1(t), \dot{q}_1(t), q_2(t), \dot{q}_2(t), t)  -
+   \dfrac{d}{dt} \left( \dfrac{\partial{L}}{\partial p_2} (q_1(t), \dot{q}_1(t), q_2(t), \dot{q}_2(t), t)  \right) = 0 \\\\
+$$
+
+## 座標変換
+
+座標変換
+
+$$
+x_1 = F_1(\bar{x}_1, \bar{x}_2, t) \\\\
+x_2 = F_2(\bar{x}_1, \bar{x}_2, t) \\\\
+\bar{x}_1 = F_1^{-1}(x_1, x_2, t) \\\\
+\bar{x}_2 = F_2^{-1}(x_1, x_2, t) \\\\
+$$
+
+関係式
+
+$$
+F_1(F_1^{-1}(x_1,x_2,t), F_2^{-1}(x_1,x_2,t), t) = x_1 \\\\
+\dfrac{\partial F_1}{\partial \bar{x}_1} \dfrac{\partial F_1^{-1}}{\partial x_1} +
+\dfrac{\partial F_1}{\partial \bar{x}_2} \dfrac{\partial F_2^{-1}}{\partial x_1} = 1 
+   (上を x1 で微分) \\\\
+\dfrac{\partial F_1}{\partial \bar{x}_1} \dfrac{\partial F_1^{-1}}{\partial x_2} +
+\dfrac{\partial F_1}{\partial \bar{x}_2} \dfrac{\partial F_2^{-1}}{\partial x_2} = 0
+   (上を x2 で微分) \\\\
+$$
+
+変分
+
+$$
+\bar{q}_1(t) \rightarrow \bar{q}_1(t) + \epsilon f_1(t) \\\\
+\bar{q}_2(t) \rightarrow \bar{q}_2(t) + \epsilon f_2(t) \\\\
+$$
+
+$$
+q_1(t) = F_1(\bar{q}_1 (t), \bar{q}_2 (t), t)
+\rightarrow \\\\
+F_1(\bar{q}_1(t) + \epsilon f_1(t) , \bar{q}_2(t) + \epsilon f_2(t) , t) 
+= F_1(\bar{q}_1(t), \bar{q}_2(t), t) + 
+\dfrac{\partial F_1}{\partial \bar{x}_1} \epsilon f_1(t) +
+\dfrac{\partial F_2}{\partial \bar{x}_1} \epsilon f_2(t)
+$$
+
+$$
+\dot{q}_1(t) \rightarrow \\\\
+\dot{q}_1(t) + 
+$$
+
+$$
+\bar{q}_1(t) = q_1(t) + \epsilon g_1(t) \\\\
+\bar{\dot{q}}_1(t) = \dot{q}_1(t) + \epsilon \dot{g}_1(t) \\\\
+\bar{q}_2(t) = q_2(t) + \epsilon g_2(t) \\\\
+\bar{\dot{q}}_2(t) = \dot{q}_2(t) + \epsilon \dot{g}_2(t) \\\\
+ 
+$$
+
+$$
+\begin{eqnarray}
+\dfrac{d}{dt} \left( \dfrac{\partial{L}}{\partial v_1} \right) g_1(t) +  \dfrac{d}{dt} \left( \dfrac{\partial{L}}{\partial v_2} \right) g_2(t) &=& \dfrac{d}{dt} \left( \dfrac{\partial{L}}{\partial v_1} \right) g_1(t) +  \dfrac{d}{dt} \left( \dfrac{\partial{L}}{\partial v_2} \right) g_2(t)  \\\\
+\end{eqnarray}
+$$
+
+$$
+\begin{eqnarray}
+  \dfrac{\partial{L}}{\partial x_1} g_1(t) + \dfrac{\partial{L}}{\partial x_2} g_2(t) &=&   \dfrac{\partial{L}}{\partial x_1} g_1(t) + \dfrac{\partial{L}}{\partial x_2} g_2(t) \\\\
+\end{eqnarray}
+$$
+
+
+http://hooktail.sub.jp/analytic/coodindep/
+
+**式の書き方だけの問題** と思いますが、いくつかへんです。
+
+> $$
+> q_i = f_i(\eta_j) \ \ \ (i,j = 1,2, \cdots n) \tag{2}
+> $$
+
+これでは $f_i$ は $\eta_j$ の１変数関数になってしまい、意味不明です。
+以下の意味では？
+
+$$
+q_i = f_i(\eta_1, ..., \eta_n) \ \ \ (i = 1,2, \cdots n) \tag{2'}
+$$
+
+以下も同様です。
+
+> $$
+> S = \sum_{i=1}^n \int_A^B L(q_i , \dot{q}_i) dt \tag{3}
+> $$
+
+これでは以下のように、異なる座標間で何の相互作用もない、つまらないラグランジアンしか作れません。
+
+$$
+\int_A^B dt \\{ L(q_1 , \dot{q}_1) + ... + L(q_n , \dot{q}_n) \\}
+$$
+
+以下の意味では？
+
+$$
+\int_A^B dt L(q_1, \dot{q}_1, ...,  q_n , \dot{q}_n) 
+$$
+
+従って (4) 式は以下のような感じになると思います。
+要は $\delta q_i, \delta \dot{q}_i$ を外に出してからでないと、$\sum$ の形にはなりません。
+
+$$
+\begin{eqnarray}
+\delta S &=& \delta \int\_A^B L(q\_1 , \dot{q}\_1, ...) dt \\\\
+ &=& \int\_A^B \left\\{ L(q\_1 + \delta q\_1, \dot{q}\_1+\delta \dot{q}\_1, ...) - L(q\_1 , \dot{q}\_1, ...) \right\\} dt \\\\
+ &=& \sum\_{i=1}^n \int\_A^B \left( \dfrac{\partial L(q\_1, \dot{q}\_1, ...)}{\partial q\_i}  \delta q\_i + \dfrac{\partial L(q\_1, \dot{q}\_1, ...)}{\partial \dot{q}\_i} \delta \dot{q}\_i \right) dt \tag{4'} \\\\
+ &=& ...
+\end{eqnarray}
+$$
+
+とりあえず以上です。
+
+
+
+
+
