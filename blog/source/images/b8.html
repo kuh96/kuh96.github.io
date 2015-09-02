@@ -54,6 +54,13 @@ function convPixel(rgb, decay, delta) {
     return [newr, newg, newb];
 }
 
+/**
+ * 露出補正
+ *   http://daredemopc.blog51.fc2.com/blog-entry-877.html
+ * 明度 ＝ （RGBの最大値＋RGBの最小値）÷２
+ * 輝度 ＝ 0.299×R ＋ 0.587×G ＋ 0.114×B （≒ 0.3R＋0.6G＋0.1B）
+ */
+
 function doConv() {
     var decay = parseInt(elDecay.value)/100;
     var delta = [parseInt(elRed.value),parseInt(elGreen.value),
@@ -89,7 +96,7 @@ function doConv() {
 <body>
 <h2>自家製改良版: 遠くを青くかすませる</h2>
 
-<a href="http://qiita.com/drafts/1a6cda9375894654e0d4">遠くの山は青く霞むか？</a> の自家製プログラムです。
+<a href="http://qiita.com/drafts/1a6cda9375894654e0d4">遠くの山は青くかすむか？</a> の自家製プログラムです。
 <p>
 サンプル画像: <select id="elSelect" onchange="onChange();">
 <option value="bluesky">竜ヶ岳より富士山（南東約15km)
