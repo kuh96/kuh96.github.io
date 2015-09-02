@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>補足：オイラー・ラグランジュ方程式の座標非依存性（クロメル著） | Kuh Crow</title>
+  <meta name="author" content="Kuh Crow">
+  
+  <meta name="description" content="ここではオイラー・ラグランジュ方程式の座標非依存性（クロメル著）http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.htmlの補足として、座標変換が時間に依存する場合でも成り立つことを示します。
+座標変換元の座標系を ${">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="補足：オイラー・ラグランジュ方程式の座標非依存性（クロメル著）"/>
+  <meta property="og:site_name" content="Kuh Crow"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Kuh Crow</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 補足：オイラー・ラグランジュ方程式の座標非依存性（クロメル著）</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>ここではオイラー・ラグランジュ方程式の座標非依存性（クロメル著）<br><a href="http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html" target="_blank" rel="external">http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html</a><br>の補足として、座標変換が時間に依存する場合でも成り立つことを示します。</p>
+<h3 id="座標変換">座標変換</h3><p>元の座標系を ${q_i}$, 時間依存の新座標を ${r_k}$ とします。</p>
+<p>$$<br>q_i = q_i(r_1, \cdots, r_n, t) \ (i=1,\cdots, n)  \tag{座標の変換}<br>$$</p>
+<p>いくつか計算しておきます。<br>以下変数を明示しませんが、関数としての $q_i, \dot{q_i}$ （偏微分の分子にくる場合）の独立変数は $(r_1,\dot{r_1}, \cdots, r_n, \dot{r_n}, t)$ です。 </p>
+<p>また例の簡約記法で、同じ添字同士は和をとるものとして $\sum$ を省略します。</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial q_i}{\partial \dot{r_j}} &amp;=&amp; 0 \tag{座標変換は速度には依存しない}\\<br>\dot{q_i}  &amp;=&amp;  \dfrac{d q_i}{dt}  \\<br> &amp;=&amp; \dfrac{\partial q_i}{\partial r_k} \dot{r_k} +  \dfrac{\partial q_i}{\partial t}  \tag{速度の変換} \\<br>\end{eqnarray}<br>$$</p>
+<p>上の $\dot{q_i}\  の式を\  r_j, \dot{r_j} $ で偏微分すると</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial \dot{q_i}}{\partial r_j}<br>  &amp;=&amp; \dfrac{\partial^2 q_i}{\partial r_j \partial r_k} \dot{r_k}<br>  + \dfrac{\partial^2 q_i}{\partial t \partial r_j}<br>  \\<br>  &amp;=&amp; \dfrac{d}{dt} (\dfrac{\partial q_i}{\partial r_j}) \tag{速度の座標微分の変換}\\<br>\dfrac{\partial \dot{q_i}}{\partial \dot{r_j}} &amp;=&amp; \dfrac{\partial q_i}{\partial r_j} \tag{速度の速度微分の変換} \\<br>\end{eqnarray}<br>$$</p>
+<h3 id="ラグランジアンの変換">ラグランジアンの変換</h3><p>元のラグランジアンを $L(q_1, \dot{q_1}, \cdots)$　とすると、<br>これを座標変換したラグランジアン $L’(r_1, \dot{r_1}, \cdots)$ は</p>
+<p>$$<br>\begin{eqnarray}<br>L’(r_1,\dot{r_1},\cdots) &amp;=&amp;<br>L(q_1(r_1,\dot{r_1},\cdots,t), \dot{q_1}(r_1,\dot{r_1},\cdots,t), \cdots) \\<br>\\<br>\dfrac{\partial L’}{\partial r_i} &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i} +<br>  \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial r_i} \\<br> &amp;=&amp;  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i}<br>  + \dfrac{\partial L}{\partial \dot{q_k}}<br>  \dfrac{d}{dt} (\dfrac{\partial q_k}{\partial r_i}) \\<br>\dfrac{\partial L’}{\partial \dot{r_i}} &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial \dot{r_i}}<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial \dot{r_i}} \\<br> &amp;=&amp;  \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial q_k}{\partial r_i} \\<br>\end{eqnarray}<br>$$</p>
+<h3 id="作用積分の変分の変換">作用積分の変分の変換</h3><p>変分の変換は</p>
+<p>$$<br>\begin{eqnarray}<br>\delta q_i(t) &amp;=&amp;<br>  \dfrac{\partial q_i}{\partial r_k} \delta r_k(t)<br>  \tag{時間の偏微分は入らないことに注意} \\<br>\delta \dot{q_i}(t) &amp;=&amp; \dfrac{d}{dt} \delta q_i(t) \\<br> &amp;=&amp; \dfrac{d}{dt}(\dfrac{\partial q_i}{\partial r_k}) \delta r_k(t)+<br>  \dfrac{\partial q_i}{\partial r_k} \delta \dot{r_k}(t)<br>\end{eqnarray}<br>$$</p>
+<p>作用積分とその変分の変換は</p>
+<p>$$<br>\begin{eqnarray}<br>S’[r_1(t),\cdots,r_n(t)] = \int_A^B dt L’(r_1(t),\dot{r_1}(t),\cdots) \\<br> （左辺は r_1(t),\cdots,r_n(t) の「汎関数」の意味） \\<br>\delta S’ = \int_A^B dt (\dfrac{\partial L’}{\partial r_i} \delta r_i<br>  + \dfrac{\partial L’}{\partial \dot{r_i}} \delta \dot{r_i}) \\<br>\end{eqnarray}<br>$$</p>
+<p>積分の中の2つ目の項は</p>
+<p>$$<br>\begin{eqnarray}<br> \dfrac{\partial L’}{\partial \dot{r_i}} \delta \dot{r_i}<br> &amp;=&amp;  \dfrac{\partial L}{\partial \dot{q_k}}<br>  \dfrac{\partial q_k}{\partial r_i} \delta \dot{r_i} \\<br>\end{eqnarray}<br>$$</p>
+<p>最初の項は</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial L’}{\partial r_i} \delta r_i &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i} \delta r_i<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial r_i} \delta r_i  \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{d}{dt} (\dfrac{\partial q_k}{\partial r_i}) \delta r_i  \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} (\delta \dot{q_k} -<br>  \dfrac{\partial q_k}{\partial r_j} \delta \dot{r_j}) \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \delta \dot{q_k} -<br>  \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial q_k}{\partial r_j} \delta \dot{r_j}<br>\end{eqnarray}<br>$$</p>
+<p>２つを加えて積分すると、元の座標でのオイラー・ラグランジュ方程式から</p>
+<p>$$<br>\begin{eqnarray}<br>\delta S’<br>&amp;=&amp; \int_A^B dt \delta q_k (\dfrac{\partial L}{\partial q_k} -<br>      \dfrac{d}{dt}(\dfrac{\partial L}{\partial \dot{q_k}}))  \\<br>&amp;=&amp; 0<br>\end{eqnarray}<br>$$</p>
+<p>一方 $\delta S’$ を $\delta r_i$ で表すと</p>
+<p>$$<br>\begin{eqnarray}<br>\delta S’ &amp;=&amp;<br> \int_A^B dt \delta r_i (\dfrac{\partial L’}{\partial r_i}<br>   - \dfrac{d}{dt}(\dfrac{\partial L’}{\partial \dot{r_i}}))<br>\end{eqnarray}<br>$$</p>
+<p>上は $i$ についての和ですが、$\delta r_i$ は任意なので、</p>
+<p>$$<br>\dfrac{d}{dt}(\dfrac{\partial L’}{\partial \dot{r_i}}) =<br>  \dfrac{\partial L’}{\partial r_i}<br>$$</p>
+<p>結局、（時間依存の）座標変換後も同じ形の オイラー・ラグランジュ方程式が成り立つことがわかりました。</p>
+<h3 id="オイラー・ラグランジュ方程式を直接変換">オイラー・ラグランジュ方程式を直接変換</h3><p>変分を使わずに、方程式を直接座標変換してももちろんできます。</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{d}{dt} ( \dfrac{\partial L’}{\partial \dot{r_i}} )  &amp;=&amp;<br>  \dfrac{d}{dt} (<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial \dot{r_i}}<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial \dot{r_i}}) \\<br> &amp;=&amp; \dfrac{d}{dt} ( \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial q_k}{\partial r_i})  \\<br> &amp;=&amp; \dfrac{d}{dt} ( \dfrac{\partial L}{\partial \dot{q_k}}) \dfrac{\partial q_k}{\partial r_i}<br>  + \dfrac{\partial L}{\partial \dot{q_k}}<br>     \dfrac{d}{dt} (\dfrac{\partial q_k}{\partial r_i}) \\<br>\end{eqnarray}<br>$$</p>
+<p>一方</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial L’}{\partial r_i} &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i}<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial r_i} \\<br>&amp;=&amp;  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i}<br>  + \dfrac{\partial L}{\partial \dot{q_k}}<br>     \dfrac{d}{dt}(\dfrac{\partial q_k}{\partial r_i}) \\<br>\end{eqnarray}<br>$$</p>
+<p>２つの差をとれば、</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{d}{dt} (\dfrac{\partial L’}{\partial \dot{r_i}} ) -<br>    \dfrac{\partial L’}{\partial r_i} &amp;=&amp;<br>  (\dfrac{d}{dt} (\dfrac{\partial L}{\partial \dot{q_k}}) -<br>    \dfrac{\partial L}{\partial q_k})<br>    \dfrac{\partial q_k}{\partial r_i}<br>&amp;=&amp; 0<br>\end{eqnarray}<br>$$</p>
+<p>結局、時間依存の座標変換の場合でも</p>
+<p>$$<br>\dfrac{\partial \dot{q_i}}{\partial r_j}<br>  = \dfrac{d}{dt} (\dfrac{\partial q_i}{\partial r_j}) \tag{速度の座標微分の変換}\\<br>$$</p>
+<p>が成り立ち、オイラー・ラグランジュ方程式は不変（共変的）となることが分かりました。</p>
+<p>なお上の変換はラグランジアンの具体的な形には依存していないので、</p>
+<h3 id="へんなこと？">へんなこと？</h3><p>上で説明した変分の場合、直接座標変換の場合いずれでも、<br>座標変換が１対１（逆変換を持つ）であることは、（表面的には）一切使っていません。</p>
+<p>極端な場合、各座標の変数の数が違ってもよいことになります。</p>
+<p>$$<br>q_i = q_i(r_1, \cdots, r_m, t) \ (i=1,\cdots, n)<br>$$</p>
+<p>これはどういうことなんでしょうか？ それとも、単にわたしの勘違い？？</p>
+<hr>
+<p>ここでは変換後の変分 $\delta r_k$ から元の座標系での変分 $\delta q_i$ を導いていますが、<br>元のクロメルさんの記事では、逆に、元の座標系での変分 $\delta q_i$ から変換後の変分 $\delta \eta_k$ を導いています。</p>
+<p>このためクロメルさんの (7) 式は、逆変換を持つことが前提になっています。<br>また (8) (9) 式は間違ってる気がしますが？</p>
+<p>とりあえず以上です。疲れた～</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/07/25/euler-lagrange/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comment</h2>
+
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-02 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 Kuh Crow
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+   </html>

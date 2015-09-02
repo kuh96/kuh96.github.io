@@ -108,6 +108,75 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2015-09-02 </div>
+			<div class="article-title"><a href="/2015/09/02/euler-lagrange2/" >補足：オイラー・ラグランジュ方程式の座標非依存性（クロメル著）</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>ここではオイラー・ラグランジュ方程式の座標非依存性（クロメル著）<br><a href="http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html" target="_blank" rel="external">http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html</a><br>の補足として、座標変換が時間に依存する場合でも成り立つことを示します。</p>
+<h3 id="座標変換">座標変換</h3><p>元の座標系を ${q_i}$, 時間依存の新座標を ${r_k}$ とします。</p>
+<p>$$<br>q_i = q_i(r_1, \cdots, r_n, t) \ (i=1,\cdots, n)  \tag{座標の変換}<br>$$</p>
+<p>いくつか計算しておきます。<br>以下変数を明示しませんが、関数としての $q_i, \dot{q_i}$ （偏微分の分子にくる場合）の独立変数は $(r_1,\dot{r_1}, \cdots, r_n, \dot{r_n}, t)$ です。 </p>
+<p>また例の簡約記法で、同じ添字同士は和をとるものとして $\sum$ を省略します。</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial q_i}{\partial \dot{r_j}} &amp;=&amp; 0 \tag{座標変換は速度には依存しない}\\<br>\dot{q_i}  &amp;=&amp;  \dfrac{d q_i}{dt}  \\<br> &amp;=&amp; \dfrac{\partial q_i}{\partial r_k} \dot{r_k} +  \dfrac{\partial q_i}{\partial t}  \tag{速度の変換} \\<br>\end{eqnarray}<br>$$</p>
+<p>上の $\dot{q_i}\  の式を\  r_j, \dot{r_j} $ で偏微分すると</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial \dot{q_i}}{\partial r_j}<br>  &amp;=&amp; \dfrac{\partial^2 q_i}{\partial r_j \partial r_k} \dot{r_k}<br>  + \dfrac{\partial^2 q_i}{\partial t \partial r_j}<br>  \\<br>  &amp;=&amp; \dfrac{d}{dt} (\dfrac{\partial q_i}{\partial r_j}) \tag{速度の座標微分の変換}\\<br>\dfrac{\partial \dot{q_i}}{\partial \dot{r_j}} &amp;=&amp; \dfrac{\partial q_i}{\partial r_j} \tag{速度の速度微分の変換} \\<br>\end{eqnarray}<br>$$</p>
+<h3 id="ラグランジアンの変換">ラグランジアンの変換</h3><p>元のラグランジアンを $L(q_1, \dot{q_1}, \cdots)$　とすると、<br>これを座標変換したラグランジアン $L’(r_1, \dot{r_1}, \cdots)$ は</p>
+<p>$$<br>\begin{eqnarray}<br>L’(r_1,\dot{r_1},\cdots) &amp;=&amp;<br>L(q_1(r_1,\dot{r_1},\cdots,t), \dot{q_1}(r_1,\dot{r_1},\cdots,t), \cdots) \\<br>\\<br>\dfrac{\partial L’}{\partial r_i} &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i} +<br>  \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial r_i} \\<br> &amp;=&amp;  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i}<br>  + \dfrac{\partial L}{\partial \dot{q_k}}<br>  \dfrac{d}{dt} (\dfrac{\partial q_k}{\partial r_i}) \\<br>\dfrac{\partial L’}{\partial \dot{r_i}} &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial \dot{r_i}}<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial \dot{r_i}} \\<br> &amp;=&amp;  \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial q_k}{\partial r_i} \\<br>\end{eqnarray}<br>$$</p>
+<h3 id="作用積分の変分の変換">作用積分の変分の変換</h3><p>変分の変換は</p>
+<p>$$<br>\begin{eqnarray}<br>\delta q_i(t) &amp;=&amp;<br>  \dfrac{\partial q_i}{\partial r_k} \delta r_k(t)<br>  \tag{時間の偏微分は入らないことに注意} \\<br>\delta \dot{q_i}(t) &amp;=&amp; \dfrac{d}{dt} \delta q_i(t) \\<br> &amp;=&amp; \dfrac{d}{dt}(\dfrac{\partial q_i}{\partial r_k}) \delta r_k(t)+<br>  \dfrac{\partial q_i}{\partial r_k} \delta \dot{r_k}(t)<br>\end{eqnarray}<br>$$</p>
+<p>作用積分とその変分の変換は</p>
+<p>$$<br>\begin{eqnarray}<br>S’[r_1(t),\cdots,r_n(t)] = \int_A^B dt L’(r_1(t),\dot{r_1}(t),\cdots) \\<br> （左辺は r_1(t),\cdots,r_n(t) の「汎関数」の意味） \\<br>\delta S’ = \int_A^B dt (\dfrac{\partial L’}{\partial r_i} \delta r_i<br>  + \dfrac{\partial L’}{\partial \dot{r_i}} \delta \dot{r_i}) \\<br>\end{eqnarray}<br>$$</p>
+<p>積分の中の2つ目の項は</p>
+<p>$$<br>\begin{eqnarray}<br> \dfrac{\partial L’}{\partial \dot{r_i}} \delta \dot{r_i}<br> &amp;=&amp;  \dfrac{\partial L}{\partial \dot{q_k}}<br>  \dfrac{\partial q_k}{\partial r_i} \delta \dot{r_i} \\<br>\end{eqnarray}<br>$$</p>
+<p>最初の項は</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial L’}{\partial r_i} \delta r_i &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i} \delta r_i<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial r_i} \delta r_i  \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{d}{dt} (\dfrac{\partial q_k}{\partial r_i}) \delta r_i  \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} (\delta \dot{q_k} -<br>  \dfrac{\partial q_k}{\partial r_j} \delta \dot{r_j}) \\<br>&amp;=&amp; \dfrac{\partial L}{\partial q_k} \delta q_k<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \delta \dot{q_k} -<br>  \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial q_k}{\partial r_j} \delta \dot{r_j}<br>\end{eqnarray}<br>$$</p>
+<p>２つを加えて積分すると、元の座標でのオイラー・ラグランジュ方程式から</p>
+<p>$$<br>\begin{eqnarray}<br>\delta S’<br>&amp;=&amp; \int_A^B dt \delta q_k (\dfrac{\partial L}{\partial q_k} -<br>      \dfrac{d}{dt}(\dfrac{\partial L}{\partial \dot{q_k}}))  \\<br>&amp;=&amp; 0<br>\end{eqnarray}<br>$$</p>
+<p>一方 $\delta S’$ を $\delta r_i$ で表すと</p>
+<p>$$<br>\begin{eqnarray}<br>\delta S’ &amp;=&amp;<br> \int_A^B dt \delta r_i (\dfrac{\partial L’}{\partial r_i}<br>   - \dfrac{d}{dt}(\dfrac{\partial L’}{\partial \dot{r_i}}))<br>\end{eqnarray}<br>$$</p>
+<p>上は $i$ についての和ですが、$\delta r_i$ は任意なので、</p>
+<p>$$<br>\dfrac{d}{dt}(\dfrac{\partial L’}{\partial \dot{r_i}}) =<br>  \dfrac{\partial L’}{\partial r_i}<br>$$</p>
+<p>結局、（時間依存の）座標変換後も同じ形の オイラー・ラグランジュ方程式が成り立つことがわかりました。</p>
+<h3 id="オイラー・ラグランジュ方程式を直接変換">オイラー・ラグランジュ方程式を直接変換</h3><p>変分を使わずに、方程式を直接座標変換してももちろんできます。</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{d}{dt} ( \dfrac{\partial L’}{\partial \dot{r_i}} )  &amp;=&amp;<br>  \dfrac{d}{dt} (<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial \dot{r_i}}<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial \dot{r_i}}) \\<br> &amp;=&amp; \dfrac{d}{dt} ( \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial q_k}{\partial r_i})  \\<br> &amp;=&amp; \dfrac{d}{dt} ( \dfrac{\partial L}{\partial \dot{q_k}}) \dfrac{\partial q_k}{\partial r_i}<br>  + \dfrac{\partial L}{\partial \dot{q_k}}<br>     \dfrac{d}{dt} (\dfrac{\partial q_k}{\partial r_i}) \\<br>\end{eqnarray}<br>$$</p>
+<p>一方</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial L’}{\partial r_i} &amp;=&amp;<br>  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i}<br>  + \dfrac{\partial L}{\partial \dot{q_k}} \dfrac{\partial \dot{q_k}}{\partial r_i} \\<br>&amp;=&amp;  \dfrac{\partial L}{\partial q_k} \dfrac{\partial q_k}{\partial r_i}<br>  + \dfrac{\partial L}{\partial \dot{q_k}}<br>     \dfrac{d}{dt}(\dfrac{\partial q_k}{\partial r_i}) \\<br>\end{eqnarray}<br>$$</p>
+<p>２つの差をとれば、</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{d}{dt} (\dfrac{\partial L’}{\partial \dot{r_i}} ) -<br>    \dfrac{\partial L’}{\partial r_i} &amp;=&amp;<br>  (\dfrac{d}{dt} (\dfrac{\partial L}{\partial \dot{q_k}}) -<br>    \dfrac{\partial L}{\partial q_k})<br>    \dfrac{\partial q_k}{\partial r_i}<br>&amp;=&amp; 0<br>\end{eqnarray}<br>$$</p>
+<p>結局、時間依存の座標変換の場合でも</p>
+<p>$$<br>\dfrac{\partial \dot{q_i}}{\partial r_j}<br>  = \dfrac{d}{dt} (\dfrac{\partial q_i}{\partial r_j}) \tag{速度の座標微分の変換}\\<br>$$</p>
+<p>が成り立ち、オイラー・ラグランジュ方程式は不変（共変的）となることが分かりました。</p>
+<p>なお上の変換はラグランジアンの具体的な形には依存していないので、</p>
+<h3 id="へんなこと？">へんなこと？</h3><p>上で説明した変分の場合、直接座標変換の場合いずれでも、<br>座標変換が１対１（逆変換を持つ）であることは、（表面的には）一切使っていません。</p>
+<p>極端な場合、各座標の変数の数が違ってもよいことになります。</p>
+<p>$$<br>q_i = q_i(r_1, \cdots, r_m, t) \ (i=1,\cdots, n)<br>$$</p>
+<p>これはどういうことなんでしょうか？ それとも、単にわたしの勘違い？？</p>
+<hr>
+<p>ここでは変換後の変分 $\delta r_k$ から元の座標系での変分 $\delta q_i$ を導いていますが、<br>元のクロメルさんの記事では、逆に、元の座標系での変分 $\delta q_i$ から変換後の変分 $\delta \eta_k$ を導いています。</p>
+<p>このためクロメルさんの (7) 式は、逆変換を持つことが前提になっています。<br>また (8) (9) 式は間違ってる気がしますが？</p>
+<p>とりあえず以上です。疲れた～</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/02/euler-lagrange2/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2015-07-25 </div>
 			<div class="article-title"><a href="/2015/07/25/euler-lagrange/" >間違い報告： オイラー・ラグランジュ方程式の座標非依存性（クロメル著）</a></div>						
 		</h3>
@@ -166,6 +235,7 @@
 	
 	  <h1 id="間違い報告：既約と可約（Joh著）などなど">間違い報告：既約と可約（Joh著）などなど</h1><p>Johさんは一杯書いてくれていてうれしいのですが、<br>ときどきへんな・間違った思い込みで突っ走ってしまうときがあるようです :-)</p>
 <p>ざっと見ただけで、また全然詳しくはないのですが、<br>明らかな間違いがいくつかあるので報告しておきます。</p>
+<p>(7/26）参考情報として、「多項式の因数分解と微分」を最後に追加</p>
 <h2 id="既約と可約（Joh著）">既約と可約（Joh著）</h2><p><a href="http://hooktail.sub.jp/algebra/Reducible/" target="_blank" rel="external">http://hooktail.sub.jp/algebra/Reducible/</a> の最後</p>
 <h4 id="定理">定理</h4><blockquote>
 <p>（標数 0 の係数体上の）既約な代数方程式は、重解を持ちません。　</p>
@@ -175,7 +245,7 @@
 </blockquote>
 <h4 id="間違い箇所_※2">間違い箇所 ※2</h4><p>$f(x)$ は $F$ 上既約なので、上の $\alpha$ はもちろん $F$ の元ではなく、<br>$f(x)$ が $(x-\alpha )$ で可約だということを <strong>意味しません</strong>。</p>
 <p>たとえば 有理数体上の多項式 $f(x)$ が拡大体上で<br>$f(x)=(x - \sqrt{2})^{2}g(x)$ と分解できたとしても、<br>$(x - \sqrt{2})^2 = (x^2- 2\sqrt{2}x + 2)$ は有理数体上の多項式ではありません。</p>
-<p>実は $g(x)$ のほうが必ず $(x + \sqrt{2})^2$ を因子にもつため、<br>これと合わさって $f(x) = (x^2 - 2)^{2}h(x)$ となるため、有理数体上で可約になるのです。</p>
+<p>実は $g(x)$ のほうが必ず $(x + \sqrt{2})^2$ を因子にもつため、<br>これと合わさって $f(x) = (x^2 - 2)^{2}h(x)$ となり、有理数体上で可約になるのです。</p>
 <p>以降、これと類似した間違いがいくつかあります。訂正は ※3 に後述。</p>
 <h2 id="代数的拡大体と最小多項式（Joh著）">代数的拡大体と最小多項式（Joh著）</h2><p><a href="http://hooktail.sub.jp/algebra/AlgebraicExtension/#id4" target="_blank" rel="external">http://hooktail.sub.jp/algebra/AlgebraicExtension/#id4</a></p>
 <h3 id="注および説明（へん！）">注および説明（へん！）</h3><p><strong>注</strong></p>
@@ -197,11 +267,11 @@
 <p>証明は簡単です。</p>
 <ul>
 <li>α は代数的数、よってそれを根とする F 上の多項式が存在</li>
-<li>そのうち次数が最小のものの１つを h(x) とする（定数倍を除いてい１つに決まる）</li>
-<li>F 上で h(x)=g(x)k(x) なら g(α)=0 or h(α)=0</li>
-<li>α を根とする F 上の多項式を h(x) で割った余りを r(x) とすれば r(α)=0</li>
+<li>そのうち次数が最小のものの１つを h(x) とする(定数倍を除いて１つに決まる). 当然 h(a) = 0</li>
+<li>F 上で h(x)=g(x)k(x) なら g(α)=0 or k(α)=0  ‥(A) </li>
+<li>α を根とする F 上の多項式を h(x) で割った余りを r(x) とすれば r(α)=0 ‥(B) </li>
 </ul>
-<p>h(x) は最小次数だったので、h(x)は F 上既約で、α を根とする F上のすべての多項式を割り切ることがわかります。</p>
+<p>h(x) は最小次数だったので、h(x) は (A)より F 上既約で、(B)より α を根とする F上のすべての多項式を割り切ることがわかります。</p>
 <h3 id="段落最後の例_（まちがい!）">段落最後の例 （まちがい!）</h3><blockquote>
 <p> $Q(\omega)$ ($\omega$ は 1 の三乗根)の元が $a+\omega b+\omega^{2} c$ の形に書ける</p>
 </blockquote>
@@ -216,6 +286,7 @@
 <blockquote>
 <p>公約元 $(x−\alpha)$ を持ちますので，既約ではありません．</p>
 </blockquote>
+<p>$(x−\alpha)$ は F 上の多項式ではないので、これはとんでもないまちがいです。</p>
 <h4 id="訂正_※3">訂正 ※3</h4><p>公約元として <strong>α の最小多項式をもつので</strong>、既約ではありません．</p>
 <p>$f(x)$ と $f’(x)$ が共通因子 $(x - \alpha)$ を持つとする。<br>$\alpha$ の最小多項式を $h(x)$ とすると、$h(x)$ は $f(x),f’(x)$ を割り切るが、<br>$f’(x)$ の次数は $f(x)$ より 1 小さいので、$h(x)$ の次数は $f(x)$ より 1 以上小さい。<br>したがって $f(x)$ は $h(x)$ の定数倍ではなく、従って可約である。</p>
 <h3 id="標数≠０の場合、の説明（完全にまちがい！）">標数≠０の場合、の説明（完全にまちがい！）</h3><p><a href="http://hooktail.sub.jp/algebra/SeparableExtension/#id3" target="_blank" rel="external">http://hooktail.sub.jp/algebra/SeparableExtension/#id3</a></p>
@@ -225,14 +296,34 @@
 </blockquote>
 <h4 id="間違い理由">間違い理由</h4><p>とんでもないです。上の２つとも既約であるとは限りません。</p>
 <p>例えば 標数 3 の素体 $F_{3} = \{0,1,2\}$ 上では、以下のように因数分解できます。</p>
-<p>$$<br>x^3 + 1^3 = x^3 + 1 = (x + 1)(x^2 - x + 1)  \\<br>x^3 + 2^3 = x^3 + 2 = (x + 2)(x^2 - 2x + 4) \\<br>$$</p>
-<p>実際、$標数 \ p \ の有限体 \ K \ では、\forall \beta \in K$ に対して、$\beta \ の p 乗根 \  \beta^{1/p}$ がただ１つ存在し、<br>有限体 K の任意の代数的拡大は分離拡大である、とのことです。</p>
+<p>$$<br>x^3 + 1 = x^3 + 1^3 = (x + 1)^3  \\<br>x^3 + 2 = x^3 + 2^3 = (x + 2)^3 \\<br>$$</p>
+<p>標数 p が素数の素体では、任意の元 $a$ に対して $a^p=a$ （フェルマーの小定理!）、すなわち自分自身が自分の p 乗根です。</p>
+<p>さらに、標数 p の有限体 K では、$\forall \beta \in K$ に対して、$\beta$ の p 乗根 $\beta^{1/p}$ がただ１つ存在し、<br>有限体 K の任意の代数的拡大は分離拡大である、とのことです。</p>
 <ul>
 <li>松坂和夫　代数系入門 p.272 問題 4, 5</li>
 </ul>
 <p>従って、既約だが重根をもつ例をつくるには、<br>標数 p ≠ 0 の無限体、例えば有限体上の有理関数、などを考える必要があります。</p>
-<hr>
 <p>とりあえず以上です。疲れた～</p>
+<hr>
+<h3 id="参考：_多項式の因数分解と微分_(7/26_追記）">参考： 多項式の因数分解と微分 (7/26 追記）</h3><p>重根の有無の判定に微分を使いますが、誰が考えたのか賢い方法ですね。<br>y = f(x) のグラフを描くと、重根のときには x 軸に接する、すなわち f(x) = 0, f’(x) = 0 となる x が重根になるわけです。</p>
+<p>これに関連して、(おおきな)多項式を因数分解するときには、<strong>まず微分して重根を持つかを調べる</strong><br>というのが鉄則みたいです。</p>
+<p>すなわち f(x) をまず $f(x) = a_1(x) a_2(x)^2 a_3(x)^3 .. a_k(x)^k$ の形に因数分解します。<br><a href="https://en.wikipedia.org/wiki/Square-free_polynomial" target="_blank" rel="external">square-free factorization</a></p>
+<p>これは高速かつ簡単にできます。</p>
+<ul>
+<li>f(x) の微分 f’(x) を求める ～　多項式の微分は簡単！</li>
+<li>f(x) と f’(x) の最大公約因子 m(x) を求める<ul>
+<li>これはユークリッドの互除法により高速にできます</li>
+</ul>
+</li>
+<li>最大公約因子 m(x) が 0 次でなければ、それで f(x) を割っていけば、<br>$f(x) = m(x)^k g(x)$ の k (≧ 2）と g(x) が求まります.<br>すなわち因数分解が一段階できたことになります。<br>多項式の割り算は手動では面倒ですが、プログラムを作れば簡単</li>
+<li>次に g(x) に対して同じことを繰り返せば、上の square-free factorization の形になります</li>
+<li>そのあと、 $a_1(x), a_2(x) …$ それぞれの因数分解を試みます<ul>
+<li>この因数分解の決定的な方法は知られていません.<br>しかしラッキーなら　$a_1(x), a_2(x) …$ それぞれの次数は元の f(x) より大幅に小さいくなっているはずです</li>
+</ul>
+</li>
+</ul>
+<p>因数分解には通常、なんらかの <strong>試行錯誤</strong> が必要ですが、<br>square-free factorization までは、多項式の微分、割り算、ユークリッドの互除法という決定的かつ効率のよい方法でできてしまう、ということです。</p>
+<p>以上、参考情報でした。</p>
 
 	
 	</div>
@@ -363,8 +454,8 @@ console.log("map=" + map);
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2015-06-23 </div>
-			<div class="article-title"><a href="/2015/06/23/right-js/" >JavaScript の正しい覚え方</a></div>						
+			<div class="date"> 2015-06-09 </div>
+			<div class="article-title"><a href="/2015/06/09/http-referer/" >HTTP Refefer ヘッダー問題</a></div>						
 		</h3>
 	
 
@@ -375,63 +466,14 @@ console.log("map=" + map);
 	<div class="col-md-12">
 	  
 	
-	  <h2 id="万物は_Map_である">万物は Map である</h2><p>JavaScript の基本構造は　Map （連想配列）です。<br>もちろん他に、数値、配列、いくつかの組み込みクラス・モジュール（Mathなど）、<br>いくつかの組み込みオブジェクト (Stringなど）があります。<br>関数オブジェクトについては後述。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = &#123;name: <span class="string">'whoami'</span>&#125;; <span class="comment">// Mapのリテラル表現</span></span><br><span class="line"><span class="built_in">console</span>.log(map);</span><br></pre></td></tr></table></figure>
-<h2 id="グローバル_Map">グローバル Map</h2>
+	  <p>知る人ぞ知る、知らない人は知らない（あたりまえだけど）、<br>セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。</p>
+<h2 id="HTTP_Refefer_ヘッダー問題">HTTP Refefer ヘッダー問題</h2><h2 id="あなたの知らないうちに">あなたの知らないうちに</h2><h2 id="対策">対策</h2><h2 id="google_visualization">google visualization</h2>
 	
 	</div>
 	
   
 </div>
-	<a type="button" href="/2015/06/23/right-js/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-06-20 </div>
-			<div class="article-title"><a href="/2015/06/20/prog-q/" >ほんとうにつまらないプログラミング問題などなど</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p><strong>プログラミングセンスを問う問題</strong>、といいたいのですが、<br>ほんとうにつまらないプログラミング問題を少し。</p>
-<p>ついでに独断と偏見にみちたコーディングルールみたいなものも。</p>
-<p>なおわたし自身のプログラミングセンスはきわめて疑わしいので、<br>あんまり参考にしないでください！</p>
-<h4 id="問題１">問題１</h4><p>整数 a, b が a &gt; b のとき真を返す関数 greaterThan を書け。<br>以下は C言語と Javaでの関数宣言を示すが、他の言語でもかまわない。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define FALSE 0&#10;#define TRUE 1&#10;&#10;int greaterThan(int a, int b) &#123;&#10;    ....&#10;&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boolean greaterThan(int a, int b) &#123;&#10;   ....&#10;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="問題２">問題２</h4><p>正の整数 a を 1000未満の桁を切り上げて 1000 の桁に丸める関数 roundUp を書け。<br>例: a=999 なら 1000, a=1000 なら 1000 a=1001 なら 2000</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int roundUp(int a) &#123;&#10;   ....&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>同様に、正の整数 a を 1000 未満の桁を四捨五入して、1000 の桁に丸める関数を書け。<br>例: a=499 なら 0, a=1500 なら 2000 a=2499 なら 2000</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int round(int a) &#123;&#10;   ....&#10;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="問題_3">問題 3</h4><p>以下の級数の値を求めよ。</p>
-<p>公式忘れた？<br>でもコンピュータ屋・ソフト屋なら <strong>一瞬で</strong> わからないと、もぐりと言われる！</p>
-<p>$$<br>\begin{eqnarray}<br>S &amp;=&amp; \sum^{\infty}_{k=1} 1 / 2^k \\<br>  &amp;=&amp; 1/2 + 1/4 + 1/8 + 1/16 + …<br>\end{eqnarray}<br>$$</p>
-<h3 id="へんなルール:_真偽値の比較">へんなルール:　真偽値の比較</h3><p>たぶん皆さんの C言語のコーディングルールにも、<br><strong>真偽値を TRUE(=1) と比較してはならない</strong> というのがあると思う。<br>C言語では、0 以外はすべて真であるから当然である。</p>
-<p>でもこのルールはおかしい！<br>真偽値は TRUE とも FALSE とも比較する必要はない！<br>どうすればよいか？</p>
-<h3 id="へんなルール:_else_なし_if文">へんなルール: else なし if文</h3><p>判定漏れを防止するため <strong>if 文には必ず else 節をつけること</strong>。<br>if節　あるいは　else節は空文 (コメントで // nop とか）でもよい。</p>
-<p>このルールもおかしい！<br>たくさんの異常値/想定外の場合をはねるのには、<br>積極的に <strong>大量の elseなし if文を羅列</strong> すべきである。</p>
-<h3 id="へんなルール３:_脱出点は１つにすべきである">へんなルール３: 脱出点は１つにすべきである</h3><p><strong>ループの continue, break, また複数箇所の return は避けるべきである</strong>。</p>
-<p>これも上と同様、まったくおかしい！<br>むしろ、脱出すべきであると分かった時点で、即脱出すべきである。</p>
-<p>なぜなら、余計なことを見なくてよい、心配しなくてよい、コードが短くなる！<br>バグ探しや改良など、短いコード、どこを見ればよいかがすぐ分かるコードが一番よいのである。</p>
-<h3 id="へんなルール３">へんなルール３</h3><h3 id="へんなルール">へんなルール</h3><p>（オブジェクト指向） 必ず this をつける！</p>
-<p>static メソッド</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/06/20/prog-q/#more" class="btn btn-default more">Read More</a>
+	<a type="button" href="/2015/06/09/http-referer/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -553,90 +595,6 @@ console.log("map=" + map);
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2015-06-09 </div>
-			<div class="article-title"><a href="/2015/06/09/http-referer/" >HTTP Refefer ヘッダー問題</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>知る人ぞ知る、知らない人は知らない（あたりまえだけど）、<br>セキュリティに間する　HTTP Refefer ヘッダー問題　というのがある。</p>
-<h2 id="HTTP_Refefer_ヘッダー問題">HTTP Refefer ヘッダー問題</h2><h2 id="あなたの知らないうちに">あなたの知らないうちに</h2><h2 id="対策">対策</h2><h2 id="google_visualization">google visualization</h2>
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/06/09/http-referer/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-06-06 </div>
-			<div class="article-title"><a href="/2015/06/06/POIPOI/" >hexo 練習...</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h1 id="hexo_練習中です">hexo 練習中です</h1><p>まだまだ練習中ですが。。。</p>
-<ul>
-<li>shynx などに比べるとシンプル？</li>
-<li>Markdowon はやっぱり楽</li>
-<li>github に直接 deploy できるのがうれしい</li>
-</ul>
-<h1 id="Image">Image</h1><p>source/images フォルダーを作り、そこに入れるのが簡単</p>
-<p><img src="/images/shirouma-ooike.jpg"></p>
-<h1 id="数式">数式</h1><p>$a + b$ のように mathjax が使えます。</p>
-<p>$$<br>\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)<br>$$</p>
-<ul>
-<li><a href="http://yukiyamashina.github.io/blog/2014/09/19/blog-at-github-using-hexo/" target="_blank" rel="external">http://yukiyamashina.github.io/blog/2014/09/19/blog-at-github-using-hexo/</a> にのっていたプラグイン４つともインストール。</li>
-</ul>
-<p>deploy すると mathjax が表示されない？</p>
-<ul>
-<li><a href="http://cdn.mathjax" target="_blank" rel="external">http://cdn.mathjax</a> … と生成されてしまうため</li>
-<li>とりあえず <a href="http://xxx.github.io" target="_blank" rel="external">http://xxx.github.io</a> で見る</li>
-</ul>
-<h1 id="シンタックス">シンタックス</h1><p><a href="http://qiita.com" target="_blank" rel="external">Qiita</a>のようにシンタックスハイライトされます。</p>
-<ul>
-<li><a href="http://tech.admax.ninja/2014/09/11/how-to-write-article-in-hexo/" target="_blank" rel="external">http://tech.admax.ninja/2014/09/11/how-to-write-article-in-hexo/</a> </li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</span><br><span class="line">  res.end(<span class="string">'Hello World\n'</span>);</span><br><span class="line">&#125;).listen(<span class="number">1337</span>, <span class="string">'127.0.0.1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:1337/'</span>);</span><br></pre></td></tr></table></figure>
-<p>``` の次に言語名を書けばOKだったが、file.js のような書き方ではハイライトされない？</p>
-<h1 id="（ローカルの）_hexo_server">（ローカルの）　hexo server</h1><p>なぜかすぐ落ちます。なにかおかしい？？</p>
-<p>ほとんど hexo generate してブラウザで見るたびに毎回！<br>これなら hexo generate &amp;&amp; hexo server したほうがましかも。</p>
-<p>いっそ毎回 hexo d -g すればよい？</p>
-<h1 id="Other_Reference">Other Reference</h1><ul>
-<li><a href="http://liginc.co.jp/web/html-css/html/96453" target="_blank" rel="external">Git初心者でも大丈夫！完全無料でGithub PagesにWebページを公開する方法</a></li>
-<li><a href="http://liginc.co.jp/web/programming/server/104594" target="_blank" rel="external">所要時間3分!? Github PagesとHEXOで爆速ブログ構築してみよう！</a></li>
-</ul>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/06/06/POIPOI/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
 			<div class="date"> 2014-06-30 </div>
 			<div class="article-title"><a href="/2014/06/30/IceThickness/" >氷の厚さ？</a></div>						
 		</h3>
@@ -665,6 +623,41 @@ console.log("map=" + map);
 </div>
 
 		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 1970-07-07 </div>
+			<div class="article-title"><a href="/1970/07/07/hello-world/" >Hello World</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/1970/07/07/hello-world/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
 
 		</div>
 
@@ -674,16 +667,6 @@ console.log("map=" + map);
 		<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
-
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-
-		
-		   <li class="next"> <a href="/page/2/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
-        
-	
 </ul>
 </div>
 
@@ -717,6 +700,10 @@ console.log("map=" + map);
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2015/09/02/euler-lagrange2/" ><i class="fa fa-file-o"></i>補足：オイラー・ラグランジュ方程式の座標非依存性（クロ...</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/25/euler-lagrange/" ><i class="fa fa-file-o"></i>間違い報告： オイラー・ラグランジュ方程式の座標非依存...</a>
       </li>
     
@@ -730,10 +717,6 @@ console.log("map=" + map);
     
       <li>
         <a href="/2015/06/24/js01/" ><i class="fa fa-file-o"></i>...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/06/23/right-js/" ><i class="fa fa-file-o"></i>JavaScript の正しい覚え方...</a>
       </li>
     
   </ul>
