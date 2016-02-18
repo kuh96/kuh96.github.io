@@ -7,7 +7,8 @@
   <meta name="author" content="Kuh Crow">
   
   <meta name="description" content="ここではオイラー・ラグランジュ方程式の座標非依存性（クロメル著）http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.htmlの補足として、座標変換が時間に依存する場合でも成り立つことを示します。
-座標変換元の座標系を ${">
+　変更履歴
+2015-09">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -107,11 +108,14 @@
 	<!-- content -->
 	<div class="mypage">		
 	    <p>ここではオイラー・ラグランジュ方程式の座標非依存性（クロメル著）<br><a href="http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html" target="_blank" rel="external">http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html</a><br>の補足として、座標変換が時間に依存する場合でも成り立つことを示します。</p>
+<h4 id="変更履歴">　変更履歴</h4><ul>
+<li>2015-09-03 式番号と説明を追加</li>
+</ul>
 <h3 id="座標変換">座標変換</h3><p>元の座標系を ${q_i}$, 時間依存の新座標を ${r_k}$ とします。</p>
-<p>$$<br>q_i = q_i(r_1, \cdots, r_n, t) \ (i=1,\cdots, n)  \tag{座標の変換}<br>$$</p>
+<p>$$<br>q_i = q_i(r_1, \cdots, r_n, t) \ (i=1,\cdots, n)  \tag{1) (座標の変換}<br>$$</p>
 <p>いくつか計算しておきます。<br>以下変数を明示しませんが、関数としての $q_i, \dot{q_i}$ （偏微分の分子にくる場合）の独立変数は $(r_1,\dot{r_1}, \cdots, r_n, \dot{r_n}, t)$ です。 </p>
 <p>また例の簡約記法で、同じ添字同士は和をとるものとして $\sum$ を省略します。</p>
-<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial q_i}{\partial \dot{r_j}} &amp;=&amp; 0 \tag{座標変換は速度には依存しない}\\<br>\dot{q_i}  &amp;=&amp;  \dfrac{d q_i}{dt}  \\<br> &amp;=&amp; \dfrac{\partial q_i}{\partial r_k} \dot{r_k} +  \dfrac{\partial q_i}{\partial t}  \tag{速度の変換} \\<br>\end{eqnarray}<br>$$</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial q_i}{\partial \dot{r_j}} &amp;=&amp; 0 \tag{2)(座標変換は速度に非依存}\\<br>\dot{q_i}  &amp;=&amp;  \dfrac{d q_i}{dt}  \\<br> &amp;=&amp; \dfrac{\partial q_i}{\partial r_k} \dot{r_k} +  \dfrac{\partial q_i}{\partial t}  \tag{3)(速度の変換} \\<br>\end{eqnarray}<br>$$</p>
 <p>上の $\dot{q_i}\  の式を\  r_j, \dot{r_j} $ で偏微分すると</p>
 <p>$$<br>\begin{eqnarray}<br>\dfrac{\partial \dot{q_i}}{\partial r_j}<br>  &amp;=&amp; \dfrac{\partial^2 q_i}{\partial r_j \partial r_k} \dot{r_k}<br>  + \dfrac{\partial^2 q_i}{\partial t \partial r_j}<br>  \\<br>  &amp;=&amp; \dfrac{d}{dt} (\dfrac{\partial q_i}{\partial r_j}) \tag{速度の座標微分の変換}\\<br>\dfrac{\partial \dot{q_i}}{\partial \dot{r_j}} &amp;=&amp; \dfrac{\partial q_i}{\partial r_j} \tag{速度の速度微分の変換} \\<br>\end{eqnarray}<br>$$</p>
 <h3 id="ラグランジアンの変換">ラグランジアンの変換</h3><p>元のラグランジアンを $L(q_1, \dot{q_1}, \cdots)$　とすると、<br>これを座標変換したラグランジアン $L’(r_1, \dot{r_1}, \cdots)$ は</p>
@@ -157,9 +161,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/2016/02/18/vari-func/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
@@ -218,7 +222,7 @@
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2015 Kuh Crow
+  &copy; 2016 Kuh Crow
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>

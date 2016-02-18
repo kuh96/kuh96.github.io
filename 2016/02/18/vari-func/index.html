@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>変分問題を関数プログラミングしてみる | Kuh Crow</title>
+  <meta name="author" content="Kuh Crow">
+  
+  <meta name="description" content="変分問題は 汎関数 （関数を変数とする関数）を対象に、その最小化や最大化などを扱います。
+関数を変数とする関数、ということで JavaScript で関数プログラミングするとどんな感じになるか試してみました。
+
+なお小生、いまだに JavaScript に不自由な方、です。。。（自慢すんな！）
+一部">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="変分問題を関数プログラミングしてみる"/>
+  <meta property="og:site_name" content="Kuh Crow"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Kuh Crow</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 変分問題を関数プログラミングしてみる</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>変分問題は <strong>汎関数</strong> （関数を変数とする関数）を対象に、その最小化や最大化などを扱います。</p>
+<p>関数を変数とする関数、ということで JavaScript で関数プログラミングするとどんな感じになるか試してみました。</p>
+<ul>
+<li>なお小生、いまだに JavaScript に不自由な方、です。。。（自慢すんな！）</li>
+<li>一部だけですが、恐る恐る ECMAScript 6 の機能を使ってみました</li>
+</ul>
+<h3 id="例題">例題</h3><p>ここでは古典力学のラグランジアンと最小作用の原理を例にします。また簡単のため１粒子の１次元運動のみを扱います。</p>
+<h4 id="ラグランジアン">ラグランジアン</h4><p>エネルギーの次元をもつ以下の量を表す関数をラグランジアンといいます。ここで x は粒子の位置座標、 v は速度。</p>
+<p>$$<br>\begin{eqnarray}<br>L(x, v) &amp;=&amp; \mathbf{運動エネルギー - ポテンシャルエネルギー} \\<br>        &amp;=&amp; \frac{1}{2} M v^2 - U(x)<br>\end{eqnarray}<br>$$</p>
+<p>例えば、質量 $M$ バネ定数 $K$ の振動子のラグランジアンは以下になります。</p>
+<p>$$<br>L_{oscillator}(x, v) = \frac{1}{2} M v^2 - \frac{1}{2} K x^2<br>$$</p>
+<h4 id="作用積分">作用積分</h4><p>あるラグランジアンに対して、以下の形の時間積分を作用あるいは作用積分といいます。</p>
+<p>$$<br>S[x(t)] = \int_{t0}^{t1} L(x(t), \dot{x}(t)) dt<br>\ \ ただし \  \dot{x}(t) = \dfrac{d x(t)}{dt}<br>$$</p>
+<p>ここで、t0, t1 は任意に固定した時刻、$x(t)$ は粒子の運動を表す <strong>任意の関数</strong> です。<br>$S$ は任意の関数 $x(t)$ を変数とする関数、すなわち汎関数で、汎関数であることを示すために、$S[x(t)]$ と書きます。</p>
+<h4 id="最小作用の原理">最小作用の原理</h4><p>上の作用積分 $S[x(t)]$ の変数 x(t) は<strong>任意の関数</strong>でよいのですが、<br>$S[x(t)]$ を最小にするような関数が <strong>実際に起こる運動</strong> となることが知られています。（正しくは「最小」でなく「<strong>停留</strong>」です）</p>
+<p>このための必要条件は、関数 $x(t)$ を少し変えた関数 $x(t) + \delta x(t)$ を考えたとき、$S$ が変化しないこと、すなわち以下で表せます。</p>
+<p>$$<br>\delta S[x(t)] = S[x(t) + \delta x(t)] - S[x(t)] = 0 \hspace{5em} (A)<br>$$</p>
+<p>ただし <strong>境界条件</strong> として、積分の両端では値が変わらないとします。すなわち </p>
+<p>$$\delta x(t0) = \delta x(t1) = 0  \hspace{5em} (B)<br>$$</p>
+<h3 id="プログラム">プログラム</h3><p>通常は作用積分の停留条件から得られるオイラー・ラグランジュの方程式（２階の微分方程式）を解いて実際の運動を求めるのですが、<br>ここでは上の作用積分 $S[x(t)]$ を数値的に求めるプログラムを作成し、$x(t)$ を変化させて $S[x(t)]$ の変化を調べてみます。</p>
+<h4 id="振動子のラグランジアン">振動子のラグランジアン</h4><p>以下は、質量 M, バネ定数 K の振動子のラグランジアン $L(x,v)$ を作成します。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function oscillator(M,K) &#123;&#10;    return function(x,v) &#123;&#10;&#9;return 0.5*(M*v*v - K*x*x);&#10;    &#125;;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="数値微分演算子">数値微分演算子</h4><p>以下はきざみ幅 dt で、与えられた関数を数値微分する微分演算子を作成します。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function D_t(dt) &#123;&#10;    return function(func_t) &#123;&#10;&#9;return function(t) &#123;&#10;&#9;    return (func_t(t + 0.5*dt) - func_t(t - 0.5*dt)) / dt;&#10;&#9;&#125;;&#10;    &#125;;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>D_t(dt)(func) は関数 func の微分を表す関数（すなわち導関数）を返します。<br>（これも関数を変数にとる関数だが、通常、値・数値を返す関数を <strong>汎関数</strong>、<br>　別の関数を返す関数は <strong>演算子,作用素</strong> というようです）</p>
+<p>テストをかねて、以下の f, df, ddf を google chart でプロットしてみます。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var d_t = D_t(0.0001); // &#25968;&#20516;&#24494;&#20998;&#28436;&#31639;&#23376;&#10;var f = Math.cos;      // &#24494;&#20998;&#12377;&#12427;&#38306;&#25968;&#10;var df  = d_t(f);      // &#12381;&#12398;&#23566;&#38306;&#25968;&#10;var ddf = d_t(d_t(f)); // 2&#27425;&#12398;&#23566;&#38306;&#25968;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/vari-diff.png" alt=""></p>
+<h4 id="数値定積分演算子">数値定積分演算子</h4><p>以下は、区間 [t0, t1] を分割数 ndiv で数値積分する数値定積分演算子を作成します。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function Int_t(t0, t1, ndiv) &#123;&#10;    var dt = (t1 - t0)/ndiv;&#10;    return function(func_t) &#123;&#10;&#9;var t = t0 + 0.5*dt;&#10;&#9;var s = 0.0;&#10;&#9;for (var i = 0; i &#60; ndiv; i++) &#123;&#10;            s += func_t(t);&#10;&#9;    t += dt;&#10;&#9;&#125;&#10;&#9;return s * dt;&#10;    &#125;;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="作用積分-1">作用積分</h4><p>以下は、与えられたラグランジアンに対して、作用積分汎関数 $S[x(t)]$ を作成します。<br>int_t は上の定積分演算子、d_t は微分演算子です。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function ActionIntegral(int_t, d_t, lagrangian) &#123;&#10;    return function(xt) &#123;&#10;&#9;var dxdt = d_t(xt);&#10;        var func_t = function(t) &#123;&#10;&#9;    return lagrangian(xt(t), dxdt(t));&#10;&#9;&#125;;&#10;&#9;return int_t(func_t);&#10;    &#125;;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="トライアル">トライアル</h4><p>準備ができたので、試行関数 $x(t)$ をいろいろ変えて $S[x(t)]$ の変化を調べてみます。<br>$x(t)$ は <strong>任意の関数</strong> ですが、もちろんそんなことはできないので、いくつかのパラメータで $x(t)$ を表し、パラメータを変化させてみることになります。</p>
+<p>ここではごくごく単純に １つのパラメータ k を持つ以下を試行関数にして、以下の条件で調べてみます。</p>
+<ul>
+<li>ラグランジアン：　上の振動子のものを使用<br>（解は $x(t) = Asin(\omega t) + B cos(\omega t)$   ($\omega = \sqrt{K/M}, A, B は定数$）</li>
+<li>積分範囲: $[t_0, t_1]=[0,1]$</li>
+<li>境界条件：$x(t0)=0、x(t1)=1$</li>
+<li>試行関数：$x(t;k) = sin(kt)/sin(k t_1)$</li>
+</ul>
+<p>また積分範囲は  とし、境界条件は  とします。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function trialFunc(t, w) &#123;&#10;    return Math.sin(w*t)/Math.sin(w*t1);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/vari-action.png" alt=""></p>
+<p><img src="/images/vari-lagrangian.png" alt=""></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/02/euler-lagrange2/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comment</h2>
+
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-02-18 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2016 Kuh Crow
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+   </html>
