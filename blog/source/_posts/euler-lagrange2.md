@@ -7,12 +7,16 @@ tags:
 http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html
 の補足として、座標変換が時間に依存する場合でも成り立つことを示します。
 
+####　変更履歴
+
+- 2015-09-03 式番号と説明を追加
+
 ### 座標変換
 
 元の座標系を ${q_i}$, 時間依存の新座標を ${r_k}$ とします。
 
 $$
-q_i = q_i(r_1, \cdots, r_n, t) \\ (i=1,\cdots, n)  \tag{座標の変換}
+q_i = q_i(r_1, \cdots, r_n, t) \\ (i=1,\cdots, n)  \tag{1) (座標の変換} 
 $$
 
 いくつか計算しておきます。
@@ -22,9 +26,9 @@ $$
 
 $$
 \begin{eqnarray}
-\dfrac{\partial q_i}{\partial \dot{r_j}} &=& 0 \tag{座標変換は速度には依存しない}\\\\
+\dfrac{\partial q_i}{\partial \dot{r_j}} &=& 0 \tag{2)(座標変換は速度に非依存}\\\\
 \dot{q_i}  &=&  \dfrac{d q_i}{dt}  \\\\
- &=& \dfrac{\partial q_i}{\partial r_k} \dot{r_k} +  \dfrac{\partial q_i}{\partial t}  \tag{速度の変換} \\\\
+ &=& \dfrac{\partial q_i}{\partial r_k} \dot{r_k} +  \dfrac{\partial q_i}{\partial t}  \tag{3)(速度の変換} \\\\
 \end{eqnarray}
 $$
 

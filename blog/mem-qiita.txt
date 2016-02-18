@@ -1,0 +1,14 @@
+■ hexo ファイルを qiita に投稿
+
+post.md を作成
+hexo で preview and deploy
+
+●　qiita
+
+item_id を得る。
+post.json 
+
+本体 post.md からヘッダー削除、
+それを body にして　PATCH
+
+

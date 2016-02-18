@@ -1,0 +1,16 @@
+{
+  "body": "# Example",
+  "coediting": false,
+  "gist": false,
+  "private": true,
+  "tags": [
+    {
+      "name": "example",
+      "versions": [
+        "0.0.1"
+      ]
+    }
+  ],
+  "title": "Post Example",
+  "tweet": false
+}

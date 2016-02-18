@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+  <title>Plot Sample - Scatter</title>
+  <!--
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r66/three.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
+  <link rel='stylesheet' href="https://rawgit.com/domitry/elegans/master/examples/common.css">
+  <script type="text/javascript" src="https://rawgit.com/domitry/elegans/master/release/elegans.min.js"></script>
+  -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="vari.js"></script>
+
+    <script type="text/javascript">
+      function onLoad() {
+          diffTest();
+          tryAndPlot(2.5, 1.5, 2.8, 0.1);
+          plotDsDk(2.5, 1.5, 2.8, 0.1);
+          plotLagrangian(2.5, [2.0, 2.5, 2.7], el01);
+      }
+      google.load("visualization", "1", {packages:["corechart", "table"]});
+      google.setOnLoadCallback(onLoad);
+    </script>
+
+</head>
+<body>
+<h2>変分問題を関数プログラミングしてみる</h2>
+
+<h3>数値微分演算子のテスト</h3>
+
+var d_t = D_t(0.0001); <br>
+として Math.cos(t) と、その微分 d_t(Math.cos), ２次微分 d_t(d_t(Math.cos))
+をプロット
+
+<div id="elchart">
+</div>
+
+<h3>試行関数のパラメータを変えたときの作用積分の変化</h3>
+
+<div id="elchart2">
+</div>
+
+<h3>パラメータでの微分・2次微分</h3>
+
+<div id="elchart3">
+</div>
+
+<h3>ある試行関数でのラグランジアンの時間変化</h3>
+
+
+<div id="el01">
+</div>
+
+
+</body>
