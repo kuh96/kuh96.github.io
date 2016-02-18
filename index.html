@@ -108,6 +108,76 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2016-02-18 </div>
+			<div class="article-title"><a href="/2016/02/18/vari-func/" >変分問題を関数プログラミングしてみる</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>変分問題は <strong>汎関数</strong> （関数を変数とする関数）を対象に、その最小化や最大化などを扱います。</p>
+<p>関数を変数とする関数、ということで JavaScript で関数プログラミングするとどんな感じになるか試してみました。</p>
+<ul>
+<li>なお小生、いまだに JavaScript に不自由な方、です。。。（自慢すんな！）</li>
+<li>一部だけですが、恐る恐る ECMAScript 6 の機能を使ってみました</li>
+</ul>
+<h3 id="例題">例題</h3><p>ここでは古典力学のラグランジアンと最小作用の原理を例にします。また簡単のため１粒子の１次元運動のみを扱います。</p>
+<h4 id="ラグランジアン">ラグランジアン</h4><p>エネルギーの次元をもつ以下の量を表す関数をラグランジアンといいます。ここで x は粒子の位置座標、 v は速度。</p>
+<p>$$<br>\begin{eqnarray}<br>L(x, v) &amp;=&amp; \mathbf{運動エネルギー - ポテンシャルエネルギー} \\<br>        &amp;=&amp; \frac{1}{2} M v^2 - U(x)<br>\end{eqnarray}<br>$$</p>
+<p>例えば、質量 $M$ バネ定数 $K$ の振動子のラグランジアンは以下になります。</p>
+<p>$$<br>L_{oscillator}(x, v) = \frac{1}{2} M v^2 - \frac{1}{2} K x^2<br>$$</p>
+<h4 id="作用積分">作用積分</h4><p>あるラグランジアンに対して、以下の形の時間積分を作用あるいは作用積分といいます。</p>
+<p>$$<br>S[x(t)] = \int_{t0}^{t1} L(x(t), \dot{x}(t)) dt<br>\ \ ただし \  \dot{x}(t) = \dfrac{d x(t)}{dt}<br>$$</p>
+<p>ここで、t0, t1 は任意に固定した時刻、$x(t)$ は粒子の運動を表す <strong>任意の関数</strong> です。<br>$S$ は任意の関数 $x(t)$ を変数とする関数、すなわち汎関数で、汎関数であることを示すために、$S[x(t)]$ と書きます。</p>
+<h4 id="最小作用の原理">最小作用の原理</h4><p>上の作用積分 $S[x(t)]$ の変数 x(t) は<strong>任意の関数</strong>でよいのですが、<br>$S[x(t)]$ を最小にするような関数が <strong>実際に起こる運動</strong> となることが知られています。（正しくは「最小」でなく「<strong>停留</strong>」です）</p>
+<p>このための必要条件は、関数 $x(t)$ を少し変えた関数 $x(t) + \delta x(t)$ を考えたとき、$S$ が変化しないこと、すなわち以下で表せます。</p>
+<p>$$<br>\delta S[x(t)] = S[x(t) + \delta x(t)] - S[x(t)] = 0 \hspace{5em} (A)<br>$$</p>
+<p>ただし <strong>境界条件</strong> として、積分の両端では値が変わらないとします。すなわち </p>
+<p>$$\delta x(t0) = \delta x(t1) = 0  \hspace{5em} (B)<br>$$</p>
+<h3 id="プログラム">プログラム</h3><p>通常は作用積分の停留条件から得られるオイラー・ラグランジュの方程式（２階の微分方程式）を解いて実際の運動を求めるのですが、<br>ここでは上の作用積分 $S[x(t)]$ を数値的に求めるプログラムを作成し、$x(t)$ を変化させて $S[x(t)]$ の変化を調べてみます。</p>
+<h4 id="振動子のラグランジアン">振動子のラグランジアン</h4><p>以下は、質量 M, バネ定数 K の振動子のラグランジアン $L(x,v)$ を作成します。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function oscillator(M,K) &#123;&#10;    return function(x,v) &#123;&#10;&#9;return 0.5*(M*v*v - K*x*x);&#10;    &#125;;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="数値微分演算子">数値微分演算子</h4><p>以下はきざみ幅 dt で、与えられた関数を数値微分する微分演算子を作成します。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function D_t(dt) &#123;&#10;    return function(func_t) &#123;&#10;&#9;return function(t) &#123;&#10;&#9;    return (func_t(t + 0.5*dt) - func_t(t - 0.5*dt)) / dt;&#10;&#9;&#125;;&#10;    &#125;;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>D_t(dt)(func) は関数 func の微分を表す関数（すなわち導関数）を返します。<br>（これも関数を変数にとる関数だが、通常、値・数値を返す関数を <strong>汎関数</strong>、<br>　別の関数を返す関数は <strong>演算子,作用素</strong> というようです）</p>
+<p>テストをかねて、以下の f, df, ddf を google chart でプロットしてみます。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var d_t = D_t(0.0001); // &#25968;&#20516;&#24494;&#20998;&#28436;&#31639;&#23376;&#10;var f = Math.cos;      // &#24494;&#20998;&#12377;&#12427;&#38306;&#25968;&#10;var df  = d_t(f);      // &#12381;&#12398;&#23566;&#38306;&#25968;&#10;var ddf = d_t(d_t(f)); // 2&#27425;&#12398;&#23566;&#38306;&#25968;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/vari-diff.png" alt=""></p>
+<h4 id="数値定積分演算子">数値定積分演算子</h4><p>以下は、区間 [t0, t1] を分割数 ndiv で数値積分する数値定積分演算子を作成します。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function Int_t(t0, t1, ndiv) &#123;&#10;    var dt = (t1 - t0)/ndiv;&#10;    return function(func_t) &#123;&#10;&#9;var t = t0 + 0.5*dt;&#10;&#9;var s = 0.0;&#10;&#9;for (var i = 0; i &#60; ndiv; i++) &#123;&#10;            s += func_t(t);&#10;&#9;    t += dt;&#10;&#9;&#125;&#10;&#9;return s * dt;&#10;    &#125;;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="作用積分-1">作用積分</h4><p>以下は、与えられたラグランジアンに対して、作用積分汎関数 $S[x(t)]$ を作成します。<br>int_t は上の定積分演算子、d_t は微分演算子です。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function ActionIntegral(int_t, d_t, lagrangian) &#123;&#10;    return function(xt) &#123;&#10;&#9;var dxdt = d_t(xt);&#10;        var func_t = function(t) &#123;&#10;&#9;    return lagrangian(xt(t), dxdt(t));&#10;&#9;&#125;;&#10;&#9;return int_t(func_t);&#10;    &#125;;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="トライアル">トライアル</h4><p>準備ができたので、試行関数 $x(t)$ をいろいろ変えて $S[x(t)]$ の変化を調べてみます。<br>$x(t)$ は <strong>任意の関数</strong> ですが、もちろんそんなことはできないので、いくつかのパラメータで $x(t)$ を表し、パラメータを変化させてみることになります。</p>
+<p>ここではごくごく単純に １つのパラメータ k を持つ以下を試行関数にして、以下の条件で調べてみます。</p>
+<ul>
+<li>ラグランジアン：　上の振動子のものを使用<br>（解は $x(t) = Asin(\omega t) + B cos(\omega t)$   ($\omega = \sqrt{K/M}, A, B は定数$）</li>
+<li>積分範囲: $[t_0, t_1]=[0,1]$</li>
+<li>境界条件：$x(t0)=0、x(t1)=1$</li>
+<li>試行関数：$x(t;k) = sin(kt)/sin(k t_1)$</li>
+</ul>
+<p>また積分範囲は  とし、境界条件は  とします。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function trialFunc(t, w) &#123;&#10;    return Math.sin(w*t)/Math.sin(w*t1);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/vari-action.png" alt=""></p>
+<p><img src="/images/vari-lagrangian.png" alt=""></p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2016/02/18/vari-func/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2015-09-02 </div>
 			<div class="article-title"><a href="/2015/09/02/euler-lagrange2/" >補足：オイラー・ラグランジュ方程式の座標非依存性（クロメル著）</a></div>						
 		</h3>
@@ -121,11 +191,14 @@
 	  
 	
 	  <p>ここではオイラー・ラグランジュ方程式の座標非依存性（クロメル著）<br><a href="http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html" target="_blank" rel="external">http://hooktail.maxwell.jp/kagi/f3288afa475db3d1f07454c5b931ea03.html</a><br>の補足として、座標変換が時間に依存する場合でも成り立つことを示します。</p>
+<h4 id="変更履歴">　変更履歴</h4><ul>
+<li>2015-09-03 式番号と説明を追加</li>
+</ul>
 <h3 id="座標変換">座標変換</h3><p>元の座標系を ${q_i}$, 時間依存の新座標を ${r_k}$ とします。</p>
-<p>$$<br>q_i = q_i(r_1, \cdots, r_n, t) \ (i=1,\cdots, n)  \tag{座標の変換}<br>$$</p>
+<p>$$<br>q_i = q_i(r_1, \cdots, r_n, t) \ (i=1,\cdots, n)  \tag{1) (座標の変換}<br>$$</p>
 <p>いくつか計算しておきます。<br>以下変数を明示しませんが、関数としての $q_i, \dot{q_i}$ （偏微分の分子にくる場合）の独立変数は $(r_1,\dot{r_1}, \cdots, r_n, \dot{r_n}, t)$ です。 </p>
 <p>また例の簡約記法で、同じ添字同士は和をとるものとして $\sum$ を省略します。</p>
-<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial q_i}{\partial \dot{r_j}} &amp;=&amp; 0 \tag{座標変換は速度には依存しない}\\<br>\dot{q_i}  &amp;=&amp;  \dfrac{d q_i}{dt}  \\<br> &amp;=&amp; \dfrac{\partial q_i}{\partial r_k} \dot{r_k} +  \dfrac{\partial q_i}{\partial t}  \tag{速度の変換} \\<br>\end{eqnarray}<br>$$</p>
+<p>$$<br>\begin{eqnarray}<br>\dfrac{\partial q_i}{\partial \dot{r_j}} &amp;=&amp; 0 \tag{2)(座標変換は速度に非依存}\\<br>\dot{q_i}  &amp;=&amp;  \dfrac{d q_i}{dt}  \\<br> &amp;=&amp; \dfrac{\partial q_i}{\partial r_k} \dot{r_k} +  \dfrac{\partial q_i}{\partial t}  \tag{3)(速度の変換} \\<br>\end{eqnarray}<br>$$</p>
 <p>上の $\dot{q_i}\  の式を\  r_j, \dot{r_j} $ で偏微分すると</p>
 <p>$$<br>\begin{eqnarray}<br>\dfrac{\partial \dot{q_i}}{\partial r_j}<br>  &amp;=&amp; \dfrac{\partial^2 q_i}{\partial r_j \partial r_k} \dot{r_k}<br>  + \dfrac{\partial^2 q_i}{\partial t \partial r_j}<br>  \\<br>  &amp;=&amp; \dfrac{d}{dt} (\dfrac{\partial q_i}{\partial r_j}) \tag{速度の座標微分の変換}\\<br>\dfrac{\partial \dot{q_i}}{\partial \dot{r_j}} &amp;=&amp; \dfrac{\partial q_i}{\partial r_j} \tag{速度の速度微分の変換} \\<br>\end{eqnarray}<br>$$</p>
 <h3 id="ラグランジアンの変換">ラグランジアンの変換</h3><p>元のラグランジアンを $L(q_1, \dot{q_1}, \cdots)$　とすると、<br>これを座標変換したラグランジアン $L’(r_1, \dot{r_1}, \cdots)$ は</p>
@@ -331,122 +404,6 @@
   
 </div>
 	<a type="button" href="/2015/07/25/irreducible/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-06-24 </div>
-			<div class="article-title"><a href="/2015/06/24/js01/" ></a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <html>
-<head>
-<script src="js01.js">
-</script>
-</head>
-<body>
-<h1>Nothing</h1>
-
-回転座標系 (u, v)
-静止座標系 (x, y)
-
-u =  x*cos(wt) + y*sin(wt)
-v = -x*sin(wt) + y*cos(wt)
-
-T = m/2 * (x'^2 + y'^2)
-  = m/2 * {u'^2 + v'-2 - 2*w*(u'*v - v'*u) + w^2*(u^2 + v^2) }
-
-m*u'' = 2m*w*v' + m*u*w^2
-m*v'' = -2m*w*u' + m*v*w^2
-
-静止座標 x （ベクトル）
-回転座標 X （ベクトル）
-直交行列 T(t) 時間に依存する
-
-`T*T = I  `T は転置行列
-
-`dT T + `T dT = 0
-`dT = - `T dT `T
-
-x = T(t) X (`T がよいが）
-dx = dT X + T dX
-
-<dx,dx> = `(dT X + T dX)(dT X + T dX)
-  = (`X `dT + `dX `T)(dT X + T dX)
-  = `X `dT dT X + `X `dT T dX
-    + `dX `T dT X + `dX `T T dX
-  = `X `dT dT X + `X `dT T dX
-   + `dX `T dT X + <dx,dx>
-
-K = m/2 <dx,dx>
-
-dX を dX で微分すると I
-d(dX)/dX = I
-d('dX)/dX = I
-
-d (`dX dX) / dX
-= 2 * d(`dX)/dX * dX
-= dX
-
-dK/dX =  `dT dT X +  `X `dT dT 
-   + `dT `dT T dX  + `X `dT T
-   + `T dT X + `dX `T dT
-   + 
-
-
-
-</dx,dx></dx,dx></dx,dx></body>
-</html>
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/06/24/js01/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-06-24 </div>
-			<div class="article-title"><a href="/2015/06/24/js01/" ></a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  var map = {name: 'whoami'};
-console.log("map=" + map);
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/06/24/js01/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -700,6 +657,10 @@ console.log("map=" + map);
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2016/02/18/vari-func/" ><i class="fa fa-file-o"></i>変分問題を関数プログラミングしてみる...</a>
+      </li>
+    
+      <li>
         <a href="/2015/09/02/euler-lagrange2/" ><i class="fa fa-file-o"></i>補足：オイラー・ラグランジュ方程式の座標非依存性（クロ...</a>
       </li>
     
@@ -712,11 +673,7 @@ console.log("map=" + map);
       </li>
     
       <li>
-        <a href="/2015/06/24/js01/" ><i class="fa fa-file-o"></i>...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/06/24/js01/" ><i class="fa fa-file-o"></i>...</a>
+        <a href="/2015/06/09/http-referer/" ><i class="fa fa-file-o"></i>HTTP Refefer ヘッダー問題...</a>
       </li>
     
   </ul>
@@ -749,7 +706,7 @@ console.log("map=" + map);
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2015 Kuh Crow
+  &copy; 2016 Kuh Crow
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
